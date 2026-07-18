@@ -1,0 +1,110 @@
+/* ==================== 武器模块专属样式 ==================== */
+.weapon-control-bar {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-xl);
+    background: rgba(0, 0, 0, 0.5);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-gold-light);
+    margin-bottom: 25px;
+    align-items: center;
+}
+
+.weapon-control-bar label {
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.weapon-control-bar select {
+    background: var(--color-bg-mid);
+    color: var(--color-gold-bright);
+    border: 1px solid var(--color-gold-bright);
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* 4大品质外发光特效 */
+.quality-gold {
+    border-color: var(--color-quality-gold) !important;
+    box-shadow: 0 0 25px rgba(204, 164, 59, 0.6) !important;
+}
+.quality-gold .slot-name {
+    color: var(--color-quality-gold) !important;
+    text-shadow: 0 0 10px rgba(204, 164, 59, 0.8), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000 !important;
+}
+
+.quality-purple {
+    border-color: var(--color-quality-purple) !important;
+    box-shadow: 0 0 25px rgba(156, 39, 176, 0.6) !important;
+}
+.quality-purple .slot-name {
+    color: var(--color-quality-purple) !important;
+    text-shadow: 0 0 10px rgba(156, 39, 176, 0.8), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000 !important;
+}
+
+.quality-blue {
+    border-color: var(--color-quality-blue) !important;
+    box-shadow: 0 0 25px rgba(33, 150, 243, 0.6) !important;
+}
+.quality-blue .slot-name {
+    color: var(--color-quality-blue) !important;
+    text-shadow: 0 0 10px rgba(33, 150, 243, 0.8), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000 !important;
+}
+
+.quality-white {
+    border-color: var(--color-quality-white) !important;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3) !important;
+}
+.quality-white .slot-name {
+    color: var(--color-quality-white) !important;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5), -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000 !important;
+}
+
+/* 武器图片 */
+.weapon-img {
+    width: 100% !important;
+    max-width: 190px !important;
+    height: 110px !important;
+    object-fit: cover !important;
+    border-radius: var(--radius-md) !important;
+    border: 2px solid var(--color-gold) !important;
+    background: rgba(0, 0, 0, 0.45) !important;
+    padding: 0 !important;
+    margin-bottom: -5px !important;
+}
+
+.weapon-avatar-fallback {
+    width: 100% !important;
+    max-width: 190px !important;
+    height: 110px !important;
+    border-radius: var(--radius-md) !important;
+    background: var(--color-bg-input-alt) !important;
+    border: 2px solid var(--color-gold) !important;
+    display: none;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 26px !important;
+    font-weight: bold !important;
+    color: var(--color-gold) !important;
+    margin-bottom: var(--spacing-lg) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* 武器抽取卡槽背景专项修正 */
+.weapon-scroll-box {
+    background: rgba(10, 10, 10, 0.9) url('../assets/card-bg1.png') no-repeat center center !important;
+    background-size: cover !important;
+}
+
+.weapon-scroll-box .slot-name,
+.weapon-scroll-box .slot-subtext {
+    transform: translateY(12px) !important;
+}

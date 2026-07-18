@@ -1,0 +1,186 @@
+/* ==================== 人员抽取模块专属样式 ==================== */
+.players-dashboard-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-gold-light);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* 卡牌网格容器 */
+.cards-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+    justify-items: center;
+}
+
+/* 3D 卡片外盒 */
+.card-container {
+    background-color: transparent;
+    width: 180px;
+    height: 250px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+/* 卡片旋转内核 */
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+/* 卡片反面态 */
+.card-container.face-down .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* 遮罩 */
+.card-container.locked {
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* 3D 正反面共享样式 */
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--color-gold);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+}
+
+/* 人员正面背景专项修正 */
+.card-front {
+    background: rgba(10, 10, 10, 0.95) url('../assets/card-bg2.png') no-repeat center center !important;
+    background-size: cover !important;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-md);
+}
+
+.card-front img {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: var(--radius-round);
+    border: 3px solid var(--color-gold);
+    box-shadow: 0 0 10px var(--border-gold);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* 卡片正面兜底头像 */
+.card-player-fallback {
+    width: 110px;
+    height: 110px;
+    border-radius: var(--radius-round);
+    background: var(--color-bg-input-alt);
+    border: 3px solid var(--color-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    font-weight: bold;
+    color: var(--color-gold);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* 选手卡正面名字 */
+.card-player-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--color-text-primary-alt);
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 1),
+        0 0 8px rgba(0, 0, 0, 0.9),
+        -1px -1px 0 rgba(0, 0, 0, 0.9),
+         1px -1px 0 rgba(0, 0, 0, 0.9),
+        -1px  1px 0 rgba(0, 0, 0, 0.9),
+         1px  1px 0 rgba(0, 0, 0, 0.9);
+}
+
+/* 卡片反面 */
+.card-back {
+    background: var(--color-bg-card) url('../assets/card_bg.png') no-repeat center center;
+    background-size: cover;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-back-pattern {
+    font-size: 55px;
+    color: var(--color-gold);
+    text-shadow: 0 0 15px rgba(179, 134, 59, 0.6);
+    animation: pulse 2s infinite ease-in-out;
+}
+
+/* 炫酷洗卡 gather 聚拢动画 */
+.card-container.shuffling-animation {
+    animation: gatherAndScatter 1s ease-in-out forwards;
+}
+
+/* 卡牌背面提示文字定位修正 */
+.card-back-hint {
+    position: absolute;
+    bottom: var(--spacing-lg);
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+    pointer-events: none;
+    letter-spacing: 1px;
+}
+
+/* 历史列表 */
+.players-history-panel {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border-gold-light);
+    border-radius: var(--radius-md);
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-md) var(--spacing-lg);
+}
+
+.players-history-panel h4 {
+    color: var(--color-gold);
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--border-white-dim);
+    padding-bottom: var(--spacing-xs);
+}
+
+#players-history-list {
+    list-style: none;
+    max-height: 120px;
+    overflow-y: auto;
+    font-size: 14px;
+}
+
+#players-history-list li {
+    padding: var(--spacing-xs) 0;
+    border-bottom: 1px dashed var(--border-white-subtle);
+    animation: fadeHistory var(--transition-smooth);
+    color: var(--color-text-secondary);
+}
+
+#players-history-list li strong {
+    color: var(--color-player-accent);
+}

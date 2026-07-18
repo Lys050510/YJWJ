@@ -1,0 +1,60 @@
+/* ==================== 奖品抽取模块专属样式 ==================== */
+.prizes-grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-lg);
+    margin: var(--spacing-xxl) 0;
+    justify-content: center;
+}
+
+.prize-card {
+    background: linear-gradient(135deg, var(--color-bg-card), rgba(26, 26, 26, 0.95));
+    border: 2px solid var(--border-gold-light);
+    border-radius: var(--radius-lg);
+    width: 250px;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.prize-card-tier {
+    font-size: 18px;
+    color: var(--color-gold-bright);
+    font-weight: 900;
+    letter-spacing: 2px;
+    border-bottom: 1px dashed var(--border-gold-dim);
+    padding-bottom: 6px;
+}
+
+.prize-card-name {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--color-text-primary);
+    margin: auto 0;
+    line-height: 1.4;
+    letter-spacing: 1px;
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 1),
+        0 0 10px rgba(0, 0, 0, 0.9);
+}
+
+.prize-card.active-prize {
+    border-color: var(--color-quality-gold) !important;
+    box-shadow: 0 0 30px rgba(204, 164, 59, 0.9) !important;
+    transform: scale(1.05);
+    z-index: 10;
+    background: linear-gradient(135deg, rgba(179, 134, 59, 0.15), rgba(26, 26, 26, 0.95)) !important;
+}
+
+.prize-card.winner-prize {
+    animation: prizeWinnerGlow 0.4s infinite ease-in-out;
+    background: linear-gradient(135deg, rgba(179, 134, 59, 0.3), rgba(30, 30, 30, 0.95)) !important;
+    transform: scale(1.08);
+    z-index: 11;
+}

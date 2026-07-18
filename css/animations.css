@@ -1,0 +1,74 @@
+/* ==================== 所有 @keyframes 动画 ==================== */
+
+/* 淡入 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 脉冲 */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.08); opacity: 1; }
+}
+
+/* 历史条目淡入 */
+@keyframes fadeHistory {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* 人员卡牌聚拢-散开 */
+@keyframes gatherAndScatter {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    45% {
+        transform: translate(var(--center-dx, 0px), var(--center-dy, 0px)) rotate(10deg) scale(0.9);
+        z-index: 50;
+    }
+    55% {
+        transform: translate(var(--center-dx, 0px), var(--center-dy, 0px)) rotate(-10deg) scale(0.9);
+        z-index: 50;
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+/* 锦囊卡牌聚拢-散开 */
+@keyframes tipGatherAndScatter {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    45% {
+        transform: translate(var(--center-dx, 0px), var(--center-dy, 0px)) rotate(10deg) scale(0.9);
+        z-index: 50;
+    }
+    55% {
+        transform: translate(var(--center-dx, 0px), var(--center-dy, 0px)) rotate(-10deg) scale(0.9);
+        z-index: 50;
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+/* 奖品中奖辉光 */
+@keyframes prizeWinnerGlow {
+    0%, 100% { box-shadow: 0 0 25px rgba(204, 164, 59, 0.8); border-color: var(--color-quality-gold); }
+    50% { box-shadow: 0 0 45px rgba(255, 204, 0, 1); border-color: var(--color-gold-highlight); }
+}
+
+/* 锦囊单卡刷新 3D 翻转 */
+@keyframes cardRerollSpin {
+    0% { transform: rotateY(0deg) scale(1); }
+    50% { transform: rotateY(90deg) scale(0.92); }
+    100% { transform: rotateY(0deg) scale(1); }
+}
+
+/* 计分板回合确认闪烁 */
+@keyframes sbConfirmFlash {
+    0%, 100% { border-color: var(--border-gold-light); box-shadow: none; }
+    50% { border-color: var(--color-gold-highlight); box-shadow: 0 0 16px rgba(255, 204, 0, 0.7); }
+}

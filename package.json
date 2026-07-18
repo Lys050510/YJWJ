@@ -1,0 +1,10 @@
+{
+  "name": "yjwj-lottery",
+  "version": "2.0.0",
+  "description": "永劫无间擂台赛随机抽取工具",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "python -m http.server 8080"
+  },
+  "private": true
+}

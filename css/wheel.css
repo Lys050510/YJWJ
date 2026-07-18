@@ -1,0 +1,67 @@
+/* ==================== 转盘模块专属样式 ==================== */
+.wheel-layout {
+    display: flex;
+    gap: var(--spacing-xxl);
+    flex-wrap: wrap;
+    margin-top: var(--spacing-lg);
+}
+
+.wheel-left {
+    flex: 1.2;
+    min-width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wheel-selector-row {
+    margin-bottom: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.wheel-selector-row select {
+    background: var(--color-bg-mid);
+    color: var(--color-text-primary-alt);
+    border: 1px solid var(--color-gold);
+    padding: 8px;
+    border-radius: var(--radius-sm);
+    font-size: 16px;
+}
+
+.canvas-container {
+    position: relative;
+    width: 450px;
+    height: 450px;
+}
+
+.pointer {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 40px;
+    color: #ff3333;
+    z-index: 10;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+}
+
+canvas {
+    border-radius: var(--radius-round);
+    box-shadow: var(--shadow-canvas);
+}
+
+/* 右侧配置面板 */
+.wheel-right {
+    flex: 0.8;
+    min-width: 350px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-white-subtle);
+}
+
+.config-row {
+    margin-bottom: var(--spacing-md);
+}

@@ -1,0 +1,510 @@
+/* ==================== 计分板模块专属样式 ==================== */
+
+/* ── 三栏布局 ── */
+.sb-main-layout {
+    display: flex;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-md);
+    align-items: flex-start;
+}
+
+/* 左栏：侧边栏 */
+.sb-left-sidebar {
+    flex: 0 0 170px;
+    min-width: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border-gold-light);
+    border-radius: var(--radius-lg);
+    padding: 12px;
+    position: sticky;
+    top: var(--spacing-sm);
+    max-height: calc(100vh - 140px);
+    overflow-y: auto;
+}
+
+.sb-sidebar-section {
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--border-gold-subtle);
+}
+
+.sb-sidebar-section:last-child {
+    border-bottom: none;
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* 中栏：回合编辑器 */
+.sb-center-panel {
+    flex: 1 1 auto;
+    min-width: 380px;
+}
+
+/* 右栏：排行榜 */
+.sb-right-panel {
+    flex: 0 0 260px;
+    min-width: 200px;
+    max-width: 320px;
+    position: sticky;
+    top: var(--spacing-sm);
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border-gold-light);
+    border-radius: var(--radius-lg);
+    padding: 16px;
+    max-height: calc(100vh - 140px);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.sb-right-panel::-webkit-scrollbar {
+    display: none;
+}
+
+/* ── 回合选择器 ── */
+#scoreboard-round-tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.sb-round-tab {
+    display: block;
+    width: 100%;
+    background: var(--color-bg-mid);
+    color: var(--color-text-muted);
+    border: 1px solid var(--border-gold-dim);
+    padding: 7px var(--spacing-sm);
+    font-size: 13px;
+    cursor: pointer;
+    border-radius: var(--radius-xs);
+    transition: all 0.25s ease;
+    position: relative;
+    white-space: nowrap;
+    font-weight: 500;
+    text-align: center;
+}
+
+.sb-round-tab:hover {
+    background: rgba(179, 134, 59, 0.12);
+    color: var(--color-gold-bright);
+    border-color: var(--color-gold);
+}
+
+.sb-round-tab.active {
+    background: linear-gradient(135deg, var(--color-gold), var(--color-gold-light));
+    color: #000;
+    font-weight: bold;
+    border-color: var(--color-gold);
+    box-shadow: 0 2px 8px rgba(179, 134, 59, 0.35);
+}
+
+.sb-round-tab.has-data::after {
+    content: '';
+    position: absolute;
+    top: var(--spacing-xs);
+    right: 6px;
+    width: 7px;
+    height: 7px;
+    background: var(--color-success-green);
+    border-radius: var(--radius-round);
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.7);
+}
+
+.sb-round-tab.active.has-data::after {
+    background: #000;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+}
+
+.sb-round-tab.confirm-flash {
+    animation: sbConfirmFlash 0.5s ease 2;
+}
+
+/* ── 回合编辑区 ── */
+#scoreboard-round-editor {
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid var(--border-gold-dim);
+    border-radius: var(--radius-lg);
+    padding: 22px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.sb-editor-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-gold-light);
+}
+
+.sb-editor-title-row h4 {
+    color: var(--color-gold-bright);
+    margin: 0;
+    border: none;
+    padding: 0;
+    font-size: 17px;
+}
+
+.sb-entries-header {
+    display: grid;
+    grid-template-columns: 0.5fr 1.5fr 0.7fr 0.7fr;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) 8px;
+    margin-bottom: var(--spacing-sm);
+    background: rgba(179, 134, 59, 0.08);
+    border-radius: var(--radius-xs);
+    font-size: 13px;
+    color: var(--color-text-muted);
+    font-weight: bold;
+    text-align: center;
+}
+
+.sb-entry-row {
+    display: grid;
+    grid-template-columns: 0.5fr 1.5fr 0.7fr 0.7fr;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
+    align-items: center;
+    padding: 4px 6px;
+    border-radius: var(--radius-xs);
+    transition: background 0.2s;
+}
+
+.sb-entry-row:hover {
+    background: rgba(179, 134, 59, 0.04);
+}
+
+.sb-entry-row input {
+    background: var(--color-bg-input);
+    color: var(--color-text-primary-alt);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 9px var(--spacing-sm);
+    border-radius: var(--radius-xs);
+    font-size: 14px;
+    width: 100%;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.sb-entry-row input:focus {
+    border-color: var(--color-gold-bright);
+    outline: none;
+    box-shadow: 0 0 8px rgba(227, 169, 74, 0.2);
+}
+
+input.sb-rank-input {
+    text-align: center;
+    font-weight: bold;
+    color: var(--color-gold-bright);
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+input.sb-name-input {
+    text-align: center !important;
+}
+
+input.sb-kills-input {
+    text-align: center;
+}
+
+/* 回合编辑器英雄缩略图 */
+.sb-hero-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.sb-hero-thumb {
+    width: 26px;
+    height: 26px;
+    border-radius: var(--radius-sm);
+    object-fit: cover;
+    border: 2px solid rgba(179, 134, 59, 0.5);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.sb-hero-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 8px rgba(227, 169, 74, 0.5);
+    border-color: var(--color-gold-bright);
+}
+
+.sb-hero-placeholder {
+    width: 26px;
+    height: 26px;
+    border-radius: var(--radius-sm);
+    border: 2px dashed var(--border-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--color-text-dimmest);
+    transition: all 0.2s;
+}
+
+.sb-hero-placeholder:hover {
+    border-color: var(--color-gold-bright);
+    color: var(--color-gold-bright);
+}
+
+/* 英雄选择器弹窗网格 */
+.hero-picker-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    padding: var(--spacing-md);
+    max-height: 400px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.hero-picker-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.hero-picker-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: var(--radius-lg);
+    border: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.hero-picker-item:hover {
+    background: rgba(179, 134, 59, 0.1);
+    border-color: var(--color-gold);
+}
+
+.hero-picker-item.selected {
+    border-color: var(--color-gold-bright);
+    background: rgba(227, 169, 74, 0.15);
+}
+
+.hero-picker-item img {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm);
+    object-fit: cover;
+    margin-bottom: 4px;
+}
+
+.hero-picker-item span {
+    font-size: 10px;
+    color: var(--color-text-ccc);
+    text-align: center;
+    max-width: 64px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ── 排行榜 ── */
+#scoreboard-leaderboard-content {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#scoreboard-leaderboard-content::-webkit-scrollbar {
+    display: none;
+}
+
+.sb-leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.sb-leaderboard-table th {
+    background: rgba(179, 134, 59, 0.12);
+    color: var(--color-gold-bright);
+    padding: var(--spacing-sm);
+    border-bottom: 2px solid var(--border-gold);
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.sb-leaderboard-table td {
+    padding: var(--spacing-sm);
+    border-bottom: 1px solid var(--border-white-subtle);
+    text-align: center;
+    transition: background var(--transition-fast);
+}
+
+.sb-leaderboard-table tbody tr:hover td {
+    background: rgba(179, 134, 59, 0.06);
+}
+
+.sb-leaderboard-table tbody tr:first-child td {
+    background: rgba(255, 204, 0, 0.06);
+}
+
+.sb-leaderboard-table tbody tr:first-child .sb-rank-col {
+    color: var(--color-gold-highlight);
+    font-size: 20px;
+    text-shadow: 0 0 8px rgba(255, 204, 0, 0.4);
+}
+
+.sb-leaderboard-table tbody tr:nth-child(2) td {
+    background: rgba(192, 192, 192, 0.04);
+}
+
+.sb-leaderboard-table tbody tr:nth-child(3) td {
+    background: rgba(205, 127, 50, 0.04);
+}
+
+.sb-leaderboard-table .sb-rank-col {
+    font-weight: bold;
+    color: var(--color-gold-bright);
+    font-size: 17px;
+    width: 45px;
+}
+
+.sb-leaderboard-table .sb-name-col {
+    font-weight: bold;
+    color: var(--color-text-primary-alt);
+    font-size: 15px;
+}
+
+.sb-leaderboard-table .sb-total-col {
+    color: var(--color-gold-highlight);
+    font-weight: bold;
+    font-size: 18px;
+    text-shadow: 0 0 6px rgba(255, 204, 0, 0.2);
+}
+
+/* ── 排名分规则设置弹窗 ── */
+#ranking-points-rules-list .option-item {
+    display: grid;
+    grid-template-columns: 0.8fr 0.8fr 1fr;
+    gap: 12px;
+    margin-bottom: 8px;
+    align-items: center;
+}
+
+#ranking-points-rules-list .option-item input {
+    background: var(--color-bg-input-alt);
+    color: var(--color-text-primary-alt);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 7px 8px;
+    border-radius: var(--radius-sm);
+    text-align: center;
+    width: 100%;
+}
+
+#ranking-points-rules-list .option-item input:focus {
+    border-color: var(--color-gold-bright);
+    outline: none;
+}
+
+#ranking-points-rules-list .option-item input.rp-points-input {
+    color: var(--color-gold-highlight);
+    font-weight: bold;
+}
+
+/* ── 总览图弹窗内表格 ── */
+#scoreboard-overview-content h4 {
+    color: var(--color-gold-bright);
+    margin: var(--spacing-lg) 0 var(--spacing-sm) 0;
+    border-left: 3px solid var(--color-gold);
+    padding-left: var(--spacing-sm);
+}
+
+#scoreboard-overview-content .sb-overview-meta {
+    color: var(--color-text-muted);
+    font-size: 13px;
+    margin-bottom: var(--spacing-md);
+    line-height: 1.6;
+}
+
+.sb-overview-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-bottom: var(--spacing-lg);
+}
+
+.sb-overview-table th,
+.sb-overview-table td {
+    border: 1px solid var(--border-gold-dim);
+    padding: 8px var(--spacing-sm);
+    text-align: center;
+}
+
+.sb-overview-table th {
+    background: rgba(179, 134, 59, 0.2);
+    color: var(--color-gold-bright);
+    font-size: 13px;
+}
+
+.sb-overview-table .ov-rank-col { width: 50px; color: var(--color-gold-highlight); font-weight: bold; font-size: 16px; }
+.sb-overview-table .ov-name-col { text-align: left; font-weight: bold; color: var(--color-text-primary-alt); }
+.sb-overview-table .ov-total-col { color: var(--color-gold-highlight); font-weight: bold; }
+
+.sb-rules-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-top: var(--spacing-sm);
+}
+
+.sb-rules-table th,
+.sb-rules-table td {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 6px 8px;
+    text-align: center;
+}
+
+.sb-rules-table th {
+    background: rgba(179, 134, 59, 0.15);
+    color: var(--color-gold-bright);
+    font-size: 12px;
+}
+
+/* ── 本局排名弹窗内表格 ── */
+#round-ranking-modal-content .sb-round-ranking-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+#round-ranking-modal-content .sb-round-ranking-table th {
+    background: rgba(179, 134, 59, 0.15);
+    color: var(--color-gold-bright);
+    padding: var(--spacing-sm);
+    border-bottom: 2px solid var(--border-gold);
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+#round-ranking-modal-content .sb-round-ranking-table td {
+    padding: var(--spacing-sm);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    text-align: center;
+}
+
+#round-ranking-modal-content .sb-round-ranking-table .srr-rank-col {
+    font-weight: bold;
+    color: var(--color-gold-bright);
+    font-size: 16px;
+    width: 50px;
+}
+
+#round-ranking-modal-content .sb-round-ranking-table .srr-total-col {
+    color: var(--color-gold-highlight);
+    font-weight: bold;
+    font-size: 16px;
+}

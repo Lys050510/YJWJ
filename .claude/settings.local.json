@@ -3,7 +3,11 @@
     "allow": [
       "Bash(git init *)",
       "Bash(git add *)",
-      "Bash(git commit *)"
+      "Bash(git commit *)",
+      "Bash(sed \"s/CURRENT_CONFIG/window.CURRENT_CONFIG/g; s/saveConfigToLocal\\(\\)/saveConfig\\(\\)/g; s/\\\\bisPrizeDrawing\\\\b/state.isPrizeDrawing/g; s/\\\\bisInitialDealing\\\\b/state.isInitialDealing/g; s/\\\\bcurrentTipPool\\\\b/state.currentTipPool/g; s/\\\\bdrawnTipCards\\\\b/state.drawnTipCards/g; s/\\\\bflippedTipCount\\\\b/state.flippedTipCount/g; s/\\\\btipRefreshesRemaining\\\\b/state.tipRefreshesRemaining/g; s/\\\\bactiveTipMarqueeInterval\\\\b/state.activeTipMarqueeInterval/g; s/\\\\bisMarqueeDragging\\\\b/state.isMarqueeDragging/g; s/\\\\bmarqueeStartX\\\\b/state.marqueeStartX/g; s/\\\\bmarqueeScrollLeft\\\\b/state.marqueeScrollLeft/g\")",
+      "Read(//tmp/**)",
+      "Bash(python -m http.server 8080)",
+      "Bash(curl -s http://localhost:8080/index.html)"
     ]
   }
 }

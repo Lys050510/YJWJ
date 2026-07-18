@@ -1,0 +1,188 @@
+/* ==================== 响应式媒体查询 ==================== */
+
+/* 计分板窄屏（已有） */
+@media (max-width: 850px) {
+    .sb-main-layout {
+        flex-direction: column;
+    }
+    .sb-right-panel {
+        max-width: none;
+        position: static;
+    }
+    .sb-left-sidebar {
+        position: static;
+        max-height: none;
+    }
+}
+
+/* 中等屏幕：转盘竖排 */
+@media (max-width: 1024px) {
+    .wheel-layout {
+        flex-direction: column;
+        align-items: center;
+    }
+    .wheel-left {
+        min-width: auto;
+    }
+    .wheel-right {
+        min-width: auto;
+        width: 100%;
+    }
+    .canvas-container {
+        width: 380px;
+        height: 380px;
+    }
+    canvas {
+        width: 380px;
+        height: 380px;
+    }
+}
+
+/* 平板端：导航栏换行、卡片网格收缩 */
+@media (max-width: 768px) {
+    .nav-bar {
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 12px;
+    }
+    .nav-btn {
+        padding: 8px 14px;
+        font-size: 14px;
+    }
+
+    .main-container {
+        margin: 10px 0;
+        padding: 15px;
+    }
+
+    .modal-content {
+        width: 95%;
+        max-width: none;
+        padding: 20px;
+    }
+
+    .scroller-container {
+        gap: 15px;
+        margin: 20px 0;
+    }
+
+    .scroll-box {
+        width: 160px;
+        height: 240px;
+    }
+    .placeholder-card, .scroll-item {
+        height: 240px;
+    }
+    .scroll-item img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .cards-grid-container {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 12px;
+    }
+
+    .prizes-grid-container {
+        gap: 12px;
+    }
+    .prize-card {
+        width: 200px;
+        height: 140px;
+        padding: 12px;
+    }
+
+    .weapon-control-bar {
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+    }
+
+    .sb-center-panel {
+        min-width: auto;
+    }
+}
+
+/* 手机端：全宽按钮、字体缩放 */
+@media (max-width: 480px) {
+    .nav-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .nav-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    .draw-btn {
+        font-size: 18px;
+        padding: 12px 30px;
+    }
+
+    .scroller-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .scroll-box {
+        width: 200px;
+        height: 260px;
+    }
+
+    .hero-checkbox-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)) !important;
+    }
+
+    .card-container {
+        width: 150px;
+        height: 210px;
+    }
+
+    .canvas-container {
+        width: 300px;
+        height: 300px;
+    }
+    canvas {
+        width: 300px;
+        height: 300px;
+    }
+
+    .wheel-layout {
+        gap: 20px;
+    }
+
+    .prizes-grid-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .weapon-control-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .sb-main-layout {
+        flex-direction: column;
+    }
+    .sb-left-sidebar {
+        flex: none;
+        width: 100%;
+        position: static;
+        max-height: none;
+    }
+    .sb-right-panel {
+        flex: none;
+        width: 100%;
+        max-width: none;
+        position: static;
+        max-height: none;
+    }
+
+    .hero-picker-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

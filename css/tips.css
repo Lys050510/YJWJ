@@ -1,0 +1,227 @@
+/* ==================== 锦囊模块专属样式 ==================== */
+.tips-sub-tabs {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.sub-tab-btn {
+    background: var(--color-bg-dark);
+    color: var(--color-text-dim);
+    border: 1px solid rgba(179, 134, 59, 0.4);
+    padding: 6px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s;
+}
+
+.sub-tab-btn:hover, .sub-tab-btn.active {
+    background: rgba(179, 134, 59, 0.15);
+    color: var(--color-gold-bright);
+    border-color: var(--color-gold-bright);
+    box-shadow: 0 0 8px rgba(179, 134, 59, 0.3);
+}
+
+/* 跑马灯慢滑及抓拽区外框 */
+.marquee-drag-outer {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border-white-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg) var(--spacing-sm);
+    overflow: hidden;
+    margin-bottom: 25px;
+    position: relative;
+    transition: all var(--transition-smooth);
+}
+
+.marquee-drag-container {
+    display: flex;
+    gap: var(--spacing-lg);
+    overflow-x: auto;
+    cursor: grab;
+    user-select: none;
+    scroll-behavior: auto;
+}
+
+.marquee-drag-container::-webkit-scrollbar {
+    display: none;
+}
+
+.marquee-drag-container.active-dragging {
+    cursor: grabbing;
+}
+
+/* 锦囊专用卡片 */
+.tip-card-item {
+    flex: 0 0 170px;
+    height: 240px;
+    perspective: 1000px;
+}
+
+/* 锦囊卡片卡槽包裹盒 */
+.tip-card-slot-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 锦囊专用卡正面 */
+.tip-card-front {
+    background: rgba(10, 10, 10, 0.95) url('../assets/card-bg3.png') no-repeat center center !important;
+    background-size: cover !important;
+    color: var(--color-text-primary-alt);
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    padding: 66px 14px var(--spacing-md) 14px !important;
+    box-sizing: border-box !important;
+}
+
+/* 彻底去框化 */
+.tip-card-body {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+/* 锦囊名称 */
+.tip-card-title {
+    font-size: 19px !important;
+    font-weight: 900 !important;
+    margin-bottom: var(--spacing-sm) !important;
+    letter-spacing: 1px !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 1),
+        0 0 10px rgba(0, 0, 0, 1),
+        0 0 4px rgba(0, 0, 0, 1) !important;
+}
+
+/* 锦囊效果描述 */
+.tip-card-desc {
+    font-size: 12px !important;
+    color: #eaeaea !important;
+    line-height: 1.5 !important;
+    text-align: center !important;
+    width: 100% !important;
+    word-break: break-all !important;
+    max-height: 110px !important;
+    overflow: hidden !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+    text-shadow:
+        0 1.5px 3px rgba(0, 0, 0, 1),
+        0 0 8px rgba(0, 0, 0, 1) !important;
+}
+
+.tip-card-desc::-webkit-scrollbar {
+    display: none !important;
+}
+
+/* 锦囊专用卡背面 */
+.tip-card-back {
+    background: var(--color-bg-card) url('../assets/card_bg1.png') no-repeat center center !important;
+    background-size: cover !important;
+    transform: rotateY(180deg);
+}
+
+/* 抽卡主场 */
+.tip-play-hall {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px dashed var(--border-gold);
+    border-radius: var(--radius-lg);
+    padding: 25px;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tips-drawn-status {
+    font-size: 16px;
+    color: var(--color-text-secondary);
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    letter-spacing: 1px;
+}
+
+/* 四大稀有度品质在锦囊模块中的定制化发光特效 */
+.tip-border-gold { border-color: var(--color-quality-gold) !important; box-shadow: var(--glow-quality-gold); }
+.tip-border-gold .tip-card-title { color: var(--color-quality-gold) !important; }
+
+.tip-border-purple { border-color: var(--color-quality-purple) !important; box-shadow: var(--glow-quality-purple); }
+.tip-border-purple .tip-card-title { color: var(--color-quality-purple-light) !important; }
+
+.tip-border-blue { border-color: var(--color-quality-blue) !important; box-shadow: var(--glow-quality-blue); }
+.tip-border-blue .tip-card-title { color: var(--color-quality-blue-light) !important; }
+
+.tip-border-white { border-color: var(--color-quality-white) !important; box-shadow: var(--glow-quality-white); }
+.tip-border-white .tip-card-title { color: var(--color-quality-white) !important; }
+
+/* 局内单卡单独刷新按钮 */
+.tip-single-refresh-btn {
+    transition: opacity var(--transition-smooth), visibility var(--transition-smooth), background 0.2s, box-shadow 0.2s;
+    opacity: 1;
+    visibility: visible;
+    animation: fadeIn var(--transition-smooth);
+    color: var(--color-quality-blue) !important;
+    border-color: var(--color-quality-blue) !important;
+    font-weight: bold;
+    padding: 5px 12px !important;
+    font-size: 12px !important;
+    background: rgba(33, 150, 243, 0.05) !important;
+    box-shadow: 0 0 6px rgba(33, 150, 243, 0.2);
+}
+
+.tip-single-refresh-btn:hover {
+    background: var(--color-quality-blue) !important;
+    color: #000 !important;
+    box-shadow: 0 0 12px rgba(33, 150, 243, 0.5);
+}
+
+.tip-single-refresh-btn.hidden {
+    display: inline-block !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/* 锦囊聚拢洗牌动画 */
+.tip-card-slot-wrapper.shuffling-animation {
+    animation: tipGatherAndScatter 1s ease-in-out forwards;
+}
+
+/* 单卡刷新时的 3D 纵向翻转动效 */
+.card-reroll-spinning {
+    animation: cardRerollSpin 0.55s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+/* 日志列表 */
+.log-tips-list {
+    margin-top: 8px;
+    padding-left: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.log-tip-item {
+    text-align: left;
+    line-height: 1.5;
+    font-size: 14px;
+}

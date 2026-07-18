@@ -1,0 +1,264 @@
+/* ==================== 悬浮窗 OBS 纯净排行榜样式 ==================== */
+
+body.overlay-mode {
+    background: var(--color-bg-deep) !important;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    border: none !important;
+}
+
+body.overlay-mode,
+body.overlay-mode * {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+
+body.overlay-mode *::-webkit-scrollbar {
+    display: none !important;
+}
+
+#overlay-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 1.5vh 2vw;
+    box-sizing: border-box;
+}
+
+.overlay-inner {
+    width: 100%;
+    max-width: 280px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 auto;
+    background: #111113 !important;
+    border: 1px solid rgba(179, 134, 59, 0.22);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.85);
+}
+
+.overlay-title {
+    color: var(--color-gold-bright);
+    font-size: 15px;
+    font-weight: 900;
+    text-align: center;
+    margin: 0 0 1vh 0;
+    padding-bottom: 0.6vh;
+    border-bottom: 1.5px solid var(--border-gold-dim);
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(227, 169, 74, 0.35);
+    width: 100%;
+}
+
+.overlay-table-wrap {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+}
+
+.overlay-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    table-layout: fixed;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.overlay-table thead th {
+    background: rgba(179, 134, 59, 0.12);
+    color: var(--color-gold-bright);
+    padding: 0.8vh 2px;
+    border-bottom: 1.5px solid var(--border-gold-dim);
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    font-size: 11px;
+}
+
+.ov-th-rank  { width: 10%; white-space: nowrap; }
+.ov-th-name  { width: 26%; white-space: nowrap; }
+.ov-th-hero  { width: 14%; white-space: nowrap; text-align: center; }
+.ov-th-kills { width: 26%; white-space: nowrap; text-align: center; }
+.ov-th-total { width: 24%; white-space: nowrap; text-align: center; }
+
+.overlay-table tbody td {
+    padding: 0.3vh 2px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.overlay-table tbody tr:hover td {
+    background: rgba(179, 134, 59, 0.05);
+}
+
+.ov-td-rank {
+    font-weight: bold;
+    color: var(--color-gold-bright);
+    font-size: 14px;
+    text-align: center;
+}
+
+.overlay-table tbody tr.ov-row-top1 .ov-td-rank {
+    font-size: 16px;
+}
+
+.ov-td-name {
+    font-weight: bold;
+    color: var(--color-text-primary);
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+
+.ov-td-kills,
+.ov-td-total {
+    text-align: center !important;
+}
+
+.ov-td-total {
+    color: var(--color-gold-highlight);
+    font-weight: 900;
+    font-size: 14px;
+    text-shadow: 0 0 8px rgba(255, 204, 0, 0.3);
+}
+
+.ov-td-hero {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.ov-hero-img {
+    width: 20px;
+    height: 20px;
+    border-radius: var(--radius-xs);
+    object-fit: cover;
+    border: 1.5px solid rgba(227, 169, 74, 0.5);
+    vertical-align: middle;
+    cursor: pointer;
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.ov-hero-img:hover {
+    transform: scale(1.3);
+    border-color: var(--color-gold-highlight);
+}
+
+.ov-hero-empty {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: var(--radius-xs);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px dashed rgba(255, 255, 255, 0.12);
+    vertical-align: middle;
+}
+
+/* 淘汰置灰 */
+.overlay-table tbody tr.ov-eliminated td {
+    opacity: 0.35;
+    filter: grayscale(0.8);
+    transition: opacity var(--transition-smooth), filter var(--transition-smooth);
+}
+
+.overlay-table tbody tr.ov-inactive-row td {
+    opacity: 0.25;
+    filter: grayscale(0.9);
+}
+
+.ov-td-name[onclick] {
+    cursor: pointer;
+}
+
+.ov-td-name[onclick]:hover {
+    color: var(--color-gold-highlight) !important;
+}
+
+/* FLIP 排名动画 */
+.overlay-table tbody tr {
+    will-change: transform;
+}
+
+.overlay-table tbody tr.ov-row-flipping {
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* ── 本局击败调节控制 ── */
+.ov-kills-control {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    justify-content: center;
+    min-width: 48px;
+    margin: 0 auto;
+}
+
+.ov-kill-value {
+    color: var(--color-text-primary);
+    font-weight: bold;
+    font-size: 13px;
+    min-width: 14px;
+    text-align: center;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
+}
+
+.ov-kills-control .ov-kill-btn {
+    opacity: 0;
+    pointer-events: none;
+    width: 15px;
+    height: 15px;
+    border-radius: var(--radius-xs);
+    border: 1px solid rgba(227, 169, 74, 0.5);
+    background: rgba(179, 134, 59, 0.1);
+    color: var(--color-gold-bright);
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    user-select: none;
+    flex-shrink: 0;
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform var(--transition-fast), background-color var(--transition-fast);
+}
+
+.ov-kills-control:hover .ov-kill-btn {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.ov-kill-btn:hover {
+    background: rgba(227, 169, 74, 0.25);
+    border-color: var(--color-gold-highlight);
+    color: var(--color-gold-highlight);
+    transform: scale(1.1);
+}
+
+.ov-kill-btn:active {
+    transform: scale(0.92);
+}
+
+.ov-inactive {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 14px;
+    font-weight: bold;
+    user-select: none;
+}
