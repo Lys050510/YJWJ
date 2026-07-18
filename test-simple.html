@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Test</title></head>
+<body>
+<h1 id="result">Testing...</h1>
+<script type="module">
+import { escapeHTML } from './js/core/utils.js';
+document.getElementById('result').textContent = 'Module loaded! escapeHTML test: ' + escapeHTML('<b>bold</b>');
+</script>
+</body>
+</html>

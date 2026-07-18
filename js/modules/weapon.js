@@ -1,5 +1,5 @@
 // ==================== 模块二：武器抽取逻辑 ====================
-import * as state from '../core/state.js';
+import { state } from '../core/state.js';
 import { escapeJS } from '../core/utils.js';
 import { saveConfig } from '../core/storage.js';
 

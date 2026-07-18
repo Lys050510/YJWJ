@@ -1,11 +1,9 @@
 // ==================== 模块四：锦囊抽取 ====================
-import * as state from '../core/state.js';
+import { state } from '../core/state.js';
 import { saveConfig } from '../core/storage.js';
 import { getFormattedTime, escapeJS, escapeHTML, getQualityClass, getQualityColor } from '../core/utils.js';
 
-// 锦囊品质配色 class 映射（保留本地别名）
-function getTipQualityClass(q) { return getQualityClass(q); }
-function getLogQualityColor(q) { return getQualityColor(q); }
+// 品质相关函数由 utils.js 导入的重名函数在下方原位置定义，此处移除重复声明
 // ==================== 🛠️ 模块四：锦囊抽取与演播大厅 ====================
 
 // 锦囊大厅渲染初始化入口

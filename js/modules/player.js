@@ -1,6 +1,6 @@
 // ==================== 模块三：人员抽取 ====================
 
-import * as state from '../core/state.js';
+import { state } from '../core/state.js';
 import { escapeJS } from '../core/utils.js';
 import { saveConfig } from '../core/storage.js';
 

@@ -1,6 +1,6 @@
 // ==================== 模块六：通用大转盘 (Canvas - 重构版) ====================
 
-import * as state from '../core/state.js';
+import { state } from '../core/state.js';
 import { hslToHex, escapeHTML } from '../core/utils.js';
 import { saveConfig } from '../core/storage.js';
 

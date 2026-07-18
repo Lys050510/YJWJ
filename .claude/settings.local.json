@@ -8,7 +8,12 @@
       "Read(//tmp/**)",
       "Bash(python -m http.server 8080)",
       "Bash(curl -s http://localhost:8080/index.html)",
-      "Bash(python -m http.server 8081)"
+      "Bash(python -m http.server 8081)",
+      "Bash(curl -s -I http://localhost:8081/js/app.js)",
+      "Bash(curl -s -I http://localhost:8080/js/app.js)",
+      "Bash(curl -s http://localhost:8081/test-modules.html)",
+      "Bash(node --check js/app.js)",
+      "Bash(node --check js/modules/tips.js)"
     ]
   }
 }

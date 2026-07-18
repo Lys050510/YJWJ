@@ -1,6 +1,6 @@
 // ==================== 模块一：英雄抽取逻辑（滚动插槽式） ====================
 
-import * as state from '../core/state.js';
+import { state } from '../core/state.js';
 import { saveConfig } from '../core/storage.js';
 import { escapeHTML, escapeJS } from '../core/utils.js';
 

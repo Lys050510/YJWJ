@@ -1,6 +1,6 @@
 // ==================== 模块五：奖品抽取（顺序变速跑马灯） ====================
 
-import * as state from '../core/state.js';
+import { state } from '../core/state.js';
 import { saveConfig } from '../core/storage.js';
 import { getFormattedTime, getWeightedRandomIndex } from '../core/utils.js';
 import { getEl } from '../core/dom.js';

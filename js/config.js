@@ -308,6 +308,9 @@ if (!localCache || DEFAULT_CONFIG.configVersion > localCache.configVersion) {
     });
 }
 
+// 将 CURRENT_CONFIG 暴露到 window 对象（ES Module 通过 window.CURRENT_CONFIG 访问）
+window.CURRENT_CONFIG = CURRENT_CONFIG;
+
 // 封装保存方法（带错误处理）
 function saveConfigToLocal() {
     try {

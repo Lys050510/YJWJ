@@ -1,26 +1,55 @@
 // ==================== 主入口 ====================
 // 由 <script type="module" src="js/app.js"> 加载
 
+// ── 调试：在页面上显示加载状态 ──
+const debugEl = document.createElement('div');
+debugEl.id = '_module_debug';
+debugEl.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:#111;color:#0f0;padding:8px;font:12px monospace;z-index:99999;max-height:120px;overflow-y:auto;';
+document.body.appendChild(debugEl);
+
+function debugLog(msg) {
+    debugEl.textContent += msg + '\n';
+    console.log('[app]', msg);
+}
+
+window.addEventListener('error', function(e) {
+    debugLog('ERROR: ' + e.message + ' @ ' + e.filename + ':' + e.lineno);
+});
+
+debugLog('app.js starting...');
+
 // 导入标签页系统
 import { switchTab, registerTabActivator } from './ui/tabs.js';
+debugLog('tabs.js loaded OK');
 
-// 导入所有模块（公开函数将在模块加载时挂载到 window）
+// 导入所有模块
 import './modules/prize.js';
+debugLog('prize.js loaded OK');
+
 import './modules/hero.js';
+debugLog('hero.js loaded OK');
+
 import './modules/weapon.js';
+debugLog('weapon.js loaded OK');
+
 import './modules/player.js';
+debugLog('player.js loaded OK');
+
 import './modules/tips.js';
+debugLog('tips.js loaded OK');
+
 import './modules/wheel.js';
+debugLog('wheel.js loaded OK');
+
 import './modules/scoreboard.js';
+debugLog('scoreboard.js loaded OK');
 
-// ── 挂载全局函数（保持 onclick 兼容） ──
+debugLog('All modules loaded!');
+
+// ── 挂载全局函数 ──
 window.switchTab = switchTab;
+debugLog('window.switchTab set');
 
-// 模块的公开函数由各自的 js/modules/*.js 文件
-// 通过 window.ModuleName = { ... } 挂载到全局
-
-// ── 也挂载模块函数直接到 window（兼容内联 onclick="startHeroDraw()"） ──
-// 这些在模块加载后延迟执行
 function mountGlobalFunctions() {
     const modules = ['PrizeModule', 'HeroModule', 'WeaponModule', 'PlayerModule',
                      'TipsModule', 'WheelModule', 'ScoreboardModule'];
@@ -32,44 +61,49 @@ function mountGlobalFunctions() {
                     window[key] = mod[key];
                 }
             });
+        } else {
+            debugLog('WARNING: window.' + name + ' not found!');
         }
     });
 }
 
 // ── 初始化 ──
 window.onload = function () {
-    // 悬浮窗模式分流检测
+    debugLog('onload firing...');
+
     if (window.location.search.includes('view=overlay')) {
-        // overlay 初始化由 ScoreboardModule 处理
         if (window.ScoreboardModule && window.ScoreboardModule.initOverlayMode) {
             window.ScoreboardModule.initOverlayMode();
         }
         return;
     }
 
-    // 挂载所有模块函数到 window
     mountGlobalFunctions();
+    debugLog('mountGlobalFunctions done');
 
-    // 注册主窗口 storage 监听器（接收悬浮窗的修改）
     if (window.ScoreboardModule && window.ScoreboardModule.onMainStorage) {
         window.addEventListener('storage', window.ScoreboardModule.onMainStorage);
     }
 
-    // 同步预设转盘数据
     if (window.WheelModule && window.WheelModule.syncPresetWheels) {
         window.WheelModule.syncPresetWheels();
+        debugLog('syncPresetWheels done');
     }
 
-    // 初始化转盘下拉选择框
     if (window.WheelModule && window.WheelModule.initWheelSelector) {
         window.WheelModule.initWheelSelector();
+        debugLog('initWheelSelector done');
     }
 
-    // 默认打开英雄标签页
     switchTab('hero');
+    debugLog('switchTab(hero) done');
 
-    // 初始化武器界面勾选框面板状态
     if (window.WeaponModule && window.WeaponModule.syncWeaponUIControls) {
         window.WeaponModule.syncWeaponUIControls();
+        debugLog('syncWeaponUIControls done');
     }
+
+    debugLog('onload complete!');
 };
+
+debugLog('app.js init complete, waiting for onload...');

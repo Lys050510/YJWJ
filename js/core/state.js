@@ -1,43 +1,48 @@
 // ==================== 全局可变状态 ====================
 // 所有模块间共享的状态变量集中管理
+// 使用单个可变对象导出（ES Module 不支持直接修改导入的绑定）
 
-// Hero 模块
-export let isScrolling = false;
+export const state = {
+    // Hero
+    isScrolling: false,
 
-// Weapon 模块
-export let isWeaponScrolling = false;
+    // Weapon
+    isWeaponScrolling: false,
 
-// Player 模块
-export let isPlayerShuffling = false;
-export let playerDeck = [];
+    // Player
+    isPlayerShuffling: false,
+    playerDeck: [],
 
-// Tips 模块
-export let currentTipPool = 'challenger';
-export let drawnTipCards = [];
-export let flippedTipCount = 0;
-export let tipRefreshesRemaining = 0;
-export let activeTipMarqueeInterval = null;
-export let isMarqueeDragging = false;
-export let marqueeStartX, marqueeScrollLeft;
-export let isInitialDealing = false;
+    // Tips
+    currentTipPool: 'challenger',
+    drawnTipCards: [],
+    flippedTipCount: 0,
+    tipRefreshesRemaining: 0,
+    activeTipMarqueeInterval: null,
+    isMarqueeDragging: false,
+    marqueeStartX: undefined,
+    marqueeScrollLeft: undefined,
+    isInitialDealing: false,
 
-// Prize 模块
-export let isPrizeDrawing = false;
+    // Prize
+    isPrizeDrawing: false,
 
-// Wheel 模块
-export let isSpinning = false;
-export let canvas, ctx;
-export let currentRotation = 0;
+    // Wheel
+    isSpinning: false,
+    canvas: undefined,
+    ctx: undefined,
+    currentRotation: 0,
 
-// Scoreboard 模块
-export let currentScoreboardRoundIndex = 0;
-export let overlaySyncLock = false;
-export let globalEliminationCounter = 0;
-export let heroPickerRoundIndex = -1;
-export let heroPickerEntryIndex = -1;
-export let overlayFlipEnabled = false;
-export let currentOverlayWin = null;
-export let globalOverlayWin = null;
+    // Scoreboard
+    currentScoreboardRoundIndex: 0,
+    overlaySyncLock: false,
+    globalEliminationCounter: 0,
+    heroPickerRoundIndex: -1,
+    heroPickerEntryIndex: -1,
+    overlayFlipEnabled: false,
+    currentOverlayWin: null,
+    globalOverlayWin: null,
+};
 
 // CURRENT_CONFIG 由 config.js 挂载到 window，这里提供便捷访问
 export function getConfig() {

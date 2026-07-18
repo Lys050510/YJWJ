@@ -1,7 +1,7 @@
 // ==================== 模块：计分板 + 悬浮窗 ====================
 // 从 script.js 行 2539-4049 提取
 
-import * as state from '../core/state.js';
+import { state } from '../core/state.js';
 
 import { escapeHTML, escapeJS, getFormattedTime } from '../core/utils.js';
 
