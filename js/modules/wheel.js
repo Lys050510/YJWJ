@@ -1,6 +1,6 @@
 // ==================== 模块六：通用大转盘 (Canvas - 重构版) ====================
 
-import { isSpinning, canvas, ctx, currentRotation } from '../core/state.js';
+import * as state from '../core/state.js';
 import { hslToHex, escapeHTML } from '../core/utils.js';
 import { saveConfig } from '../core/storage.js';
 
@@ -128,55 +128,55 @@ export function loadSelectedWheel() {
 
     renderWheelConfigPanel(activeWheel);
 
-    canvas = document.getElementById('wheel-canvas');
-    ctx = canvas.getContext('2d');
+    state.canvas = document.getElementById('wheel-canvas');
+    state.ctx = state.canvas.getContext('2d');
     drawWheel(activeWheel);
 }
 
 export function drawWheel(wheel) {
-    if (!canvas) return;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (!state.canvas) return;
+    state.ctx.clearRect(0, 0, state.canvas.width, state.canvas.height);
 
     const activeItems = wheel.items.filter(item => item.checked !== false);
 
     if (activeItems.length === 0) {
-        ctx.fillStyle = "#fff";
-        ctx.font = "18px Microsoft YaHei";
-        ctx.textAlign = "center";
-        ctx.fillText("请在右侧选项列表中勾选参与抽奖的项！", canvas.width / 2, canvas.height / 2);
+        state.ctx.fillStyle = "#fff";
+        state.ctx.font = "18px Microsoft YaHei";
+        state.ctx.textAlign = "center";
+        state.ctx.fillText("请在右侧选项列表中勾选参与抽奖的项！", state.canvas.width / 2, state.canvas.height / 2);
         return;
     }
 
     const totalWeight = activeItems.reduce((sum, item) => sum + parseFloat(item.weight || 0), 0);
-    const centerX = canvas.width / 2;
-    const centerY = canvas.height / 2;
-    const radius = canvas.width / 2 - 10;
+    const centerX = state.canvas.width / 2;
+    const centerY = state.canvas.height / 2;
+    const radius = state.canvas.width / 2 - 10;
 
-    let startAngle = currentRotation;
+    let startAngle = state.currentRotation;
 
     activeItems.forEach(item => {
         const weight = parseFloat(item.weight || 0);
         const sliceAngle = (weight / totalWeight) * (2 * Math.PI);
 
-        ctx.beginPath();
-        ctx.moveTo(centerX, centerY);
-        ctx.arc(centerX, centerY, radius, startAngle, startAngle + sliceAngle);
-        ctx.closePath();
-        ctx.fillStyle = item.color;
-        ctx.fill();
-        ctx.strokeStyle = "rgba(0,0,0,0.3)";
-        ctx.lineWidth = 2;
-        ctx.stroke();
+        state.ctx.beginPath();
+        state.ctx.moveTo(centerX, centerY);
+        state.ctx.arc(centerX, centerY, radius, startAngle, startAngle + sliceAngle);
+        state.ctx.closePath();
+        state.ctx.fillStyle = item.color;
+        state.ctx.fill();
+        state.ctx.strokeStyle = "rgba(0,0,0,0.3)";
+        state.ctx.lineWidth = 2;
+        state.ctx.stroke();
 
-        ctx.save();
-        ctx.translate(centerX, centerY);
-        ctx.rotate(startAngle + sliceAngle / 2);
+        state.ctx.save();
+        state.ctx.translate(centerX, centerY);
+        state.ctx.rotate(startAngle + sliceAngle / 2);
 
-        ctx.fillStyle = "#fff";
-        ctx.font = "bold 16px Microsoft YaHei";
-        ctx.textAlign = "right";
-        ctx.shadowColor = "rgba(0, 0, 0, 0.8)";
-        ctx.shadowBlur = 4;
+        state.ctx.fillStyle = "#fff";
+        state.ctx.font = "bold 16px Microsoft YaHei";
+        state.ctx.textAlign = "right";
+        state.ctx.shadowColor = "rgba(0, 0, 0, 0.8)";
+        state.ctx.shadowBlur = 4;
 
         // 按显示宽度智能截断：中文字符宽度≈英文2倍
         let displayName = item.name;
@@ -194,23 +194,23 @@ export function drawWheel(wheel) {
         if (displayWidth > maxWidth) {
             displayName = displayName.substring(0, cutIdx) + "..";
         }
-        ctx.fillText(displayName, radius - 30, 5);
-        ctx.restore();
+        state.ctx.fillText(displayName, radius - 30, 5);
+        state.ctx.restore();
 
         startAngle += sliceAngle;
     });
 
-    ctx.beginPath();
-    ctx.arc(centerX, centerY, 35, 0, 2 * Math.PI);
-    ctx.fillStyle = "#111";
-    ctx.strokeStyle = "#b3863b";
-    ctx.lineWidth = 3;
-    ctx.fill();
-    ctx.stroke();
+    state.ctx.beginPath();
+    state.ctx.arc(centerX, centerY, 35, 0, 2 * Math.PI);
+    state.ctx.fillStyle = "#111";
+    state.ctx.strokeStyle = "#b3863b";
+    state.ctx.lineWidth = 3;
+    state.ctx.fill();
+    state.ctx.stroke();
 }
 
 export function spinWheel() {
-    if (isSpinning) return;
+    if (state.isSpinning) return;
 
     const select = document.getElementById('wheel-select');
     const wheelIndex = parseInt(select.value);
@@ -225,7 +225,7 @@ export function spinWheel() {
         return;
     }
 
-    isSpinning = true;
+    state.isSpinning = true;
     document.getElementById('wheel-spin-btn').disabled = true;
     document.getElementById('wheel-spin-btn').innerText = "旋转中...";
 
@@ -259,7 +259,7 @@ export function spinWheel() {
 
     let startTime = null;
     const duration = 5000;
-    const startRot = currentRotation % (2 * Math.PI);
+    const startRot = state.currentRotation % (2 * Math.PI);
 
     function animate(timestamp) {
         if (!startTime) startTime = timestamp;
@@ -268,7 +268,7 @@ export function spinWheel() {
         if (progress > 1) progress = 1;
 
         const easeOut = 1 - Math.pow(1 - progress, 3);
-        currentRotation = startRot + easeOut * (finalRotation - startRot);
+        state.currentRotation = startRot + easeOut * (finalRotation - startRot);
 
         drawWheel(activeWheel);
 
@@ -285,7 +285,7 @@ export function spinWheel() {
                     drawWheel(activeWheel);
                 }
 
-                isSpinning = false;
+                state.isSpinning = false;
                 document.getElementById('wheel-spin-btn').disabled = false;
                 document.getElementById('wheel-spin-btn').innerText = "旋转转盘";
             }, 300);

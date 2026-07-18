@@ -1,6 +1,6 @@
 // ==================== 模块一：英雄抽取逻辑（滚动插槽式） ====================
 
-import { isScrolling } from '../core/state.js';
+import * as state from '../core/state.js';
 import { saveConfig } from '../core/storage.js';
 import { escapeHTML, escapeJS } from '../core/utils.js';
 
@@ -24,7 +24,7 @@ export function updateScrollBoxesDisplay() {
 
 // 模拟高速插槽滚动的函数（核心交互）
 export function startHeroDraw() {
-    if (isScrolling) return;
+    if (state.isScrolling) return;
 
     const pool = window.CURRENT_CONFIG.heroes.filter(h => window.CURRENT_CONFIG.activeHeroNames.includes(h.name));
 
@@ -33,7 +33,7 @@ export function startHeroDraw() {
         return;
     }
 
-    isScrolling = true;
+    state.isScrolling = true;
     document.getElementById('hero-start-btn').disabled = true;
     document.getElementById('hero-start-btn').innerText = "抽取中...";
 
@@ -61,7 +61,7 @@ export function startHeroDraw() {
     });
 
     function finishDraw() {
-        isScrolling = false;
+        state.isScrolling = false;
         document.getElementById('hero-start-btn').disabled = false;
         document.getElementById('hero-start-btn').innerText = "开始抽取";
     }

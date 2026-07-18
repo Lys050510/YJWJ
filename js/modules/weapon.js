@@ -1,5 +1,5 @@
 // ==================== 模块二：武器抽取逻辑 ====================
-import { isWeaponScrolling } from '../core/state.js';
+import * as state from '../core/state.js';
 import { escapeJS } from '../core/utils.js';
 import { saveConfig } from '../core/storage.js';
 
@@ -33,7 +33,7 @@ export function toggleEachOnePreset(checked) {
 
 // 武器抽取执行器
 export function startWeaponDraw() {
-    if (isWeaponScrolling) return;
+    if (state.isWeaponScrolling) return;
 
     const settings = window.CURRENT_CONFIG.weaponDrawSettings;
     let pool = window.CURRENT_CONFIG.weapons.filter(wp => window.CURRENT_CONFIG.activeWeaponNames.includes(wp.name));
@@ -124,7 +124,7 @@ export function startWeaponDraw() {
         container.appendChild(scrollBox);
     });
 
-    isWeaponScrolling = true;
+    state.isWeaponScrolling = true;
     document.getElementById('weapon-start-btn').disabled = true;
     document.getElementById('weapon-start-btn').innerText = "抽取中...";
 
@@ -134,7 +134,7 @@ export function startWeaponDraw() {
         runWeaponScrollAnimation(`weapon-slot-${index}`, `weapon-box-${index}`, pool, winner, duration, () => {
             completed++;
             if (completed === finalCount) {
-                isWeaponScrolling = false;
+                state.isWeaponScrolling = false;
                 document.getElementById('weapon-start-btn').disabled = false;
                 document.getElementById('weapon-start-btn').innerText = "开始抽取";
             }

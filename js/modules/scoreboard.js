@@ -1,16 +1,7 @@
 // ==================== 模块：计分板 + 悬浮窗 ====================
 // 从 script.js 行 2539-4049 提取
 
-import {
-    currentScoreboardRoundIndex,
-    overlaySyncLock,
-    globalEliminationCounter,
-    heroPickerRoundIndex,
-    heroPickerEntryIndex,
-    overlayFlipEnabled,
-    currentOverlayWin,
-    globalOverlayWin
-} from '../core/state.js';
+import * as state from '../core/state.js';
 
 import { escapeHTML, escapeJS, getFormattedTime } from '../core/utils.js';
 
@@ -107,8 +98,8 @@ export function getHeroImage(heroName) {
 // ==================== 英雄选择器 ====================
 
 export function openHeroPicker(roundIndex, entryIndex) {
-    heroPickerRoundIndex = roundIndex;
-    heroPickerEntryIndex = entryIndex;
+    state.heroPickerRoundIndex = roundIndex;
+    state.heroPickerEntryIndex = entryIndex;
     const grid = document.getElementById('hero-picker-grid');
     if (!grid) return;
 
@@ -130,10 +121,10 @@ export function openHeroPicker(roundIndex, entryIndex) {
 
 export function selectHeroForEntry(heroName) {
     const rounds = getActiveRounds();
-    if (rounds[heroPickerRoundIndex] && rounds[heroPickerRoundIndex].entries[heroPickerEntryIndex]) {
-        rounds[heroPickerRoundIndex].entries[heroPickerEntryIndex].hero = heroName;
+    if (rounds[state.heroPickerRoundIndex] && rounds[state.heroPickerRoundIndex].entries[state.heroPickerEntryIndex]) {
+        rounds[state.heroPickerRoundIndex].entries[state.heroPickerEntryIndex].hero = heroName;
         saveConfig();
-        renderRoundEditor(heroPickerRoundIndex);
+        renderRoundEditor(state.heroPickerRoundIndex);
     }
     closeHeroPicker();
 }
@@ -144,8 +135,8 @@ export function clearHeroForEntry() {
 
 export function closeHeroPicker() {
     document.getElementById('hero-picker-modal').classList.remove('active');
-    heroPickerRoundIndex = -1;
-    heroPickerEntryIndex = -1;
+    state.heroPickerRoundIndex = -1;
+    state.heroPickerEntryIndex = -1;
 }
 
 // ==================== 动态排名计算 ====================
@@ -155,13 +146,13 @@ export function computeDynamicRanks(entries) {
     const active = entries.filter(e => e.name.trim() !== '');
 
     // 初始化 elimination counter（基于已有数据）
-    globalEliminationCounter = 0;
+    state.globalEliminationCounter = 0;
     active.forEach(e => {
         if (e.eliminated && e.eliminatedAt === null) {
-            globalEliminationCounter++;
-            e.eliminatedAt = globalEliminationCounter;
-        } else if (e.eliminated && e.eliminatedAt > globalEliminationCounter) {
-            globalEliminationCounter = e.eliminatedAt;
+            state.globalEliminationCounter++;
+            e.eliminatedAt = state.globalEliminationCounter;
+        } else if (e.eliminated && e.eliminatedAt > state.globalEliminationCounter) {
+            state.globalEliminationCounter = e.eliminatedAt;
         }
     });
 
@@ -216,8 +207,8 @@ export function toggleElimination(playerName) {
     } else {
         // 淘汰
         entry.eliminated = true;
-        globalEliminationCounter++;
-        entry.eliminatedAt = globalEliminationCounter;
+        state.globalEliminationCounter++;
+        entry.eliminatedAt = state.globalEliminationCounter;
     }
 
     // 重新计算动态排名并回写到 rank 字段
@@ -231,7 +222,7 @@ export function toggleElimination(playerName) {
 
     // 更新内存状态
     window.CURRENT_CONFIG = config;
-    currentScoreboardRoundIndex = roundIndex;
+    state.currentScoreboardRoundIndex = roundIndex;
 
     renderOverlayLeaderboard();
 }
@@ -240,9 +231,9 @@ export function toggleElimination(playerName) {
 
 export function applyFlipAnimation(tbody, newHtml) {
     // 首次渲染跳过动画
-    if (!overlayFlipEnabled) {
+    if (!state.overlayFlipEnabled) {
         tbody.innerHTML = newHtml;
-        overlayFlipEnabled = true;
+        state.overlayFlipEnabled = true;
         return;
     }
 
@@ -331,17 +322,17 @@ export function initScoreboardDashboard() {
     document.getElementById('sb-ranking-toggle').checked = window.CURRENT_CONFIG.scoreboard.globalRankingPointsEnabled;
 
     // 重置选中回合
-    if (currentScoreboardRoundIndex >= rounds.length) {
-        currentScoreboardRoundIndex = 0;
+    if (state.currentScoreboardRoundIndex >= rounds.length) {
+        state.currentScoreboardRoundIndex = 0;
     }
     // 从持久化数据恢复当前回合索引（悬浮窗同步用）
     if (window.CURRENT_CONFIG.scoreboard.currentRoundIndex !== undefined &&
         window.CURRENT_CONFIG.scoreboard.currentRoundIndex < rounds.length) {
-        currentScoreboardRoundIndex = window.CURRENT_CONFIG.scoreboard.currentRoundIndex;
+        state.currentScoreboardRoundIndex = window.CURRENT_CONFIG.scoreboard.currentRoundIndex;
     }
 
     renderRoundTabs();
-    renderRoundEditor(currentScoreboardRoundIndex);
+    renderRoundEditor(state.currentScoreboardRoundIndex);
     renderScoreboardLeaderboard();
 }
 
@@ -362,7 +353,7 @@ export function switchScoreboardMode(mode) {
         }
     }
 
-    currentScoreboardRoundIndex = 0;
+    state.currentScoreboardRoundIndex = 0;
     window.CURRENT_CONFIG.scoreboard.currentRoundIndex = 0;
     saveConfig();
     initScoreboardDashboard();
@@ -376,7 +367,7 @@ export function renderRoundTabs() {
 
     let html = '';
     rounds.forEach((round, index) => {
-        const activeClass = index === currentScoreboardRoundIndex ? ' active' : '';
+        const activeClass = index === state.currentScoreboardRoundIndex ? ' active' : '';
         const hasData = round.entries.some(e => e.name.trim() !== '') ? ' has-data' : '';
         const confirmed = round.confirmed ? ' ✅' : '';
         html += `<button class="sb-round-tab${activeClass}${hasData}" onclick="selectScoreboardRound(${index})">第${index + 1}局${confirmed}</button>`;
@@ -385,14 +376,14 @@ export function renderRoundTabs() {
     // 操作按钮组
     html += `<div style="display:flex; gap:4px; margin-top:8px;">`;
     html += `<button class="sb-round-tab" onclick="addScoreboardRound()" style="flex:1; border-style:dashed; color:#88ff88; border-color:rgba(136,255,136,0.4);">＋ 添加</button>`;
-    html += `<button class="sb-round-tab" onclick="deleteScoreboardRound(${currentScoreboardRoundIndex})" style="flex:1; color:#ff9999; border-color:rgba(255,153,153,0.3);" title="删除当前选中的回合">🗑️ 删除</button>`;
+    html += `<button class="sb-round-tab" onclick="deleteScoreboardRound(${state.currentScoreboardRoundIndex})" style="flex:1; color:#ff9999; border-color:rgba(255,153,153,0.3);" title="删除当前选中的回合">🗑️ 删除</button>`;
     html += `</div>`;
 
     container.innerHTML = html;
 }
 
 export function selectScoreboardRound(index) {
-    currentScoreboardRoundIndex = index;
+    state.currentScoreboardRoundIndex = index;
     // 持久化当前回合索引（悬浮窗同步需要）
     window.CURRENT_CONFIG.scoreboard.currentRoundIndex = index;
     saveConfig();
@@ -532,7 +523,7 @@ export function resetScoreboardAll() {
         });
     }
 
-    currentScoreboardRoundIndex = 0;
+    state.currentScoreboardRoundIndex = 0;
     saveConfig();
 
     // 刷新全部 UI
@@ -595,7 +586,7 @@ export function confirmScoreboardRound(roundIndex) {
             });
             saveConfig();
             // 如果当前正在编辑的就是下一局，刷新编辑器
-            if (currentScoreboardRoundIndex === nextIndex) {
+            if (state.currentScoreboardRoundIndex === nextIndex) {
                 renderRoundEditor(nextIndex);
             }
         }
@@ -633,11 +624,11 @@ export function addScoreboardRound() {
     }
 
     rounds.push(newRound);
-    currentScoreboardRoundIndex = rounds.length - 1;
+    state.currentScoreboardRoundIndex = rounds.length - 1;
     saveConfig();
 
     renderRoundTabs();
-    renderRoundEditor(currentScoreboardRoundIndex);
+    renderRoundEditor(state.currentScoreboardRoundIndex);
     renderScoreboardLeaderboard();
 }
 
@@ -652,13 +643,13 @@ export function deleteScoreboardRound(roundIndex) {
 
     rounds.splice(roundIndex, 1);
 
-    if (currentScoreboardRoundIndex >= rounds.length) {
-        currentScoreboardRoundIndex = rounds.length - 1;
+    if (state.currentScoreboardRoundIndex >= rounds.length) {
+        state.currentScoreboardRoundIndex = rounds.length - 1;
     }
 
     saveConfig();
     renderRoundTabs();
-    renderRoundEditor(currentScoreboardRoundIndex);
+    renderRoundEditor(state.currentScoreboardRoundIndex);
     renderScoreboardLeaderboard();
 }
 
@@ -772,7 +763,7 @@ export function openOverlayWindow(scope) {
     scope = scope || 'global';
 
     // 保存当前回合索引到持久化数据
-    window.CURRENT_CONFIG.scoreboard.currentRoundIndex = currentScoreboardRoundIndex;
+    window.CURRENT_CONFIG.scoreboard.currentRoundIndex = state.currentScoreboardRoundIndex;
     saveConfig();
 
     const url = new URL(window.location.href);
@@ -788,7 +779,7 @@ export function openOverlayWindow(scope) {
     const windowName = scope === 'current' ? 'YJWJ-本局排名' : 'YJWJ-总排名';
 
     // 若窗口已存在则直接聚焦，不重复打开
-    const existingWin = scope === 'current' ? currentOverlayWin : globalOverlayWin;
+    const existingWin = scope === 'current' ? state.currentOverlayWin : state.globalOverlayWin;
     if (existingWin && !existingWin.closed) {
         existingWin.focus();
         return;
@@ -802,13 +793,13 @@ export function openOverlayWindow(scope) {
 
     // 保存窗口引用
     if (scope === 'current') {
-        currentOverlayWin = newWin;
+        state.currentOverlayWin = newWin;
     } else {
-        globalOverlayWin = newWin;
+        state.globalOverlayWin = newWin;
     }
 
     // 打开新窗口后，重新聚焦另一个悬浮窗，防止被挤到后台
-    const otherWin = scope === 'current' ? globalOverlayWin : currentOverlayWin;
+    const otherWin = scope === 'current' ? state.globalOverlayWin : state.currentOverlayWin;
     if (otherWin && !otherWin.closed) {
         setTimeout(() => { otherWin.focus(); }, 200);
     }
@@ -858,7 +849,7 @@ export function initOverlayMode() {
     }
 
     if (config && config.scoreboard && config.scoreboard.currentRoundIndex !== undefined) {
-        currentScoreboardRoundIndex = config.scoreboard.currentRoundIndex;
+        state.currentScoreboardRoundIndex = config.scoreboard.currentRoundIndex;
     }
 
     window.CURRENT_CONFIG = config;
@@ -882,7 +873,7 @@ export function initOverlayMode() {
             const latestRoundIndex = (latestConfig.scoreboard && latestConfig.scoreboard.currentRoundIndex !== undefined)
                 ? latestConfig.scoreboard.currentRoundIndex : 0;
 
-            currentScoreboardRoundIndex = latestRoundIndex;
+            state.currentScoreboardRoundIndex = latestRoundIndex;
             renderOverlayLeaderboard();
         }
     }, 2000);
@@ -895,7 +886,7 @@ export function onOverlayStorage(event) {
     try {
         const config = JSON.parse(event.newValue);
         if (config && config.scoreboard && config.scoreboard.currentRoundIndex !== undefined) {
-            currentScoreboardRoundIndex = config.scoreboard.currentRoundIndex;
+            state.currentScoreboardRoundIndex = config.scoreboard.currentRoundIndex;
         }
         window.CURRENT_CONFIG = config; // 同步最新内存
     } catch (e) {
@@ -924,7 +915,7 @@ export function computeOverlayScores() {
     const rounds = getActiveRounds();
     const mode = getActiveMode();
     const rankingEnabled = window.CURRENT_CONFIG.scoreboard.globalRankingPointsEnabled;
-    const currentRound = rounds[currentScoreboardRoundIndex];
+    const currentRound = rounds[state.currentScoreboardRoundIndex];
     if (!currentRound) return [];
 
     // 检测 scope
@@ -999,7 +990,7 @@ export function computeOverlayScores() {
         // 累计已确认回合的历史分数
         rounds.forEach((round, roundIndex) => {
             if (!round.confirmed) return;
-            if (roundIndex === currentScoreboardRoundIndex && !isCurrentRoundConfirmed) return;
+            if (roundIndex === state.currentScoreboardRoundIndex && !isCurrentRoundConfirmed) return;
 
             round.entries.forEach(entry => {
                 const name = entry.name.trim();
@@ -1186,7 +1177,7 @@ export function overlayKillChange(playerName, delta) {
     localStorage.setItem("UP_LOTTERY_SMART_CACHE", JSON.stringify(config));
 
     window.CURRENT_CONFIG.scoreboard = config.scoreboard;
-    currentScoreboardRoundIndex = roundIndex;
+    state.currentScoreboardRoundIndex = roundIndex;
 
     renderOverlayLeaderboard();
 }
@@ -1194,9 +1185,9 @@ export function overlayKillChange(playerName, delta) {
 export function onMainStorage(event) {
     if (event.key !== 'UP_LOTTERY_SMART_CACHE') return;
     if (!event.newValue) return;
-    if (overlaySyncLock) return;
+    if (state.overlaySyncLock) return;
 
-    overlaySyncLock = true;
+    state.overlaySyncLock = true;
 
     try {
         const config = JSON.parse(event.newValue);
@@ -1205,13 +1196,13 @@ export function onMainStorage(event) {
         window.CURRENT_CONFIG = config;
 
         if (config.scoreboard.currentRoundIndex !== undefined) {
-            currentScoreboardRoundIndex = config.scoreboard.currentRoundIndex;
+            state.currentScoreboardRoundIndex = config.scoreboard.currentRoundIndex;
         }
 
         const scoreboardTab = document.getElementById('tab-scoreboard');
         if (scoreboardTab && scoreboardTab.classList.contains('active')) {
             renderRoundTabs();
-            renderRoundEditor(currentScoreboardRoundIndex);
+            renderRoundEditor(state.currentScoreboardRoundIndex);
             renderScoreboardLeaderboard();
         }
     } catch (e) {
@@ -1219,7 +1210,7 @@ export function onMainStorage(event) {
     }
 
     setTimeout(() => {
-        overlaySyncLock = false;
+        state.overlaySyncLock = false;
     }, 200);
 }
 
