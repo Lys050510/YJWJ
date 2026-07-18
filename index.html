@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>永劫无间</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 顶部导航栏 -->
+    <div class="nav-bar">
+        <button class="nav-btn active" onclick="switchTab('hero')">1. 英雄抽取</button>
+        <button class="nav-btn" onclick="switchTab('weapon')">2. 武器抽取</button>
+        <button class="nav-btn" onclick="switchTab('players')">3. 人员抽取</button>
+        <button class="nav-btn" onclick="switchTab('tips')">4. 锦囊抽取</button>
+        <button class="nav-btn" onclick="switchTab('prize')">5. 奖品抽取</button>
+        <button class="nav-btn" onclick="switchTab('wheel')">6. 转盘</button>
+        <button class="nav-btn" onclick="switchTab('scoreboard')">7. 计分板</button>
+    </div>
+
+    <!-- 主内容展示区 -->
+    <div class="main-container">
+        
+        <!-- 1. 英雄抽取面板 -->
+        <div id="tab-hero" class="tab-content active">
+            <div class="header-with-action">
+                <h2>英雄随机滚动抽取</h2>
+                <button class="action-btn" onclick="openHeroSettings()">⚙️ 英雄设置</button>
+            </div>
+            
+            <div class="scroller-container">
+                <div class="scroll-box" id="hero-scroll-box">
+                    <div class="scroll-slot" id="hero-slot">
+                        <div class="placeholder-card">
+                            <div class="slot-img-placeholder">❓</div>
+                            <div class="slot-name">等待抽取</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scroll-box hidden" id="skill-scroll-box">
+                    <div class="scroll-slot" id="skill-slot">
+                        <div class="placeholder-card">
+                            <div class="slot-name">随机技能</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scroll-box hidden" id="ult-scroll-box">
+                    <div class="scroll-slot" id="ult-slot">
+                        <div class="placeholder-card">
+                            <div class="slot-name">随机奥义</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button class="draw-btn" id="hero-start-btn" onclick="startHeroDraw()">开始抽取</button>
+            </div>
+        </div>
+
+        <!-- 2. 武器抽取面板 -->
+        <div id="tab-weapon" class="tab-content">
+            <div class="header-with-action">
+                <h2>武器随机滚动抽取</h2>
+                <button class="action-btn" onclick="openWeaponSettings()">⚙️ 武器设置</button>
+            </div>
+
+            <!-- 自定义功能配置栏 -->
+            <div class="weapon-control-bar">
+                <label>
+                    <input type="checkbox" id="wp-melee-toggle" onchange="updateWeaponToggle('includeMelee', this.checked)"> 近战武器
+                </label>
+                <label>
+                    <input type="checkbox" id="wp-ranged-toggle" onchange="updateWeaponToggle('includeRanged', this.checked)"> 远程武器
+                </label>
+                <label>
+                    <input type="checkbox" id="wp-quality-toggle" onchange="updateWeaponToggle('randomizeQuality', this.checked)"> 开启品质随机
+                </label>
+                <label>
+                    <input type="checkbox" id="wp-duplicate-toggle" onchange="updateWeaponToggle('allowDuplicate', this.checked)"> 允许重复抽取
+                </label>
+                <label style="color: #ffcc00; font-weight: bold; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 15px;">
+                    <input type="checkbox" id="wp-each-one-toggle" onchange="toggleEachOnePreset(this.checked)"> 近战+远程各抽1把
+                </label>
+                <label style="border-left: 1px solid rgba(255,255,255,0.2); padding-left: 15px;">
+                    抽取数量：
+                    <select id="wp-count-select" onchange="updateWeaponToggle('drawCount', parseInt(this.value))">
+                        <option value="1">1 把</option>
+                        <option value="2">2 把</option>
+                        <option value="3">3 把</option>
+                        <option value="4">4 把</option>
+                        <option value="5">5 把</option>
+                        <option value="6">6 把</option>
+                        <option value="7">7 把</option>
+                        <option value="8">8 把</option>
+                    </select>
+                </label>
+            </div>
+            
+            <div class="scroller-container" id="weapons-display-container">
+                <div class="scroll-box weapon-scroll-box">
+                    <div class="placeholder-card">
+                        <div class="slot-img-placeholder">⚔️</div>
+                        <div class="slot-name">等待抽取</div>
+                    </div>
+                </div>
+            </div>
+
+                    <div class="btn-group">
+                <button class="draw-btn" id="weapon-start-btn" onclick="startWeaponDraw()">开始抽取</button>
+            </div>
+        </div>
+
+        <!-- 3. 人员抽取面板 -->
+        <div id="tab-players" class="tab-content">
+            <div class="header-with-action">
+                <h2>人员卡牌抽取 </h2>
+                <button class="action-btn" onclick="openPlayerSettings()">⚙️ 人员设置</button>
+            </div>
+
+            <div class="players-dashboard-bar">
+                <span id="player-pool-count" style="color: #b3863b; font-weight: bold;">当前出场人数：0 人</span>
+                <button class="small-btn" id="player-reset-btn" onclick="resetAndShowPlayersFront()">👁️ 重置</button>
+            </div>
+
+            <div class="cards-grid-container" id="player-cards-container">
+                <!-- 动态渲染 3D 翻转卡片 -->
+            </div>
+
+            <div class="btn-group" style="gap: 15px;">
+                <button class="draw-btn" id="player-shuffle-btn" onclick="flipAndShufflePlayers()">🎴 翻转并洗牌</button>
+            </div>
+
+            <!-- 人员抽取历史日志 -->
+            <div class="players-history-panel" id="players-history-panel">
+                <h4>📜 翻牌揭晓历史</h4>
+                <ul id="players-history-list"></ul>
+            </div>
+        </div>
+
+        <!-- 4. 锦囊抽取面板 -->
+        <div id="tab-tips" class="tab-content">
+            <div class="header-with-action">
+                <!-- 双池二级局部导航页 -->
+                <div class="tips-sub-tabs">
+                    <button class="sub-tab-btn active" id="tip-sub-challenger" onclick="switchTipPool('challenger')">🛡️ 挑战者卡池</button>
+                    <button class="sub-tab-btn" id="tip-sub-champion" onclick="switchTipPool('champion')">👑 擂主卡池</button>
+                </div>
+                <button class="action-btn" onclick="openTipSettings()">⚙️ 锦囊设置</button>
+            </div>
+
+            <!-- 上方控制行 -->
+            <div class="weapon-control-bar" style="gap: 20px;">
+                <label>
+                    🔮 抽取数量：
+                    <select id="tip-draw-count-select" onchange="adjustTipCounts('drawCount', parseInt(this.value))">
+                        <option value="1">1</option><option value="2">2</option><option value="3" selected>3</option>
+                        <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+                        <option value="7">7</option><option value="8">8</option><option value="9">9</option>
+                        <option value="10">10</option><option value="11">11</option><option value="12">12</option>
+                    </select>
+                </label>
+                <label>
+                    🎯 选择数量：
+                    <select id="tip-choose-count-select" onchange="adjustTipCounts('chooseCount', parseInt(this.value))">
+                        <option value="1" selected>1</option><option value="2">2</option><option value="3">3</option>
+                        <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+                        <option value="7">7</option><option value="8">8</option><option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </label>
+                <label>
+                    🔄 刷新次数：
+                    <input type="number" id="tip-refresh-limit-input" min="0" max="99" value="3" style="width: 50px; background: #222; border: 1px solid #b3863b; color: #fff; padding: 4px; text-align: center; border-radius: 4px;" onchange="adjustTipCounts('refreshLimit', parseInt(this.value))">
+                </label>
+                <button class="small-btn" style="color: #ff5555; border-color: #ff5555; font-weight: bold;" onclick="resetTipSession()">🧹 重置本局</button>
+            </div>
+
+            <!-- 锦囊卡牌展示层（跑马灯） -->
+            <div class="marquee-drag-outer" id="marquee-drag-outer">
+                <div class="marquee-drag-container" id="tip-marquee-container">
+                    <!-- JS动态挂载锦囊正面卡组 -->
+                </div>
+            </div>
+
+            <!-- 抽卡演播大厅 -->
+            <div class="tip-play-hall hidden" id="tip-play-hall">
+                <div class="tips-drawn-status" id="tip-reveal-status">
+                    选择锦囊：已选择 <span id="revealed-tips-indicator" style="color:#ffcc00; font-weight:bold;">0</span> / <span id="max-tips-indicator">1</span> | 🔄 剩余刷新机会：<span id="tip-refreshes-left-indicator" style="color:#2196f3; font-weight:bold;">3</span> 次
+                </div>
+                
+                <!-- 3D 锦囊发卡区 -->
+                <div class="cards-grid-container" id="tip-drawn-cards-container">
+                    <!-- 动态展现 3D 锦囊扑克正面 -->
+                </div>
+            </div>
+
+            <!-- 核心交互区 -->
+            <div class="btn-group" style="gap: 15px; margin-top:30px;">
+                <button class="draw-btn" id="tip-start-draw-btn" style="font-size: 18px; padding: 10px 35px;" onclick="startTipDraw()">🚀 开始抽取</button>
+                <button class="draw-btn" style="font-size: 18px; padding: 10px 35px; background: linear-gradient(135deg, #b3863b, #d9aa5a); color: #000;" onclick="confirmTipChoice()">💾 确认本回合锦囊</button>
+            </div>
+
+            <!-- 局内锦囊抽取物理日志 -->
+            <div class="players-history-panel" style="margin-top: 30px;">
+                <h4>📜 本局已选择锦囊记录列表</h4>
+                <ul id="tip-logs-list">
+                    <!-- 动态记录 -->
+                </ul>
+            </div>
+        </div>
+
+        <!-- 5. 奖品抽取面板 -->
+        <div id="tab-prize" class="tab-content">
+            <div class="header-with-action">
+                <h2>奖品跑马灯抽取</h2>
+                <button class="action-btn" onclick="openPrizeSettings()">⚙️ 奖品设置</button>
+            </div>
+
+            <!-- 控制栏 -->
+            <div class="weapon-control-bar" style="justify-content: center;">
+                <label style="font-weight: bold; color: #e3a94a; display: flex; align-items: center; gap: 8px;">
+                    👤 抽奖人姓名：
+                    <input type="text" id="prize-drawer-name" placeholder="输入名字生成记录，不填则不记录" style="background:#222; color:#fff; border:1px solid #b3863b; padding:8px; border-radius:4px; font-size:14px; width:220px;">
+                </label>
+            </div>
+
+            <!-- 奖品排布区 -->
+            <div class="prizes-grid-container" id="prizes-display-container">
+            </div>
+
+            <div class="btn-group">
+                <button class="draw-btn" id="prize-start-btn" onclick="startPrizeDraw()">开始抽奖</button>
+            </div>
+
+            <!-- 物理中奖记录板 -->
+            <div class="players-history-panel" style="margin-top: 30px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 8px; margin-bottom: 8px;">
+                    <h4 style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">📜 奖池抽取记录</h4>
+                    <button class="small-btn" onclick="clearPrizeLogs()">🧹 清空抽奖记录</button>
+                </div>
+                <ul id="prize-logs-list">
+                    <!-- 动态日志 -->
+                </ul>
+            </div>
+        </div>
+
+        <!-- 6. 通用转盘抽取面板 -->
+        <div id="tab-wheel" class="tab-content">
+            <h2>转盘抽取大厅</h2>
+            <div class="wheel-layout">
+                <div class="wheel-left">
+                    <div class="wheel-selector-row">
+                        <label for="wheel-select">选择转盘：</label>
+                        <select id="wheel-select" onchange="loadSelectedWheel()">
+                        </select>
+                        <button class="small-btn" onclick="createNewWheel()">+ 新建转盘</button>
+                        <button class="small-btn" onclick="renameCurrentWheel()">✏️ 重命名</button>
+                        <button class="small-btn" onclick="deleteCurrentWheel()" style="color: #ff9999; border-color: #ff5555;">🗑️ 删除当前转盘</button>
+                    </div>
+                    
+                    <div class="canvas-container">
+                        <div class="pointer">▼</div>
+                        <canvas id="wheel-canvas" width="450" height="450"></canvas>
+                    </div>
+                    <div class="btn-group">
+                        <button class="draw-btn" id="wheel-spin-btn" onclick="spinWheel()">旋转转盘</button>
+                    </div>
+                </div>
+
+                <div class="wheel-right">
+                    <h3>⚙️ 转盘参数调整</h3>
+                    <div class="config-row" style="margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
+                        <label style="cursor: pointer;">
+                            <input type="checkbox" id="wheel-duplicate-toggle" onchange="toggleDuplicate()"> 允许重复抽取
+                        </label>
+                        <div style="display: flex; gap: 8px;">
+                            <button class="small-btn" onclick="toggleAllWheelItems(true)">全选/重置</button>
+                            <button class="small-btn" onclick="toggleAllWheelItems(false)">取消全选</button>
+                            <button class="small-btn" onclick="shuffleWheelItems()">🔀 打乱排序</button>
+                        </div>
+                    </div>
+                    <div class="options-table-header" style="grid-template-columns: 0.5fr 1.5fr 1fr 1fr 0.8fr; text-align: center;">
+                        <span>参与</span>
+                        <span style="text-align: left;">选项名称</span>
+                        <span>权重</span>
+                        <span>颜色</span>
+                        <span>操作</span>
+                    </div>
+                    <div id="wheel-options-list" class="options-list" style="max-height: 280px; overflow-y: auto;">
+                    </div>
+                    <button class="add-item-btn" onclick="addWheelItem()">+ 添加新选项</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. 计分板面板 -->
+        <div id="tab-scoreboard" class="tab-content">
+            <div class="header-with-action">
+                <h2>计分板</h2>
+                <div style="display:flex; gap:10px; align-items:center;">
+                    <button class="small-btn" onclick="resetScoreboardAll()" style="color:#ff9999; border-color:rgba(255,153,153,0.4);">🔄 重置全部</button>
+                    <button class="action-btn" onclick="generateScoreboardOverview()">📊 生成排名总览图</button>
+                </div>
+            </div>
+
+            <!-- 三栏布局 -->
+            <div class="sb-main-layout">
+                <!-- 左栏：模式切换 + 排名分控制 + 回合列表 -->
+                <div class="sb-left-sidebar">
+                    <div class="sb-sidebar-section">
+                        <div class="tips-sub-tabs" style="display:flex; flex-direction:column; gap:4px; width:100%;">
+                            <button class="sub-tab-btn active" id="sb-sub-8" onclick="switchScoreboardMode('8')" style="width:100%; text-align:center;">8人局</button>
+                            <button class="sub-tab-btn" id="sb-sub-12" onclick="switchScoreboardMode('12')" style="width:100%; text-align:center;">12人局</button>
+                        </div>
+                    </div>
+
+                    <div class="sb-sidebar-section">
+                        <label style="cursor:pointer; display:flex; align-items:center; gap:6px; font-weight:bold; font-size:13px; padding:4px 0;">
+                            <input type="checkbox" id="sb-ranking-toggle" onchange="toggleRankingPoints(this.checked)"> 启用排名分
+                        </label>
+                        <button class="small-btn" onclick="openRankingPointsSettings()" title="查看和修改各排名对应分数" style="width:100%; margin-top:6px;">⚙️ 排名分规则</button>
+                    </div>
+
+                    <div class="sb-sidebar-section" id="scoreboard-round-tabs">
+                        <!-- JS动态渲染回合列表 -->
+                    </div>
+                </div> <!-- 闭合 sb-left-sidebar -->
+
+                <!-- 中栏：回合编辑器 -->
+                <div class="sb-center-panel">
+                    <div id="scoreboard-round-editor">
+                        <!-- JS动态渲染 -->
+                    </div>
+                </div>
+
+                <!-- 右栏：计分板总排名 -->
+                <div class="sb-right-panel">
+                    <button class="action-btn" onclick="openOverlayWindow('current')" style="width:100%; margin-bottom:6px; font-weight:bold; font-size:14px; padding:10px;">📺 生成本局排名悬浮窗</button>
+                    <button class="action-btn" onclick="openOverlayWindow('global')" style="width:100%; margin-bottom:10px; font-weight:bold; font-size:14px; padding:10px;">📺 生成总排名悬浮窗</button>
+                    <h4 style="color:#b3863b; margin:0 0 10px 0; padding-bottom:8px; border-bottom:1px solid rgba(179,134,59,0.25);">🏆 计分板总排名</h4>
+                    <div id="scoreboard-leaderboard-content" style="overflow-y:auto; flex:1;">
+                        <p style="color:#666; text-align:center; padding:20px;">暂无数据，请先确认回合成绩。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- 闭合主容器 main-container -->
+
+<!-- 悬浮窗：OBS直播纯净排行榜 -->
+    <div id="overlay-container" style="display:none;">
+        <div class="overlay-inner">
+            <!-- 修改：使标题精简美观，适合窄版显示 -->
+            <h2 class="overlay-title">🏆 总积分排行榜</h2>
+            <div class="overlay-table-wrap">
+                <table class="overlay-table" id="overlay-leaderboard-table">
+                    <thead>
+                        <tr>
+                            <th class="ov-th-rank">排名</th>
+                            <th class="ov-th-name">选手名称</th>
+                            <th class="ov-th-hero">状态</th>
+                            <th class="ov-th-kills">本局击败</th>
+                            <th class="ov-th-total">积分</th>
+                        </tr>
+                    </thead>
+                    <tbody id="overlay-leaderboard-tbody"></tbody>
+                </table>
+            </div>
+            <div id="overlay-empty-hint" style="display:none; color:#888; text-align:center; padding:40px; font-size:18px;">
+                暂无选手数据<br><span style="font-size:14px;">请在主控制台计分板中填入选手名称</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. 弹窗：英雄过滤与自定义设置 -->
+    <div id="hero-settings-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header-row">
+                <h3>英雄配置与管理</h3>
+                <button class="export-btn" onclick="exportConfigJS()">💾 物理保存到 config.js</button>
+            </div>
+
+            <div class="setting-toggle-group">
+                <label><input type="checkbox" id="setting-random-skill" onchange="updateHeroSetting('randomizeSkill', this.checked)"> 开启技能随机</label>
+                <label><input type="checkbox" id="setting-random-ult" onchange="updateHeroSetting('randomizeUltimate', this.checked)"> 开启奥义随机</label>
+            </div>
+            
+            <hr class="modal-hr">
+
+            <div class="add-hero-section">
+                <button class="action-btn" onclick="toggleAddHeroForm()">➕ 添加新英雄</button>
+                <div id="add-hero-form" class="add-hero-form hidden">
+                    <div class="form-group">
+                        <label>新英雄名称：</label>
+                        <input type="text" id="new-hero-name" placeholder="例如：无名氏">
+                    </div>
+                    <div class="form-group">
+                        <label>本地图片路径：</label>
+                        <input type="text" id="new-hero-image" placeholder="放入 assets/heroes/ 后在此输入文件名，如 wumingshi.png">
+                    </div>
+                    
+                    <div class="form-group flex-col">
+                        <label>技能列表：</label>
+                        <div id="form-skills-container">
+                            <input type="text" class="form-skill-input" placeholder="例如：F1技能一" style="margin-bottom: 5px;">
+                            <input type="text" class="form-skill-input" placeholder="例如：F2技能二" style="margin-bottom: 5px;">
+                        </div>
+                        <button class="form-add-btn" onclick="addDynamicInput('form-skills-container', '技能')">+ 增加技能槽</button>
+                    </div>
+
+                    <div class="form-group flex-col">
+                        <label>奥义列表：</label>
+                        <div id="form-ults-container">
+                            <input type="text" class="form-ult-input" placeholder="例如：V1奥义一" style="margin-bottom: 5px;">
+                            <input type="text" class="form-ult-input" placeholder="例如：V2奥义二" style="margin-bottom: 5px;">
+                        </div>
+                        <button class="form-add-btn" onclick="addDynamicInput('form-ults-container', '奥义')">+ 增加奥义槽</button>
+                    </div>
+
+                    <div class="form-btn-row">
+                        <button class="submit-btn" onclick="submitNewHero()">确认加入数据库</button>
+                        <button class="cancel-btn" onclick="toggleAddHeroForm(false)">取消</button>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="modal-hr">
+
+            <h4>选择参与抽取的英雄 (注：🗑️为删除英雄)</h4>
+            <div class="modal-btn-row">
+                <button onclick="toggleAllHeroes(true)">全选</button>
+                <button onclick="toggleAllHeroes(false)">取消全选</button>
+            </div>
+            <div class="hero-checkbox-grid" id="hero-checkbox-container">
+            </div>
+
+            <div class="modal-footer">
+                <button class="modal-close-btn" onclick="closeHeroSettings()">保存并退出</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 9. 武器过滤与名单设置 -->
+    <div id="weapon-settings-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header-row">
+                <h3>武器出场名单配置</h3>
+                <button class="export-btn" onclick="exportConfigJS()">💾 物理保存到 config.js</button>
+            </div>
+
+            <div class="add-hero-section" style="margin-bottom: 25px;">
+                <button class="action-btn" onclick="toggleAddWeaponForm()">➕ 添加新武器</button>
+                <div id="add-weapon-form" class="add-hero-form hidden">
+                    <div class="form-group">
+                        <label>武器名称：</label>
+                        <input type="text" id="new-wp-name" placeholder="例如：新武器">
+                    </div>
+                    <div class="form-group">
+                        <label>图片文件名：</label>
+                        <input type="text" id="new-wp-image" placeholder="放入 assets/weapons/ 后在此输入，如 xinwuqi.png">
+                    </div>
+                    <div class="form-group">
+                        <label>武器类型：</label>
+                        <select id="new-wp-type" style="background:#222; color:#fff; border:1px solid rgba(255,255,255,0.2); padding:8px; border-radius:4px; flex:1;">
+                            <option value="melee">近战武器</option>
+                            <option value="ranged">远程武器</option>
+                        </select>
+                    </div>
+                    <div class="form-btn-row">
+                        <button class="submit-btn" onclick="submitNewWeapon()">确认加入武器库</button>
+                        <button class="cancel-btn" onclick="toggleAddWeaponForm(false)">取消</button>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="modal-hr">
+            
+            <h4>选择参与抽取的近战武器 (注：🗑️为删除武器)</h4>
+            <div class="modal-btn-row">
+                <button onclick="toggleAllWeapons(true, 'melee')">全选</button>
+                <button onclick="toggleAllWeapons(false, 'melee')">取消全选</button>
+            </div>
+            <div class="hero-checkbox-grid" id="melee-checkbox-container" style="margin-bottom:25px;">
+            </div>
+
+            <hr class="modal-hr">
+
+            <h4>选择参与抽取的远程武器 (注：🗑️为删除武器)</h4>
+            <div class="modal-btn-row">
+                <button onclick="toggleAllWeapons(true, 'ranged')">全选</button>
+                <button onclick="toggleAllWeapons(false, 'ranged')">取消全选</button>
+            </div>
+            <div class="hero-checkbox-grid" id="ranged-checkbox-container">
+            </div>
+
+            <div class="modal-footer">
+                <button class="modal-close-btn" onclick="closeWeaponSettings()">保存并关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 10. 人员配置与出场管理 -->
+    <div id="player-settings-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header-row">
+                <h3>选手出场名单配置</h3>
+                <button class="export-btn" onclick="exportConfigJS()">💾 物理保存到 config.js</button>
+            </div>
+
+            <div class="add-hero-section" style="margin-bottom: 25px;">
+                <button class="action-btn" onclick="toggleAddPlayerForm()">➕ 添加新人员</button>
+                <div id="add-player-form" class="add-hero-form hidden">
+                    <div class="form-group">
+                        <label>选手名字：</label>
+                        <input type="text" id="new-player-name" placeholder="例如：新选手">
+                    </div>
+                    <div class="form-group">
+                        <label>图片(可上传)：</label>
+                        <input type="file" id="new-player-image-file" accept="image/*" style="background:#222; color:#fff; border:1px solid rgba(255,255,255,0.2); padding:5px; border-radius:4px; flex:1;">
+                    </div>
+                    <div class="form-group" style="margin-top:-5px; margin-left:110px;">
+                        <span style="font-size:12px; color:#888;">或者输入本地路径：</span>
+                        <input type="text" id="new-player-image-path" placeholder="例如：assets/players/xin.png" style="padding:4px; font-size:12px;">
+                    </div>
+                    <div class="form-btn-row">
+                        <button class="submit-btn" onclick="submitNewPlayer()">确认加入选手库</button>
+                        <button class="cancel-btn" onclick="toggleAddPlayerForm(false)">取消</button>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="modal-hr">
+
+            <h4>选择参与抽取的选手 (注：🗑️为删除人员)</h4>
+            <div class="modal-btn-row">
+                <button onclick="toggleAllPlayers(true)">全选</button>
+                <button onclick="toggleAllPlayers(false)">取消全选</button>
+            </div>
+            <div class="hero-checkbox-grid" id="players-checkbox-container" style="max-height: 250px; overflow-y: auto;">
+                <!-- 人员勾选渲染槽 -->
+            </div>
+
+            <div class="modal-footer">
+                <button class="modal-close-btn" onclick="closePlayerSettings()">保存并关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 11. 奖品管理弹窗 -->
+    <div id="prize-settings-modal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 750px;">
+            <div class="modal-header-row">
+                <h3>奖品库与中奖率配置</h3>
+                <button class="export-btn" onclick="exportConfigJS()">💾 物理保存到 config.js</button>
+            </div>
+
+            <div class="add-hero-section" style="margin-bottom: 25px;">
+                <button class="action-btn" onclick="toggleAddPrizeForm()">➕ 添加新奖品</button>
+                <div id="add-prize-form" class="add-hero-form hidden">
+                    <div class="form-group">
+                        <label>属于几等奖：</label>
+                        <input type="text" id="new-prize-tier" placeholder="例如：一等奖 / 安慰奖">
+                    </div>
+                    <div class="form-group">
+                        <label>奖品名称：</label>
+                        <input type="text" id="new-prize-name" placeholder="例如：主播同款键盘">
+                    </div>
+                    <div class="form-group">
+                        <label>概率权重：</label>
+                        <input type="number" step="any" min="0.1" id="new-prize-weight" placeholder="中奖概率权重，例如：10">
+                    </div>
+                    <div class="form-btn-row">
+                        <button class="submit-btn" onclick="submitNewPrize()">确认加入奖池</button>
+                        <button class="cancel-btn" onclick="toggleAddPrizeForm(false)">取消</button>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="modal-hr">
+
+            <h4>修改或删除奖品 </h4>
+            <div class="options-table-header" style="grid-template-columns: 1fr 1.6fr 1fr 0.8fr 0.6fr; gap:10px; margin-bottom:10px;">
+                <span>奖项等阶</span>
+                <span>奖品名称</span>
+                <span>权重数字</span>
+                <span>折算概率</span>
+                <span>删除</span>
+            </div>
+            <div id="prizes-manage-list" class="options-list" style="max-height: 250px; overflow-y: auto;">
+                <!-- 奖品列表 -->
+            </div>
+
+            <div class="modal-footer">
+                <button class="modal-close-btn" onclick="closePrizeSettings()">保存并关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 12. 弹窗：锦囊库与概率设置 -->
+    <div id="tips-settings-modal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 750px;">
+            <div class="modal-header-row">
+                <h3>锦囊库管理与出场概率配置</h3>
+                <button class="export-btn" onclick="exportConfigJS()">💾 物理保存到 config.js</button>
+            </div>
+
+            <!-- 参数与稀有度概率调整 -->
+            <div class="add-hero-section" style="margin-bottom: 20px;">
+                <h4 style="margin-bottom: 10px; color: #e3a94a;">🎯 抽卡稀有度概率设置 (总和须为 100%)</h4>
+                <div class="setting-toggle-group" style="gap: 15px; flex-wrap: wrap;">
+                    <label style="color:#cca43b;">金品质 %: <input type="number" step="1" min="0" max="100" id="tip-prob-gold" style="width:55px; background:#222; color:#fff; border:1px solid #cca43b; text-align:center; border-radius:4px;" onchange="validateTipProbs()"></label>
+                    <label style="color:#9c27b0;">紫品质 %: <input type="number" step="1" min="0" max="100" id="tip-prob-purple" style="width:55px; background:#222; color:#fff; border:1px solid #9c27b0; text-align:center; border-radius:4px;" onchange="validateTipProbs()"></label>
+                    <label style="color:#2196f3;">蓝品质 %: <input type="number" step="1" min="0" max="100" id="tip-prob-blue" style="width:55px; background:#222; color:#fff; border:1px solid #2196f3; text-align:center; border-radius:4px;" onchange="validateTipProbs()"></label>
+                    <label style="color:#ffffff;">白品质 %: <input type="number" step="1" min="0" max="100" id="tip-prob-white" style="width:55px; background:#222; color:#fff; border:1px solid #fff; text-align:center; border-radius:4px;" onchange="validateTipProbs()"></label>
+                </div>
+                <div id="tip-prob-sum-indicator" style="font-size:12px; margin-top:5px; color:#ff3333;">当前总和: 100%</div>
+                
+                <hr class="modal-hr" style="margin: 10px 0;">
+                <label style="cursor:pointer; display:flex; align-items:center; gap:8px;">
+                    <input type="checkbox" id="tip-setting-refresh-same" style="width:16px; height:16px;"> 
+                    <span>在同品质下刷新（开启后卡牌刷新将锁定原有品质，关闭则重新随机计算概率）</span>
+                </label>
+            </div>
+
+            <!-- 添加新锦囊表单 -->
+            <div class="add-hero-section" style="margin-bottom: 25px;">
+                <button class="action-btn" onclick="toggleAddTipForm()">➕ 添加全新锦囊卡</button>
+                <div id="add-tip-form" class="add-hero-form hidden">
+                    <div class="form-group">
+                        <label>归属卡池：</label>
+                        <select id="new-tip-pool" style="background:#222; color:#fff; border:1px solid rgba(255,255,255,0.2); padding:8px; border-radius:4px; flex:1;">
+                            <option value="challenger">🛡️ 挑战者卡池</option>
+                            <option value="champion">👑 擂主卡池</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>品质划分：</label>
+                        <select id="new-tip-quality" style="background:#222; color:#fff; border:1px solid rgba(255,255,255,0.2); padding:8px; border-radius:4px; flex:1;">
+                            <option value="金" style="color:#cca43b; font-weight:bold;">金品质</option>
+                            <option value="紫" style="color:#9c27b0; font-weight:bold;">紫品质</option>
+                            <option value="蓝" style="color:#2196f3; font-weight:bold;">蓝品质</option>
+                            <option value="白" style="color:#fff;" selected>白品质</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>锦囊名称：</label>
+                        <input type="text" id="new-tip-name" placeholder="例如：我钩锁呢">
+                    </div>
+                    <div class="form-group">
+                        <label>详情描述：</label>
+                        <input type="text" id="new-tip-description" placeholder="例如：下一回合，擂主禁止使用钩锁。">
+                    </div>
+                    <div class="form-btn-row">
+                        <button class="submit-btn" onclick="submitNewTip()">确认加入数据库</button>
+                        <button class="cancel-btn" onclick="toggleAddTipForm(false)">取消</button>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="modal-hr">
+
+            <!-- 锦囊参与抽取勾选 -->
+            <h4>选择参与抽取的锦囊</h4>
+            <div class="modal-btn-row">
+                <button onclick="toggleAllTips(true)">全选</button>
+                <button onclick="toggleAllTips(false)">取消全选</button>
+            </div>
+            <div class="hero-checkbox-grid" id="tips-checkbox-container" style="max-height: 250px; overflow-y: auto;">
+                <!-- 锦囊勾选渲染槽 -->
+            </div>
+
+            <hr class="modal-hr">
+
+            <!-- 列表编辑网格 -->
+            <h4>管理现有锦囊卡片(注：🗑️为删除锦囊)</h4>
+            <div class="options-table-header" style="grid-template-columns: 1fr 0.8fr 1.5fr 2fr 0.5fr; gap:10px; margin-bottom:10px;">
+                <span>所属卡池</span>
+                <span>品质</span>
+                <span>锦囊名称</span>
+                <span>效果描述</span>
+                <span>操作</span>
+            </div>
+            <div id="tips-manage-list" class="options-list" style="max-height: 250px; overflow-y: auto;">
+                <!-- 锦囊列表由JS渲染 -->
+            </div>
+
+            <div class="modal-footer">
+                <button class="modal-close-btn" onclick="closeTipSettings()">保存并关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 13. 排名分规则设置弹窗 -->
+    <div id="ranking-points-modal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 700px;">
+            <div class="modal-header-row">
+                <h3>⚙️ 排名分规则设置</h3>
+                <button class="export-btn" onclick="resetRankingPointsToDefault()">🔄 恢复默认</button>
+            </div>
+            <p style="color:#aaa; font-size:13px; margin-bottom:15px;">修改各名次区间对应的分数。当前模式：<span id="rp-mode-label" style="color:#e3a94a; font-weight:bold;">8人局</span></p>
+            <div class="options-table-header" style="grid-template-columns: 0.8fr 0.8fr 1fr; gap:10px; margin-bottom:10px;">
+                <span>起始名次</span>
+                <span>截止名次</span>
+                <span>获得分数</span>
+            </div>
+            <div id="ranking-points-rules-list" class="options-list" style="max-height: 350px; overflow-y: auto;">
+                <!-- JS动态渲染 -->
+            </div>
+            <div style="display:flex; gap:10px; margin-top:15px;">
+                <button class="add-item-btn" onclick="addRankingPointsRule()">+ 添加新规则行</button>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-close-btn" onclick="closeRankingPointsSettings()">保存并关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 14. 本局排名弹窗 -->
+    <div id="round-ranking-modal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 600px;">
+            <div class="modal-header-row">
+                <h3 id="round-ranking-modal-title">📊 本局排名</h3>
+            </div>
+            <div id="round-ranking-modal-content" style="max-height: 55vh; overflow-y: auto;">
+                <!-- JS动态渲染 -->
+            </div>
+            <div class="modal-footer">
+                <button class="modal-close-btn" onclick="closeRoundRanking()">关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 15. 排名总览图弹窗 -->
+    <div id="scoreboard-overview-modal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 950px;">
+            <div class="modal-header-row">
+                <h3>📊 计分排名总览</h3>
+                <button class="export-btn" onclick="copyOverviewToClipboard()">📋 复制到剪贴板</button>
+            </div>
+            <div id="scoreboard-overview-content" style="max-height: 65vh; overflow-y: auto;">
+                <!-- JS动态渲染 -->
+            </div>
+            <div class="modal-footer">
+                <button class="modal-close-btn" onclick="closeScoreboardOverview()">关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 16. 英雄选择器弹窗（计分板回合编辑器用） -->
+    <div id="hero-picker-modal" class="modal-overlay">
+        <div class="modal-content" style="max-width:500px;">
+            <div class="modal-header-row">
+                <h3>选择英雄</h3>
+                <button class="small-btn" onclick="clearHeroForEntry()" style="margin-right:10px;">清除选择</button>
+                <button class="modal-close-btn" onclick="closeHeroPicker()">✕</button>
+            </div>
+            <div id="hero-picker-grid" class="hero-picker-grid">
+                <!-- JS 动态渲染英雄头像网格 -->
+            </div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
