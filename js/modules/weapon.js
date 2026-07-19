@@ -1,6 +1,6 @@
 // ==================== 模块二：武器抽取逻辑 ====================
 import { state } from '../core/state.js';
-import { escapeJS } from '../core/utils.js';
+import { escapeHTML, escapeJS } from '../core/utils.js';
 import { saveConfig } from '../core/storage.js';
 
 // 同步页面配置状态到 UI
@@ -176,12 +176,12 @@ export function renderWeaponCardHTML(wp) {
 
     return `
         <div class="scroll-item">
-            <img class="weapon-img" src="${imgUrl}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <img class="weapon-img" src="${escapeHTML(imgUrl)}" onerror="this.style.display='none';var fb=this.parentElement.querySelector('.weapon-avatar-fallback');if(fb)fb.style.display='flex';">
             <div class="weapon-avatar-fallback" style="display:none;">
-                ${name}
+                ${escapeHTML(name)}
             </div>
-            <div class="slot-name">${name}</div>
-            ${quality ? `<div class="slot-subtext">【${quality}品】</div>` : ''}
+            <div class="slot-name">${escapeHTML(name)}</div>
+            ${quality ? `<div class="slot-subtext">【${escapeHTML(quality)}品】</div>` : ''}
         </div>
     `;
 }
@@ -229,7 +229,7 @@ export function submitNewWeapon() {
     }
 
     if (!imgFile) {
-        imgFile = "default.png";
+        imgFile = "default.webp";
     }
 
     if (window.CURRENT_CONFIG.weapons.some(wp => wp.name === name)) {
@@ -284,8 +284,8 @@ export function initWeaponSettingsGrid(type, containerId) {
         itemBox.className = 'hero-manage-item';
         itemBox.innerHTML = `
             <label>
-                <input type="checkbox" value="${wp.name}" ${isChecked ? 'checked' : ''} onchange="onWeaponCheckboxChange(this)">
-                <span>${wp.name}</span>
+                <input type="checkbox" value="${escapeHTML(wp.name)}" ${isChecked ? 'checked' : ''} onchange="onWeaponCheckboxChange(this)">
+                <span>${escapeHTML(wp.name)}</span>
             </label>
             <button class="hero-delete-btn" title="彻底删除此武器" onclick="deleteWeaponFromDB('${escapeJS(wp.name)}')">🗑️</button>
         `;

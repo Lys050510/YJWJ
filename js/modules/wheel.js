@@ -121,6 +121,13 @@ export function loadSelectedWheel() {
     const select = document.getElementById('wheel-select');
     if (select.options.length === 0) return;
 
+    // 确保 Canvas 元素就绪后再绑定上下文
+    const canvas = document.getElementById('wheel-canvas');
+    if (!canvas) {
+        console.warn('[Wheel] Canvas 元素未找到，转盘渲染已跳过。请检查 DOM 是否就绪。');
+        return;
+    }
+
     const wheelIndex = parseInt(select.value);
     const activeWheel = window.CURRENT_CONFIG.wheelsList[wheelIndex];
 
@@ -311,7 +318,7 @@ export function renderWheelConfigPanel(wheel) {
 
         itemRow.innerHTML = `
             <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="WheelModule.toggleSingleWheelItem(${index}, this.checked)" style="width:20px; height:20px; cursor:pointer; justify-self: center;">
-            <input type="text" value="${item.name}" oninput="WheelModule.updateWheelItem(${index}, 'name', this.value)">
+            <input type="text" value="${escapeHTML(item.name)}" oninput="WheelModule.updateWheelItem(${index}, 'name', this.value)">
             <input type="number" step="any" min="0.1" value="${item.weight}" oninput="WheelModule.updateWheelItem(${index}, 'weight', this.value)">
             <input type="color" value="${item.color}" onchange="WheelModule.updateWheelItem(${index}, 'color', this.value)">
             <button class="delete-btn" onclick="WheelModule.deleteWheelItem(${index})">🗑️</button>

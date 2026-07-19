@@ -101,8 +101,8 @@ function renderTipMarquee() {
             <div class="card-inner">
                 <div class="card-front tip-card-front">
                     <div class="tip-card-body">
-                        <div class="tip-card-title">${tip.name}</div>
-                        <div class="tip-card-desc">${tip.description}</div>
+                        <div class="tip-card-title">${escapeHTML(tip.name)}</div>
+                        <div class="tip-card-desc">${escapeHTML(tip.description)}</div>
                     </div>
                 </div>
             </div>
@@ -303,8 +303,8 @@ function renderDrawnTipCardsGrid() {
                     <!-- 正面 -->
                     <div class="card-front tip-card-front ${qClass}">
                         <div class="tip-card-body">
-                            <div class="tip-card-title">${card.tipData.name}</div>
-                            <div class="tip-card-desc">${card.tipData.description}</div>
+                            <div class="tip-card-title">${escapeHTML(card.tipData.name)}</div>
+                            <div class="tip-card-desc">${escapeHTML(card.tipData.description)}</div>
                         </div>
                     </div>
                     <!-- 反面 -->
@@ -466,6 +466,10 @@ function confirmTipChoice() {
             quality: c.tipData.quality
         }))
     };
+    // 限制日志最多 200 条，防止 localStorage 溢出
+    if (window.CURRENT_CONFIG.tipSession.logs.length >= 200) {
+        window.CURRENT_CONFIG.tipSession.logs = window.CURRENT_CONFIG.tipSession.logs.slice(0, 199);
+    }
     window.CURRENT_CONFIG.tipSession.logs.unshift(newLog);
 
     saveConfig();
@@ -526,7 +530,7 @@ function renderTipLogs() {
         if (log.tips && Array.isArray(log.tips)) {
             tipsHtml = `<div class="log-tips-list">` + log.tips.map(t => {
                 const color = getLogQualityColor(t.quality);
-                return `<div class="log-tip-item"><span style="color: ${color}; font-weight: bold;"> 【${t.name}】</span><span style="color: #ccc;">(${t.description})</span></div>`;
+                return `<div class="log-tip-item"><span style="color: ${color}; font-weight: bold;"> 【${escapeHTML(t.name)}】</span><span style="color: #ccc;">(${escapeHTML(t.description)})</span></div>`;
             }).join('') + `</div>`;
         } else {
             tipsHtml = `<div style="color: #fff; padding-left: 20px;">${log.content || ''}</div>`;
@@ -686,8 +690,8 @@ function initTipsManageListGrid() {
                 <option value="蓝" ${tip.quality === '蓝' ? 'selected' : ''} style="color:#2196f3;">蓝</option>
                 <option value="白" ${tip.quality === '白' ? 'selected' : ''}>白</option>
             </select>
-            <input type="text" value="${tip.name}" oninput="updateTipField(${index}, 'name', this.value)">
-            <input type="text" value="${tip.description}" oninput="updateTipField(${index}, 'description', this.value)">
+            <input type="text" value="${escapeHTML(tip.name)}" oninput="updateTipField(${index}, 'name', this.value)">
+            <input type="text" value="${escapeHTML(tip.description)}" oninput="updateTipField(${index}, 'description', this.value)">
             <button class="delete-btn" onclick="deleteTipFromDB(${index})">🗑️</button>
         `;
         container.appendChild(row);
@@ -708,10 +712,10 @@ function initTipsCheckboxGrid() {
         itemBox.className = 'hero-manage-item';
         itemBox.innerHTML = `
             <label>
-                <input type="checkbox" value="${tip.name}" ${isChecked ? 'checked' : ''} onchange="onTipCheckboxChange(this)">
-                <span>${tip.name}</span>
+                <input type="checkbox" value="${escapeHTML(tip.name)}" ${isChecked ? 'checked' : ''} onchange="onTipCheckboxChange(this)">
+                <span>${escapeHTML(tip.name)}</span>
             </label>
-            <button class="hero-delete-btn" title="彻底删除此锦囊" onclick="deleteTipFromDBByName('${tip.name}')">🗑️</button>
+            <button class="hero-delete-btn" title="彻底删除此锦囊" onclick="deleteTipFromDBByName('${escapeJS(tip.name)}')">🗑️</button>
         `;
         container.appendChild(itemBox);
     });

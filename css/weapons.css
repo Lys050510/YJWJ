@@ -100,7 +100,7 @@
 
 /* 武器抽取卡槽背景专项修正 */
 .weapon-scroll-box {
-    background: rgba(10, 10, 10, 0.9) url('../assets/card-bg1.png') no-repeat center center !important;
+    background: rgba(10, 10, 10, 0.9) url('../assets/card-bg1.webp') no-repeat center center !important;
     background-size: cover !important;
 }
 

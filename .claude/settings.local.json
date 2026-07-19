@@ -13,7 +13,13 @@
       "Bash(curl -s -I http://localhost:8080/js/app.js)",
       "Bash(curl -s http://localhost:8081/test-modules.html)",
       "Bash(node --check js/app.js)",
-      "Bash(node --check js/modules/tips.js)"
+      "Bash(node --check js/modules/tips.js)",
+      "WebFetch(domain:yjwj666.top)",
+      "WebFetch(domain:lys050510.github.io)",
+      "Bash(python *)",
+      "Bash(cat css/variables.css css/layout.css css/components.css css/animations.css css/weapons.css css/players.css css/prizes.css css/tips.css css/wheel.css css/scoreboard.css css/overlay.css css/responsive.css)",
+      "Bash(grep -c \"/\\\\* ==\" css/main.css)",
+      "Bash(chmod +x *)"
     ]
   }
 }

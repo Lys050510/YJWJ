@@ -5,7 +5,7 @@ import { state } from '../core/state.js';
 
 import { escapeHTML, escapeJS, getFormattedTime } from '../core/utils.js';
 
-import { saveConfig, getActiveMode, getActiveRounds as _storageGetActiveRounds } from '../core/storage.js';
+import { STORAGE_KEY, saveConfig, getActiveMode, getActiveRounds as _storageGetActiveRounds } from '../core/storage.js';
 
 // ── getActiveRounds 本地包装（附加 normalizeAllRounds 兼容性补全）──
 function getActiveRounds() {
@@ -110,8 +110,8 @@ export function openHeroPicker(roundIndex, entryIndex) {
     window.CURRENT_CONFIG.heroes.forEach(h => {
         const selected = (h.name === currentHero) ? ' selected' : '';
         html += `<div class="hero-picker-item${selected}" onclick="selectHeroForEntry('${escapeJS(h.name)}')">
-            <img src="${h.image}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-            <div class="avatar-fallback" style="display:none;width:44px;height:44px;border-radius:50%;background:rgba(179,134,59,0.2);align-items:center;justify-content:center;font-size:18px;color:#e3a94a;">${h.name[0]}</div>
+            <img src="${escapeHTML(h.image)}" onerror="this.style.display='none';var fb=this.parentElement.querySelector('.avatar-fallback');if(fb)fb.style.display='flex';">
+            <div class="avatar-fallback" style="display:none;width:44px;height:44px;border-radius:50%;background:rgba(179,134,59,0.2);align-items:center;justify-content:center;font-size:18px;color:#e3a94a;">${escapeHTML(h.name[0])}</div>
             <span>${escapeHTML(h.name)}</span>
         </div>`;
     });
@@ -181,7 +181,7 @@ export function computeDynamicRanks(entries) {
 
 export function toggleElimination(playerName) {
     // 读取最新 localStorage 数据
-    const cached = localStorage.getItem("UP_LOTTERY_SMART_CACHE");
+    const cached = localStorage.getItem(STORAGE_KEY);
     if (!cached) return;
     let config;
     try { config = JSON.parse(cached); } catch (e) { return; }
@@ -218,7 +218,7 @@ export function toggleElimination(playerName) {
     });
 
     // 持久化
-    localStorage.setItem("UP_LOTTERY_SMART_CACHE", JSON.stringify(config));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
 
     // 更新内存状态
     window.CURRENT_CONFIG = config;
@@ -424,9 +424,9 @@ export function renderRoundEditor(roundIndex) {
 
     entries.forEach((entry, entryIndex) => {
         const heroImgHtml = entry.hero
-            ? `<img src="${getHeroImage(entry.hero)}" class="sb-hero-thumb"
+            ? `<img src="${escapeHTML(getHeroImage(entry.hero))}" class="sb-hero-thumb"
                  onclick="openHeroPicker(${roundIndex}, ${entryIndex})"
-                 onerror="this.outerHTML='<div class=\\'sb-hero-placeholder\\' onclick=\\'openHeroPicker(${roundIndex},${entryIndex})\\'>?</div>'"
+                 onerror="var fb=document.createElement('div');fb.className='sb-hero-placeholder';fb.textContent='?';fb.onclick=function(){openHeroPicker(${roundIndex},${entryIndex})};this.replaceWith(fb);"
                  title="${escapeHTML(entry.hero)}">`
             : `<div class="sb-hero-placeholder" onclick="openHeroPicker(${roundIndex}, ${entryIndex})" title="点击选择英雄">?</div>`;
 
@@ -832,7 +832,7 @@ export function initOverlayMode() {
         title.textContent = scope === 'current' ? '⚔️ 本局积分排行榜' : '🏆 总积分排行榜';
     }
 
-    const cached = localStorage.getItem("UP_LOTTERY_SMART_CACHE");
+    const cached = localStorage.getItem(STORAGE_KEY);
     if (!cached) {
         document.getElementById('overlay-leaderboard-table').style.display = 'none';
         document.getElementById('overlay-empty-hint').style.display = 'block';
@@ -860,7 +860,7 @@ export function initOverlayMode() {
 
     // 2秒定时轮询更新（作为 storage 跨标签页监听器的可靠同步兜底）
     setInterval(() => {
-        const latest = localStorage.getItem("UP_LOTTERY_SMART_CACHE");
+        const latest = localStorage.getItem(STORAGE_KEY);
         if (latest) {
             let latestConfig;
             try {
@@ -1106,9 +1106,9 @@ export function renderOverlayLeaderboard() {
 
         // 英雄头像
         const heroImgHtml = player.hero
-            ? `<img src="${getHeroImage(player.hero)}" class="ov-hero-img"
+            ? `<img src="${escapeHTML(getHeroImage(player.hero))}" class="ov-hero-img"
                  onclick="toggleElimination('${escapeJS(player.name)}')"
-                 onerror="this.outerHTML='<span class=ov-hero-empty></span>'"
+                 onerror="var span=document.createElement('span');span.className='ov-hero-empty';this.replaceWith(span);"
                  title="${escapeHTML(player.hero)}">`
             : '<span class="ov-hero-empty"></span>';
 
@@ -1144,7 +1144,7 @@ export function renderOverlayLeaderboard() {
 }
 
 export function overlayKillChange(playerName, delta) {
-    const cached = localStorage.getItem("UP_LOTTERY_SMART_CACHE");
+    const cached = localStorage.getItem(STORAGE_KEY);
     if (!cached) return;
 
     let config;
@@ -1174,7 +1174,7 @@ export function overlayKillChange(playerName, delta) {
 
     config.scoreboard.currentRoundIndex = roundIndex;
 
-    localStorage.setItem("UP_LOTTERY_SMART_CACHE", JSON.stringify(config));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(config));
 
     window.CURRENT_CONFIG.scoreboard = config.scoreboard;
     state.currentScoreboardRoundIndex = roundIndex;
@@ -1454,16 +1454,36 @@ export function exportConfigJS() {
     }
 
     const fileContent = `// 导出的物理自定义配置文件
+// 基于页面路径生成唯一命名空间，防止同域下多项目 LocalStorage 键名冲突
+const STORAGE_KEY = (function() {
+    const path = window.location.pathname.replace(/\\/$/, '') || '/';
+    const ns = path.split('/').filter(Boolean).join('_') || 'root';
+    return 'YJWJ_' + ns + '_CACHE';
+})();
+
 const DEFAULT_CONFIG = ${JSON.stringify(window.CURRENT_CONFIG, null, 4)};
 
 // ==================== 【智能版本同步核心算法】 ====================
 let CURRENT_CONFIG;
 
-// 1. 读取本地缓存
-let localCache = JSON.parse(localStorage.getItem("UP_LOTTERY_SMART_CACHE"));
+// 1. 安全读取本地缓存（try/catch 防损坏崩溃）
+let localCache = null;
+try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) localCache = JSON.parse(raw);
+} catch (e) {
+    console.warn('本地缓存数据损坏，将使用默认配置重新初始化:', e);
+    localCache = null;
+}
 
-// 2. 判断是否需要同步磁盘文件数据
-if (!localCache || DEFAULT_CONFIG.configVersion > localCache.configVersion) {
+// 2. 规范化版本号：旧数据无版本号视为 0，强制触发迁移
+if (!localCache || typeof localCache.configVersion !== 'number') {
+    localCache = localCache || {};
+    localCache.configVersion = 0;
+}
+
+// 3. 判断是否需要同步磁盘文件数据
+if (DEFAULT_CONFIG.configVersion > (localCache.configVersion || 0)) {
     let activeHeroes = localCache ? localCache.activeHeroNames : DEFAULT_CONFIG.activeHeroNames;
     let activeWeapons = localCache ? localCache.activeWeaponNames : DEFAULT_CONFIG.activeWeaponNames;
     let activePlayers = localCache ? (localCache.activePlayerNames || DEFAULT_CONFIG.activePlayerNames) : DEFAULT_CONFIG.activePlayerNames;
@@ -1477,6 +1497,7 @@ if (!localCache || DEFAULT_CONFIG.configVersion > localCache.configVersion) {
 
     let cachedPrizes = localCache ? (localCache.prizes || DEFAULT_CONFIG.prizes) : DEFAULT_CONFIG.prizes;
     let cachedPrizeLogs = localCache ? (localCache.prizeLogs || []) : [];
+    let cachedWheels = localCache ? (localCache.wheelsList || DEFAULT_CONFIG.wheelsList) : DEFAULT_CONFIG.wheelsList;
     let cachedScoreboard = localCache ? (localCache.scoreboard || DEFAULT_CONFIG.scoreboard) : DEFAULT_CONFIG.scoreboard;
 
     CURRENT_CONFIG = {
@@ -1495,18 +1516,22 @@ if (!localCache || DEFAULT_CONFIG.configVersion > localCache.configVersion) {
         activeTipNames: activeTips,
         heroDrawSettings: heroSettings,
         weaponDrawSettings: weaponSettings,
-        wheelsList: DEFAULT_CONFIG.wheelsList,
+        wheelsList: cachedWheels,
         scoreboard: cachedScoreboard
     };
 
-    localStorage.setItem("UP_LOTTERY_SMART_CACHE", JSON.stringify(CURRENT_CONFIG));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(CURRENT_CONFIG));
 } else {
     CURRENT_CONFIG = localCache;
 }
 
 // 保存配置到本地缓存
 function saveConfigToLocal() {
-    localStorage.setItem("UP_LOTTERY_SMART_CACHE", JSON.stringify(CURRENT_CONFIG));
+    try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(CURRENT_CONFIG));
+    } catch (e) {
+        console.error('保存配置失败，可能是存储空间不足:', e);
+    }
 }
 `;
 

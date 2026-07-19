@@ -1,7 +1,7 @@
 // ==================== 模块三：人员抽取 ====================
 
 import { state } from '../core/state.js';
-import { escapeJS } from '../core/utils.js';
+import { escapeHTML, escapeJS } from '../core/utils.js';
 import { saveConfig } from '../core/storage.js';
 
 // 重置并展示人员正面
@@ -47,11 +47,11 @@ export function renderPlayerCardsHTML() {
             <div class="card-inner">
                 <!-- 正面 -->
                 <div class="card-front">
-                    <img src="${deckItem.player.image}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <img src="${escapeHTML(deckItem.player.image)}" onerror="this.style.display='none';var fb=this.parentElement.querySelector('.card-player-fallback');if(fb)fb.style.display='flex';">
                     <div class="card-player-fallback" style="display:none;">
-                        ${deckItem.player.name[0]}
+                        ${escapeHTML(deckItem.player.name[0])}
                     </div>
-                    <div class="card-player-name">${deckItem.player.name}</div>
+                    <div class="card-player-name">${escapeHTML(deckItem.player.name)}</div>
                 </div>
                 <!-- 反面 -->
                 <div class="card-back">
@@ -152,7 +152,7 @@ export function revealPlayerCard(cardIdx) {
 
     const list = document.getElementById('players-history-list');
     const li = document.createElement('li');
-    li.innerHTML = `位置 [${cardIdx + 1}] 翻开揭晓：<strong>${deckItem.player.name}</strong>`;
+    li.innerHTML = `位置 [${cardIdx + 1}] 翻开揭晓：<strong>${escapeHTML(deckItem.player.name)}</strong>`;
     list.appendChild(li);
     list.scrollTop = list.scrollHeight;
 }
@@ -212,7 +212,7 @@ export function submitNewPlayer() {
         };
         reader.readAsDataURL(file);
     } else {
-        const finalPath = pathVal || "assets/players/default.png";
+        const finalPath = pathVal || "assets/players/default.webp";
         addNewPlayerToDB(name, finalPath);
     }
 }
@@ -260,8 +260,8 @@ export function initPlayerSettingsGrid() {
         itemBox.className = 'hero-manage-item';
         itemBox.innerHTML = `
             <label>
-                <input type="checkbox" value="${p.name}" ${isChecked ? 'checked' : ''} onchange="window.PlayerModule.onPlayerCheckboxChange(this)">
-                <span>${p.name}</span>
+                <input type="checkbox" value="${escapeHTML(p.name)}" ${isChecked ? 'checked' : ''} onchange="window.PlayerModule.onPlayerCheckboxChange(this)">
+                <span>${escapeHTML(p.name)}</span>
             </label>
             <button class="hero-delete-btn" title="物理彻底删除" onclick="window.PlayerModule.deletePlayerFromDB('${escapeJS(p.name)}')">🗑️</button>
         `;

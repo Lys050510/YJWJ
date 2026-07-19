@@ -64,7 +64,7 @@
 
 /* 人员正面背景专项修正 */
 .card-front {
-    background: rgba(10, 10, 10, 0.95) url('../assets/card-bg2.png') no-repeat center center !important;
+    background: rgba(10, 10, 10, 0.95) url('../assets/card-bg2.webp') no-repeat center center !important;
     background-size: cover !important;
     color: white;
     display: flex;
@@ -116,7 +116,7 @@
 
 /* 卡片反面 */
 .card-back {
-    background: var(--color-bg-card) url('../assets/card_bg.png') no-repeat center center;
+    background: var(--color-bg-card) url('../assets/card_bg.webp') no-repeat center center;
     background-size: cover;
     transform: rotateY(180deg);
     display: flex;

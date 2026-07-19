@@ -2,7 +2,7 @@
 
 import { state } from '../core/state.js';
 import { saveConfig } from '../core/storage.js';
-import { getFormattedTime, getWeightedRandomIndex } from '../core/utils.js';
+import { escapeHTML, getFormattedTime, getWeightedRandomIndex } from '../core/utils.js';
 import { getEl } from '../core/dom.js';
 
 function getWeightedPrizeIndex(prizes) {
@@ -48,8 +48,8 @@ function renderPrizesDisplay() {
         card.className = 'prize-card';
         card.id = `prize-card-element-${index}`;
         card.innerHTML = `
-            <div class="prize-card-tier">${prize.tier}</div>
-            <div class="prize-card-name">${prize.name}</div>
+            <div class="prize-card-tier">${escapeHTML(prize.tier)}</div>
+            <div class="prize-card-name">${escapeHTML(prize.name)}</div>
         `;
         container.appendChild(card);
     });
@@ -126,6 +126,10 @@ function startPrizeDraw() {
                     if (!window.CURRENT_CONFIG.prizeLogs) {
                         window.CURRENT_CONFIG.prizeLogs = [];
                     }
+                    // 限制日志最多 500 条，防止 localStorage 溢出
+                    if (window.CURRENT_CONFIG.prizeLogs.length >= 500) {
+                        window.CURRENT_CONFIG.prizeLogs = window.CURRENT_CONFIG.prizeLogs.slice(0, 499);
+                    }
                     window.CURRENT_CONFIG.prizeLogs.unshift(newLog);
                     saveConfig();
                     renderPrizeLogs();
@@ -153,7 +157,7 @@ function renderPrizeLogs() {
 
     logs.forEach(log => {
         const li = document.createElement('li');
-        li.innerHTML = `[${log.time}] 选手 <strong>${log.name}</strong> 抽中了：<span style="color:#ffcc00; font-weight:bold;">${log.prize}</span>`;
+        li.innerHTML = `[${log.time}] 选手 <strong>${escapeHTML(log.name)}</strong> 抽中了：<span style="color:#ffcc00; font-weight:bold;">${escapeHTML(log.prize)}</span>`;
         listEl.appendChild(li);
     });
 }
@@ -178,8 +182,10 @@ function closePrizeSettings() {
     document.getElementById('prize-settings-modal').classList.remove('active');
     saveConfig();
     renderPrizesDisplay();
-    // 强制同步转盘
-    syncPresetWheels();
+    // 强制同步转盘（通过 window.WheelModule 显式调用，避免隐式全局依赖）
+    if (window.WheelModule && window.WheelModule.syncPresetWheels) {
+        window.WheelModule.syncPresetWheels();
+    }
 }
 
 function toggleAddPrizeForm(show) {
@@ -208,8 +214,8 @@ function initPrizesManageList() {
         row.className = 'option-item';
         row.style.gridTemplateColumns = '1fr 1.6fr 0.8fr 1fr 0.6fr';
         row.innerHTML = `
-            <input type="text" value="${prize.tier}" oninput="PrizeModule.updatePrizeField(${index}, 'tier', this.value)" placeholder="等阶" style="width:100%;">
-            <input type="text" value="${prize.name}" oninput="PrizeModule.updatePrizeField(${index}, 'name', this.value)" placeholder="名称" style="width:100%;">
+            <input type="text" value="${escapeHTML(prize.tier)}" oninput="PrizeModule.updatePrizeField(${index}, 'tier', this.value)" placeholder="等阶" style="width:100%;">
+            <input type="text" value="${escapeHTML(prize.name)}" oninput="PrizeModule.updatePrizeField(${index}, 'name', this.value)" placeholder="名称" style="width:100%;">
             <input type="number" step="any" min="0.1" value="${prize.weight}" oninput="PrizeModule.updatePrizeField(${index}, 'weight', this.value)" placeholder="权重" style="width:100%;">
             <span style="color:#e3a94a; font-weight:bold; font-size:13px; text-align:center;">${percentage}%</span>
             <button class="delete-btn" onclick="PrizeModule.deletePrizeFromDB(${index})">🗑️</button>

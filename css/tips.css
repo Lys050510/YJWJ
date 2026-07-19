@@ -71,7 +71,7 @@
 
 /* 锦囊专用卡正面 */
 .tip-card-front {
-    background: rgba(10, 10, 10, 0.95) url('../assets/card-bg3.png') no-repeat center center !important;
+    background: rgba(10, 10, 10, 0.95) url('../assets/card-bg3.webp') no-repeat center center !important;
     background-size: cover !important;
     color: var(--color-text-primary-alt);
     display: flex !important;
@@ -135,7 +135,7 @@
 
 /* 锦囊专用卡背面 */
 .tip-card-back {
-    background: var(--color-bg-card) url('../assets/card_bg1.png') no-repeat center center !important;
+    background: var(--color-bg-card) url('../assets/card_bg1.webp') no-repeat center center !important;
     background-size: cover !important;
     transform: rotateY(180deg);
 }

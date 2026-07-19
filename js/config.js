@@ -1,3 +1,10 @@
+// 基于页面路径生成唯一命名空间，防止同域下多项目 LocalStorage 键名冲突
+const STORAGE_KEY = (function() {
+    const path = window.location.pathname.replace(/\/$/, '') || '/';
+    const ns = path.split('/').filter(Boolean).join('_') || 'root';
+    return 'YJWJ_' + ns + '_CACHE';
+})();
+
 // 默认初始数据
 const DEFAULT_CONFIG = {
     // 【核心】智能同步版本号。手动在电脑上修改此文件后，只需将此数字 +1，网页刷新时即可自动载入最新修改！
@@ -5,33 +12,33 @@ const DEFAULT_CONFIG = {
 
     // 1. 27个英雄基础数据
     heroes: [
-        { name: "宁红夜", image: "assets/heroes/ninghongye.png", skills: ["F1昆仑决", "F2昆仑决·禁疗"], ultimates: ["V1赤练无明", "V2赤练无明·无拘"] },
-        { name: "沈妙", image: "assets/heroes/shenmiao.png", skills: ["F1铳武", "F2铳武·精准"], ultimates: ["V1铁卫召来", "V2铁卫召来·乙型"] },
-        { name: "天海", image: "assets/heroes/tianhai.png", skills: ["F1金钟罩", "F2金钟罩·振刀"], ultimates: ["V1金刚伏魔", "V2金刚伏魔·治愈"] },
-        { name: "殷紫萍", image: "assets/heroes/yinziping.png", skills: ["F1益气安神", "F2益气安神·滋养"], ultimates: ["V1悬壶济世", "V2悬壶济世·培元"] },
-        { name: "特木尔", image: "assets/heroes/temuer.png", skills: ["F1风之精灵", "F2风之精灵·追踪"], ultimates: ["V1风之牢笼", "V2风之牢笼·召唤"] },
-        { name: "季沧海", image: "assets/heroes/jicanghai.png", skills: ["F1燎原劲", "F2燎原劲·巨焰"], ultimates: ["V1迅烈如火", "V2迅烈如火·狂战"] },
-        { name: "胡桃", image: "assets/heroes/hutao.png", skills: ["F1庇护", "F2庇护·守护"], ultimates: ["V1净天地", "V2净天地·急疗"] },
-        { name: "妖刀姬", image: "assets/heroes/yaodaoji.png", skills: ["F1妖刀斩", "F2妖刀斩·旋"], ultimates: ["V1不祥之刃", "V2不祥之刃·连斩"] },
-        { name: "崔三娘", image: "assets/heroes/cuisanniang.png", skills: ["F1织雾", "F2织雾·瞬"], ultimates: ["V1深渊梦魇", "V2深渊梦魇·击"] },
-        { name: "岳山", image: "assets/heroes/yueshan.png", skills: ["F1陷阵", "F2陷阵·猛志"], ultimates: ["V1千军辟易", "V2千军辟易·固阵"] },
-        { name: "无尘", image: "assets/heroes/wuchen.png", skills: ["F1两仪剑", "F2两仪剑·易位"], ultimates: ["V1斗转星移", "V2斗转星移·剑雨"] },
-        { name: "顾清寒", image: "assets/heroes/guqinghan.png", skills: ["F1冰心诀", "F2冰心诀·瞬息"], ultimates: ["V1冰寒飞影", "V2冰寒飞影·霜风"] },
-        { name: "武田信忠", image: "assets/heroes/wutianxinzhong.png", skills: ["F1白刃取", "F2白刃取·夺", "F3白刃取·摔"], ultimates: ["V1封印解除", "V2封印解除·瞬", "V3封印解除·噬"] },
-        { name: "迦南", image: "assets/heroes/jianan.png", skills: ["F1追魂", "F2追魂·突刺"], ultimates: ["V1寂静暗刑", "V2寂静暗刑·夺命"] },
-        { name: "胡为", image: "assets/heroes/huwei.png", skills: ["F1镇山林", "F2镇山林·虎啸"], ultimates: ["V1虎威", "V2虎威·困兽犹斗"] },
-        { name: "季莹莹", image: "assets/heroes/jiyingying.png", skills: ["F1幽冥火", "F2幽冥火·突焰"], ultimates: ["V1无常锁", "V2无常锁·拘"] },
-        { name: "玉玲珑", image: "assets/heroes/yulinglong.png", skills: ["F1尾袭", "F2尾袭·阵"], ultimates: ["V1迷魂引", "V2迷魂引·聚"] },
-        { name: "哈迪", image: "assets/heroes/hadi.png", skills: ["F1夺天工", "F2夺天工·弹射"], ultimates: ["V1击长空", "V2击长空·炽热"] },
-        { name: "魏轻", image: "assets/heroes/weiqing.png", skills: ["F1执金令", "F2执金令·追捕"], ultimates: ["V1玄武正法", "V2玄武正法·归案"] },
-        { name: "刘炼", image: "assets/heroes/liulian.png", skills: ["F1驭金闪", "F2驭金闪·化磁"], ultimates: ["V1金石铄", "V2金石铄·核"] },
-        { name: "张起灵", image: "assets/heroes/zhangqiling.png", skills: ["F1发丘指", "F2发丘指·锁喉"], ultimates: ["V1麒麟怒", "V2麒麟怒·绝斩"] },
-        { name: "希拉", image: "assets/heroes/xila.png", skills: ["F1光晕", "F2光晕·瞬附"], ultimates: ["V1恩威之光", "V2恩威之光·阵"] },
-        { name: "蓝梦", image: "assets/heroes/lanmeng.png", skills: ["F1大变活人", "F2大变活人·袭"], ultimates: ["V1鱼龙彩戏", "V2鱼龙彩戏·跃"] },
-        { name: "万钧", image: "assets/heroes/wanjun.png", skills: ["F1掣电闪", "F2掣电闪·雷契"], ultimates: ["V1万雷铸身", "V2万雷铸身·锋"] },
-        { name: "李寻欢", image: "assets/heroes/lixunhuan.png", skills: ["F1探花步", "F2探花步·反击"], ultimates: ["V1片叶不沾", "V2片叶不沾·挥洒"] },
-        { name: "巫真", image: "assets/heroes/wuzhen.png", skills: ["F1灵羽", "F2灵羽·召"], ultimates: ["V1神弓镇祟", "V2神弓镇祟·晦"] },
-        { name: "甘璇", image: "assets/heroes/ganxuan.png", skills: ["F1引星诀", "F2引星诀·愈"], ultimates: ["V1天机衍", "V2天机衍·溯"] }
+        { name: "宁红夜", image: "assets/heroes/ninghongye.webp", skills: ["F1昆仑决", "F2昆仑决·禁疗"], ultimates: ["V1赤练无明", "V2赤练无明·无拘"] },
+        { name: "沈妙", image: "assets/heroes/shenmiao.webp", skills: ["F1铳武", "F2铳武·精准"], ultimates: ["V1铁卫召来", "V2铁卫召来·乙型"] },
+        { name: "天海", image: "assets/heroes/tianhai.webp", skills: ["F1金钟罩", "F2金钟罩·振刀"], ultimates: ["V1金刚伏魔", "V2金刚伏魔·治愈"] },
+        { name: "殷紫萍", image: "assets/heroes/yinziping.webp", skills: ["F1益气安神", "F2益气安神·滋养"], ultimates: ["V1悬壶济世", "V2悬壶济世·培元"] },
+        { name: "特木尔", image: "assets/heroes/temuer.webp", skills: ["F1风之精灵", "F2风之精灵·追踪"], ultimates: ["V1风之牢笼", "V2风之牢笼·召唤"] },
+        { name: "季沧海", image: "assets/heroes/jicanghai.webp", skills: ["F1燎原劲", "F2燎原劲·巨焰"], ultimates: ["V1迅烈如火", "V2迅烈如火·狂战"] },
+        { name: "胡桃", image: "assets/heroes/hutao.webp", skills: ["F1庇护", "F2庇护·守护"], ultimates: ["V1净天地", "V2净天地·急疗"] },
+        { name: "妖刀姬", image: "assets/heroes/yaodaoji.webp", skills: ["F1妖刀斩", "F2妖刀斩·旋"], ultimates: ["V1不祥之刃", "V2不祥之刃·连斩"] },
+        { name: "崔三娘", image: "assets/heroes/cuisanniang.webp", skills: ["F1织雾", "F2织雾·瞬"], ultimates: ["V1深渊梦魇", "V2深渊梦魇·击"] },
+        { name: "岳山", image: "assets/heroes/yueshan.webp", skills: ["F1陷阵", "F2陷阵·猛志"], ultimates: ["V1千军辟易", "V2千军辟易·固阵"] },
+        { name: "无尘", image: "assets/heroes/wuchen.webp", skills: ["F1两仪剑", "F2两仪剑·易位"], ultimates: ["V1斗转星移", "V2斗转星移·剑雨"] },
+        { name: "顾清寒", image: "assets/heroes/guqinghan.webp", skills: ["F1冰心诀", "F2冰心诀·瞬息"], ultimates: ["V1冰寒飞影", "V2冰寒飞影·霜风"] },
+        { name: "武田信忠", image: "assets/heroes/wutianxinzhong.webp", skills: ["F1白刃取", "F2白刃取·夺", "F3白刃取·摔"], ultimates: ["V1封印解除", "V2封印解除·瞬", "V3封印解除·噬"] },
+        { name: "迦南", image: "assets/heroes/jianan.webp", skills: ["F1追魂", "F2追魂·突刺"], ultimates: ["V1寂静暗刑", "V2寂静暗刑·夺命"] },
+        { name: "胡为", image: "assets/heroes/huwei.webp", skills: ["F1镇山林", "F2镇山林·虎啸"], ultimates: ["V1虎威", "V2虎威·困兽犹斗"] },
+        { name: "季莹莹", image: "assets/heroes/jiyingying.webp", skills: ["F1幽冥火", "F2幽冥火·突焰"], ultimates: ["V1无常锁", "V2无常锁·拘"] },
+        { name: "玉玲珑", image: "assets/heroes/yulinglong.webp", skills: ["F1尾袭", "F2尾袭·阵"], ultimates: ["V1迷魂引", "V2迷魂引·聚"] },
+        { name: "哈迪", image: "assets/heroes/hadi.webp", skills: ["F1夺天工", "F2夺天工·弹射"], ultimates: ["V1击长空", "V2击长空·炽热"] },
+        { name: "魏轻", image: "assets/heroes/weiqing.webp", skills: ["F1执金令", "F2执金令·追捕"], ultimates: ["V1玄武正法", "V2玄武正法·归案"] },
+        { name: "刘炼", image: "assets/heroes/liulian.webp", skills: ["F1驭金闪", "F2驭金闪·化磁"], ultimates: ["V1金石铄", "V2金石铄·核"] },
+        { name: "张起灵", image: "assets/heroes/zhangqiling.webp", skills: ["F1发丘指", "F2发丘指·锁喉"], ultimates: ["V1麒麟怒", "V2麒麟怒·绝斩"] },
+        { name: "希拉", image: "assets/heroes/xila.webp", skills: ["F1光晕", "F2光晕·瞬附"], ultimates: ["V1恩威之光", "V2恩威之光·阵"] },
+        { name: "蓝梦", image: "assets/heroes/lanmeng.webp", skills: ["F1大变活人", "F2大变活人·袭"], ultimates: ["V1鱼龙彩戏", "V2鱼龙彩戏·跃"] },
+        { name: "万钧", image: "assets/heroes/wanjun.webp", skills: ["F1掣电闪", "F2掣电闪·雷契"], ultimates: ["V1万雷铸身", "V2万雷铸身·锋"] },
+        { name: "李寻欢", image: "assets/heroes/lixunhuan.webp", skills: ["F1探花步", "F2探花步·反击"], ultimates: ["V1片叶不沾", "V2片叶不沾·挥洒"] },
+        { name: "巫真", image: "assets/heroes/wuzhen.webp", skills: ["F1灵羽", "F2灵羽·召"], ultimates: ["V1神弓镇祟", "V2神弓镇祟·晦"] },
+        { name: "甘璇", image: "assets/heroes/ganxuan.webp", skills: ["F1引星诀", "F2引星诀·愈"], ultimates: ["V1天机衍", "V2天机衍·溯"] }
     ],
 
     // 默认激活的英雄名单
@@ -48,30 +55,30 @@ const DEFAULT_CONFIG = {
 
     // 2. 武器大类基础数据
     weapons: [
-        { name: "阔刀", type: "melee", image: "assets/weapons/kuodao.png" },
-        { name: "斩马刀", type: "melee", image: "assets/weapons/zhanmadao.png" },
-        { name: "长剑", type: "melee", image: "assets/weapons/changjian.png" },
-        { name: "太刀", type: "melee", image: "assets/weapons/taidao.png" },
-        { name: "匕首", type: "melee", image: "assets/weapons/bishou.png" },
-        { name: "双节棍", type: "melee", image: "assets/weapons/shuangjiegun.png" },
-        { name: "双刀", type: "melee", image: "assets/weapons/shuangdao.png" },
-        { name: "双戟", type: "melee", image: "assets/weapons/shuangji.png" },
-        { name: "扇", type: "melee", image: "assets/weapons/shan.png" },
-        { name: "横刀", type: "melee", image: "assets/weapons/hengdao.png" },
-        { name: "枪", type: "melee", image: "assets/weapons/qiang.png" },
-        { name: "棍", type: "melee", image: "assets/weapons/gun.png" },
-        { name: "飞刀", type: "melee", image: "assets/weapons/feidao.png" },
-        { name: "拳刃", type: "melee", image: "assets/weapons/quanren.png" },
-        { name: "链剑", type: "melee", image: "assets/weapons/lianjian.png" },
-        { name: "万刃轮", type: "melee", image: "assets/weapons/wanrenlun.png" },
-        { name: "火炮", type: "ranged", image: "assets/weapons/huopao.png" },
-        { name: "连弩", type: "ranged", image: "assets/weapons/liannu.png" },
-        { name: "鸟铳", type: "ranged", image: "assets/weapons/niaochong.png" },
-        { name: "弓箭", type: "ranged", image: "assets/weapons/gongjian.png" },
-        { name: "五眼铳", type: "ranged", image: "assets/weapons/wuyanchong.png" },
-        { name: "双铳", type: "ranged", image: "assets/weapons/shuangchong.png" },
-        { name: "一窝蜂", type: "ranged", image: "assets/weapons/yiwofeng.png" },
-        { name: "喷火筒", type: "ranged", image: "assets/weapons/penhuotong.png" }
+        { name: "阔刀", type: "melee", image: "assets/weapons/kuodao.webp" },
+        { name: "斩马刀", type: "melee", image: "assets/weapons/zhanmadao.webp" },
+        { name: "长剑", type: "melee", image: "assets/weapons/changjian.webp" },
+        { name: "太刀", type: "melee", image: "assets/weapons/taidao.webp" },
+        { name: "匕首", type: "melee", image: "assets/weapons/bishou.webp" },
+        { name: "双节棍", type: "melee", image: "assets/weapons/shuangjiegun.webp" },
+        { name: "双刀", type: "melee", image: "assets/weapons/shuangdao.webp" },
+        { name: "双戟", type: "melee", image: "assets/weapons/shuangji.webp" },
+        { name: "扇", type: "melee", image: "assets/weapons/shan.webp" },
+        { name: "横刀", type: "melee", image: "assets/weapons/hengdao.webp" },
+        { name: "枪", type: "melee", image: "assets/weapons/qiang.webp" },
+        { name: "棍", type: "melee", image: "assets/weapons/gun.webp" },
+        { name: "飞刀", type: "melee", image: "assets/weapons/feidao.webp" },
+        { name: "拳刃", type: "melee", image: "assets/weapons/quanren.webp" },
+        { name: "链剑", type: "melee", image: "assets/weapons/lianjian.webp" },
+        { name: "万刃轮", type: "melee", image: "assets/weapons/wanrenlun.webp" },
+        { name: "火炮", type: "ranged", image: "assets/weapons/huopao.webp" },
+        { name: "连弩", type: "ranged", image: "assets/weapons/liannu.webp" },
+        { name: "鸟铳", type: "ranged", image: "assets/weapons/niaochong.webp" },
+        { name: "弓箭", type: "ranged", image: "assets/weapons/gongjian.webp" },
+        { name: "五眼铳", type: "ranged", image: "assets/weapons/wuyanchong.webp" },
+        { name: "双铳", type: "ranged", image: "assets/weapons/shuangchong.webp" },
+        { name: "一窝蜂", type: "ranged", image: "assets/weapons/yiwofeng.webp" },
+        { name: "喷火筒", type: "ranged", image: "assets/weapons/penhuotong.webp" }
     ],
 
     // 默认激活的武器名单
@@ -91,11 +98,11 @@ const DEFAULT_CONFIG = {
 
     // 3. 人员基础数据
     players: [
-        { name: "不会捏蓝", image: "assets/players/buhuinielan.jpeg" },
-        { name: "冬日川", image: "assets/players/dongrichuan.jpeg" },
-        { name: "今晚打虎", image: "assets/players/jinwandahu.jpeg" },
-        { name: "格子", image: "assets/players/gezi.jpeg" }, 
-        { name: "啵酱", image: "assets/players/bojiang.jpeg" }
+        { name: "不会捏蓝", image: "assets/players/buhuinielan.webp" },
+        { name: "冬日川", image: "assets/players/dongrichuan.webp" },
+        { name: "今晚打虎", image: "assets/players/jinwandahu.webp" },
+        { name: "格子", image: "assets/players/gezi.webp" }, 
+        { name: "啵酱", image: "assets/players/bojiang.webp" }
     ],
 
     // 默认激活的人员名单
@@ -214,15 +221,20 @@ let CURRENT_CONFIG;
 // 1. 读取本地缓存（安全解析，防止数据损坏导致崩溃）
 let localCache = null;
 try {
-    const raw = localStorage.getItem("UP_LOTTERY_SMART_CACHE");
+    const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) localCache = JSON.parse(raw);
 } catch (e) {
     console.warn("本地缓存数据损坏，将使用默认配置重新初始化:", e);
     localCache = null;
 }
 
-// 2. 判断是否需要同步磁盘文件数据 (升级至 10：全面修复变量漏项，注入锦囊核心)
-if (!localCache || DEFAULT_CONFIG.configVersion > localCache.configVersion) {
+// 2. 规范化版本号：旧数据无版本号视为 0，强制触发迁移
+if (!localCache || typeof localCache.configVersion !== 'number') {
+    localCache = localCache || {};
+    localCache.configVersion = 0;
+}
+// 判断是否需要同步磁盘文件数据 (升级至 15：全面修复变量漏项，注入锦囊核心)
+if (DEFAULT_CONFIG.configVersion > (localCache.configVersion || 0)) {
     let activeHeroes = localCache ? localCache.activeHeroNames : DEFAULT_CONFIG.activeHeroNames;
     let activeWeapons = localCache ? localCache.activeWeaponNames : DEFAULT_CONFIG.activeWeaponNames;
     let activePlayers = localCache ? (localCache.activePlayerNames || DEFAULT_CONFIG.activePlayerNames) : DEFAULT_CONFIG.activePlayerNames;
@@ -261,7 +273,7 @@ if (!localCache || DEFAULT_CONFIG.configVersion > localCache.configVersion) {
     };
     
     // 保存至浏览器本地存储
-    localStorage.setItem("UP_LOTTERY_SMART_CACHE", JSON.stringify(CURRENT_CONFIG));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(CURRENT_CONFIG));
 } else {
     // 3. 如果没有改变 configVersion，读取本地缓存
     CURRENT_CONFIG = localCache;
@@ -315,7 +327,7 @@ window.CURRENT_CONFIG = CURRENT_CONFIG;
 function saveConfigToLocal() {
     try {
         const json = JSON.stringify(CURRENT_CONFIG);
-        localStorage.setItem("UP_LOTTERY_SMART_CACHE", json);
+        localStorage.setItem(STORAGE_KEY, json);
     } catch (e) {
         console.error("保存配置失败，可能是存储空间不足:", e);
         // 尝试用 alert 通知用户（此时 toast 系统可能未加载）

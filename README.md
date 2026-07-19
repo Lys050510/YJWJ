@@ -1,4 +1,4 @@
-# 永劫无间擂台赛随机抽取工具
+# 永劫无间
 
 纯前端静态网页，为永劫无间擂台赛直播提供：英雄/武器/人员/锦囊/奖品抽取、转盘、计分排名等功能。
 
@@ -8,7 +8,7 @@
 |---|------|
 | 框架 | 无框架，原生 HTML + CSS + JS |
 | 模块化 | ES Module（`<script type="module">`） |
-| 数据持久化 | `localStorage`，键名 `UP_LOTTERY_SMART_CACHE` |
+| 数据持久化 | `localStorage`，键名基于路径命名空间 `YJWJ_*_CACHE`（防同源冲突） |
 | 构建 | 无构建工具，静态文件直接部署 |
 | CSS | 自定义属性（CSS Variables），12 个模块化文件 |
 | 兼容 | Chrome / Edge / Firefox 现代版本 |
@@ -59,7 +59,7 @@ YJWJ/
 │   │
 │   ├── core/                  # 基础设施层
 │   │   ├── state.js           #   全局可变状态对象 { state }（所有模块共享）
-│   │   ├── storage.js         #   localStorage 安全读写 + getActiveMode/Rounds
+│   │   ├── storage.js         #   localStorage 安全读写 + 路径命名空间 + 容量预警 + 防抖保存
 │   │   ├── utils.js           #   escapeHTML, escapeJS, shuffleArray, hslToHex 等
 │   │   ├── dom.js             #   DOM 元素懒加载缓存 getEl(id)
 │   │   └── crud.js            #   通用 CRUD 辅助（表单切换、勾选网格、全选）
@@ -127,9 +127,10 @@ state.isScrolling = true;   // ✅ 修改对象属性，合法
 `js/config.js` 使用**智能版本同步**机制：
 
 1. `DEFAULT_CONFIG.configVersion` 是一个纯数字（当前为 15）
-2. 页面加载时，比较 `configVersion` 与 `localStorage` 中的版本
+2. 页面加载时，比较 `configVersion` 与 `localStorage` 中的版本（旧数据无版本号视为 0，强制触发迁移）
 3. 如果磁盘版本更高 → 合并：新数据从 DEFAULT_CONFIG 取，用户设置从 localStorage 保留
 4. 如果版本一致 → 直接从 localStorage 加载
+5. LocalStorage 键名基于 `location.pathname` 自动生成（如 `YJWJ_yjwj-lottery_CACHE`），防止同源多项目冲突
 
 **修改配置的正确姿势**：
 1. 编辑 `js/config.js` 中的 `DEFAULT_CONFIG`（如新增英雄/武器/锦囊）
@@ -189,7 +190,7 @@ color: #aaa;
 
 ## 部署上线
 
-本项目是纯静态文件，可部署到任何静态托管服务：
+本项目是纯静态文件，可部署到任何静态托管服务。
 
 **推荐：GitHub Pages（免费）**
 1. 创建 GitHub 仓库，推送代码
@@ -197,7 +198,19 @@ color: #aaa;
 3. 获得 `https://用户名.github.io/仓库名` 域名
 4. 可选：绑定自定义域名
 
+**注意事项**：
+- 页面已添加 `<base href="./">` 确保子目录部署时资源路径正确
+- LocalStorage 键名基于 `location.pathname` 自动生成命名空间，避免同一域名下多项目数据冲突
+- GitHub Pages 等共享 `*.github.io` 源的服务，不同仓库的数据天然隔离
+
 也支持 Vercel、Netlify、Cloudflare Pages 等，直接拖拽文件夹即可上线。
+
+## 安全性
+
+- **XSS 防御**：所有用户输入（选手名、奖品名、锦囊名/描述、武器名、转盘选项等）渲染到 DOM 前均通过 `escapeHTML()` / `escapeJS()` 转义
+- **资源兜底**：所有 `<img>` 标签均配置 `onerror` 回落，使用 `querySelector` 查找 fallback 元素（而非脆弱的 `nextElementSibling`）
+- **存储安全**：`localStorage` 读写均有 try/catch 保护；超过 4MB 自动 toast 预警；日志自动裁剪（奖品日志 ≤500 条，锦囊日志 ≤200 条）
+- **`<base href="./">`**：防御性标签，防止未来误写绝对根路径 `/assets/...` 导致子目录部署 404
 
 ## 模块功能速览
 

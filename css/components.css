@@ -321,7 +321,7 @@
     width: 220px;
     height: 300px;
     border: 3px solid var(--color-gold);
-    background: rgba(10, 10, 10, 0.9) url('../assets/card-bg.png') no-repeat center center;
+    background: rgba(10, 10, 10, 0.9) url('../assets/card-bg.webp') no-repeat center center;
     background-size: cover;
     overflow: hidden;
     position: relative;

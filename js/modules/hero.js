@@ -97,18 +97,18 @@ export function renderCardHTML(item) {
     if (isHero) {
         return `
             <div class="scroll-item">
-                <img src="${imgUrl}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <img src="${escapeHTML(imgUrl)}" onerror="this.style.display='none';var fb=this.parentElement.querySelector('.avatar-fallback');if(fb)fb.style.display='flex';">
                 <div class="avatar-fallback" style="display:none; width:140px; height:140px; border-radius:50%; background:#222; border:3px solid #b3863b; align-items:center; justify-content:center; font-size:32px; font-weight:bold; color:#b3863b; margin-bottom:15px; margin-left:auto; margin-right:auto;">
-                    ${name[0]}
+                    ${escapeHTML(name[0])}
                 </div>
-                <div class="slot-name">${name}</div>
+                <div class="slot-name">${escapeHTML(name)}</div>
             </div>
         `;
     } else {
         return `
             <div class="scroll-item">
                 <div class="slot-img-placeholder">💡</div>
-                <div class="slot-name" style="font-size:20px;">${name}</div>
+                <div class="slot-name" style="font-size:20px;">${escapeHTML(name)}</div>
             </div>
         `;
     }
@@ -129,8 +129,8 @@ export function initHeroSettingsGrid() {
         itemBox.className = 'hero-manage-item';
         itemBox.innerHTML = `
             <label>
-                <input type="checkbox" value="${h.name}" ${isChecked ? 'checked' : ''} onchange="onHeroCheckboxChange(this)">
-                <span>${h.name}</span>
+                <input type="checkbox" value="${escapeHTML(h.name)}" ${isChecked ? 'checked' : ''} onchange="onHeroCheckboxChange(this)">
+                <span>${escapeHTML(h.name)}</span>
             </label>
             <button class="hero-delete-btn" title="彻底删除此英雄" onclick="deleteHeroFromDB('${escapeJS(h.name)}')">🗑️</button>
         `;
@@ -223,7 +223,7 @@ export function submitNewHero() {
     }
 
     if (!imgFile) {
-        imgFile = "default.png";
+        imgFile = "default.webp";
     }
 
     if (window.CURRENT_CONFIG.heroes.some(h => h.name === name)) {

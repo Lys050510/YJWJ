@@ -2,6 +2,7 @@
 import { getConfig } from './state.js';
 import { saveConfig } from './storage.js';
 import { showToast } from '../ui/toast.js';
+import { escapeHTML } from './utils.js';
 
 /**
  * 创建通用的表单显隐切换函数
@@ -52,14 +53,15 @@ export function renderCheckboxGrid(containerId, items, activeNames, onToggle, on
 
     items.forEach(item => {
         const isChecked = activeNames.includes(item.name);
+        const escapedName = escapeHTML(item.name);
         const itemBox = document.createElement('div');
         itemBox.className = 'hero-manage-item';
         itemBox.innerHTML = `
             <label>
-                <input type="checkbox" value="${item.name}" ${isChecked ? 'checked' : ''} data-name="${item.name}">
-                <span>${item.name}</span>
+                <input type="checkbox" value="${escapedName}" ${isChecked ? 'checked' : ''} data-name="${escapedName}">
+                <span>${escapedName}</span>
             </label>
-            ${onDelete ? `<button class="hero-delete-btn" title="彻底删除" data-delete="${item.name}">🗑️</button>` : ''}
+            ${onDelete ? `<button class="hero-delete-btn" title="彻底删除" data-delete="${escapedName}">🗑️</button>` : ''}
         `;
 
         // 勾选事件
