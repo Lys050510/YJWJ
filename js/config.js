@@ -108,11 +108,12 @@ const DEFAULT_CONFIG = {
         { name: "Spider", image: "assets/players/spider.webp" },
         { name: "南一", image: "assets/players/nanyi.webp" },
         { name: "麻辣毛蛋", image: "assets/players/malamamaodan.webp" },
-        { name: "薄荷奶绿", image: "assets/players/bohenailv.webp" }
+        { name: "薄荷奶绿", image: "assets/players/bohenailv.webp" },
+        { name: "Mike", image: "assets/players/mike.webp" }
     ],
 
     // 默认激活的人员名单
-    activePlayerNames: ["不会捏蓝", "冬日川", "今晚打虎", "格子", "啵酱", "克烈", "疯尤金疯尤金", "Spider", "南一", "麻辣毛蛋", "薄荷奶绿"],
+    activePlayerNames: ["不会捏蓝", "冬日川", "今晚打虎", "格子", "啵酱", "克烈", "疯尤金疯尤金", "Spider", "南一", "麻辣毛蛋", "薄荷奶绿", "Mike"],
 
     // 4. 锦囊库与设置数据
     tips: [

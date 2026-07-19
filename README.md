@@ -104,7 +104,7 @@ YJWJ/
     ├── card-bg*.webp          #   卡片背景（7张，共 0.6 MB，原 51 MB）
     ├── heroes/                #   27个英雄头像（2-4 KB WebP）
     ├── weapons/               #   24个武器图标（2-5 KB WebP）
-    └── players/               #   5个选手照片（7-28 KB WebP）
+    └── players/               #   12个选手照片（7-28 KB WebP）
 ```
 
 ## 架构设计
