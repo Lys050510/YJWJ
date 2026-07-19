@@ -99,21 +99,21 @@ const DEFAULT_CONFIG = {
     // 3. 人员基础数据
     players: [
         { name: "不会捏蓝", image: "assets/players/buhuinielan.webp" },
+        { name: "疯尤金疯尤金", image: "assets/players/fengyoujinfengyoujin.webp" },
+        { name: "克烈", image: "assets/players/kelie.webp" },
         { name: "冬日川", image: "assets/players/dongrichuan.webp" },
         { name: "今晚打虎", image: "assets/players/jinwandahu.webp" },
-        { name: "格子", image: "assets/players/gezi.webp" }, 
+        { name: "格子", image: "assets/players/gezi.webp" },
         { name: "啵酱", image: "assets/players/bojiang.webp" },
-        { name: "克烈", image: "assets/players/kelie.webp" },
-        { name: "疯尤金疯尤金", image: "assets/players/fengyoujinfengyoujin.webp" },
+        { name: "Mike", image: "assets/players/mike.webp" },
         { name: "Spider", image: "assets/players/spider.webp" },
         { name: "南一", image: "assets/players/nanyi.webp" },
-        { name: "麻辣毛蛋", image: "assets/players/malamamaodan.webp" },
         { name: "薄荷奶绿", image: "assets/players/bohenailv.webp" },
-        { name: "Mike", image: "assets/players/mike.webp" }
+        { name: "麻辣毛蛋", image: "assets/players/malamamaodan.webp" }
     ],
 
     // 默认激活的人员名单
-    activePlayerNames: ["不会捏蓝", "冬日川", "今晚打虎", "格子", "啵酱", "克烈", "疯尤金疯尤金", "Spider", "南一", "麻辣毛蛋", "薄荷奶绿", "Mike"],
+    activePlayerNames: ["不会捏蓝", "疯尤金疯尤金", "克烈"],
 
     // 4. 锦囊库与设置数据
     tips: [

@@ -21,7 +21,8 @@
       "Bash(grep -c \"/\\\\* ==\" css/main.css)",
       "Bash(chmod +x *)",
       "Bash(git push *)",
-      "Bash(node *)"
+      "Bash(node *)",
+      "Bash(pip install *)"
     ]
   }
 }
