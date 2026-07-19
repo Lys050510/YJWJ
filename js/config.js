@@ -8,7 +8,7 @@ const STORAGE_KEY = (function() {
 // 默认初始数据
 const DEFAULT_CONFIG = {
     // 【核心】智能同步版本号。手动在电脑上修改此文件后，只需将此数字 +1，网页刷新时即可自动载入最新修改！
-    configVersion: 17, // 升级为版本 17：新增6名人员（克烈/疯尤金疯尤金/Spider/南一/麻辣毛蛋/薄荷奶绿）
+    configVersion: 18, // 升级为版本 18：新增3名人员（Pigg/夜雨声烦/猪排小肥），调整排序及默认激活
 
     // 1. 27个英雄基础数据
     heroes: [
