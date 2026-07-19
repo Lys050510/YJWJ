@@ -20,7 +20,8 @@
       "Bash(cat css/variables.css css/layout.css css/components.css css/animations.css css/weapons.css css/players.css css/prizes.css css/tips.css css/wheel.css css/scoreboard.css css/overlay.css css/responsive.css)",
       "Bash(grep -c \"/\\\\* ==\" css/main.css)",
       "Bash(chmod +x *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(node *)"
     ]
   }
 }

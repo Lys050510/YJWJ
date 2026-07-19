@@ -8,7 +8,7 @@ const STORAGE_KEY = (function() {
 // 默认初始数据
 const DEFAULT_CONFIG = {
     // 【核心】智能同步版本号。手动在电脑上修改此文件后，只需将此数字 +1，网页刷新时即可自动载入最新修改！
-    configVersion: 15, // 升级为版本 15
+    configVersion: 16, // 升级为版本 16：修复全新环境初始化时 activeHeroNames 等字段为 undefined 的 bug
 
     // 1. 27个英雄基础数据
     heroes: [
@@ -235,12 +235,14 @@ if (!localCache || typeof localCache.configVersion !== 'number') {
 }
 // 判断是否需要同步磁盘文件数据 (升级至 15：全面修复变量漏项，注入锦囊核心)
 if (DEFAULT_CONFIG.configVersion > (localCache.configVersion || 0)) {
-    let activeHeroes = localCache ? localCache.activeHeroNames : DEFAULT_CONFIG.activeHeroNames;
-    let activeWeapons = localCache ? localCache.activeWeaponNames : DEFAULT_CONFIG.activeWeaponNames;
+    // 注意：全新环境下 localCache 被初始化为 {configVersion:0}（truthy），
+    // 必须用 || 兜底，否则取到 undefined（#16 修复）
+    let activeHeroes = localCache ? (localCache.activeHeroNames || DEFAULT_CONFIG.activeHeroNames) : DEFAULT_CONFIG.activeHeroNames;
+    let activeWeapons = localCache ? (localCache.activeWeaponNames || DEFAULT_CONFIG.activeWeaponNames) : DEFAULT_CONFIG.activeWeaponNames;
     let activePlayers = localCache ? (localCache.activePlayerNames || DEFAULT_CONFIG.activePlayerNames) : DEFAULT_CONFIG.activePlayerNames;
     let activeTips = localCache ? (localCache.activeTipNames || DEFAULT_CONFIG.activeTipNames) : DEFAULT_CONFIG.activeTipNames;
-    let heroSettings = localCache ? localCache.heroDrawSettings : DEFAULT_CONFIG.heroDrawSettings;
-    let weaponSettings = localCache ? localCache.weaponDrawSettings : DEFAULT_CONFIG.weaponDrawSettings;
+    let heroSettings = localCache ? (localCache.heroDrawSettings || DEFAULT_CONFIG.heroDrawSettings) : DEFAULT_CONFIG.heroDrawSettings;
+    let weaponSettings = localCache ? (localCache.weaponDrawSettings || DEFAULT_CONFIG.weaponDrawSettings) : DEFAULT_CONFIG.weaponDrawSettings;
     
     // 【修复核心】彻底提取磁盘中的锦囊配置与已选项
     let cachedTips = DEFAULT_CONFIG.tips;
@@ -304,6 +306,22 @@ if (DEFAULT_CONFIG.configVersion > (localCache.configVersion || 0)) {
     }
     if (!CURRENT_CONFIG.scoreboard || !CURRENT_CONFIG.scoreboard.rounds8 || !CURRENT_CONFIG.scoreboard.rounds12) {
         CURRENT_CONFIG.scoreboard = DEFAULT_CONFIG.scoreboard;
+    }
+    // #16 修复：兜底补全迁移分支漏掉的字段（全新环境首次访问被保存了 undefined 后再访问会走这里）
+    if (!CURRENT_CONFIG.activeHeroNames) {
+        CURRENT_CONFIG.activeHeroNames = DEFAULT_CONFIG.activeHeroNames;
+    }
+    if (!CURRENT_CONFIG.activeWeaponNames) {
+        CURRENT_CONFIG.activeWeaponNames = DEFAULT_CONFIG.activeWeaponNames;
+    }
+    if (!CURRENT_CONFIG.activePlayerNames) {
+        CURRENT_CONFIG.activePlayerNames = DEFAULT_CONFIG.activePlayerNames;
+    }
+    if (!CURRENT_CONFIG.heroDrawSettings) {
+        CURRENT_CONFIG.heroDrawSettings = DEFAULT_CONFIG.heroDrawSettings;
+    }
+    if (!CURRENT_CONFIG.weaponDrawSettings) {
+        CURRENT_CONFIG.weaponDrawSettings = DEFAULT_CONFIG.weaponDrawSettings;
     }
     // 兼容性补全：为旧数据 entries 补充 hero/eliminated/eliminatedAt 字段
     ['rounds8','rounds12'].forEach(key => {
