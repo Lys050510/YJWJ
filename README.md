@@ -1,6 +1,8 @@
-# 永劫无间
+# 永劫无间擂台赛随机抽取工具
 
 纯前端静态网页，为永劫无间擂台赛直播提供：英雄/武器/人员/锦囊/奖品抽取、转盘、计分排名等功能。
+
+> 🚀 已上线：**[yjwj666.top](https://yjwj666.top/)**（Cloudflare + GitHub Pages，国内可直接访问）
 
 ## 技术栈
 
@@ -10,19 +12,31 @@
 | 模块化 | ES Module（`<script type="module">`） |
 | 数据持久化 | `localStorage`，键名基于路径命名空间 `YJWJ_*_CACHE`（防同源冲突） |
 | 构建 | 无构建工具，静态文件直接部署 |
-| CSS | 自定义属性（CSS Variables），12 个模块化文件 |
+| CSS | 自定义属性（CSS Variables），12 个源文件 → 生产合并为 1 个 `main.css` |
+| 图片 | WebP 格式，卡片背景 50MB → 1MB（压缩 98%） |
+| 加载优化 | CSS 合并 + 图片 WebP + JS modulepreload 预加载 |
 | 兼容 | Chrome / Edge / Firefox 现代版本 |
 
 ## 快速开始
 
 ```bash
-# 必须通过 HTTP 服务器访问（ES Module 不支持 file:// 协议）
+# 本地开发：必须通过 HTTP 服务器访问（ES Module 不支持 file:// 协议）
 python -m http.server 8080
 # 浏览器打开 http://localhost:8080
 ```
 
 > **为什么不能双击 index.html？**  
 > ES Module 受浏览器安全策略限制，`file://` 协议下会报 CORS 错误。部署到服务器 / GitHub Pages 后无此限制。
+
+### 构建工具
+
+```bash
+# 编辑 CSS 后重新合并（12 个独立文件 → 1 个 main.css）
+bash tools/build-css.sh
+
+# 添加新图片后批量转 WebP
+python tools/compress_images.py
+```
 
 ## 目录结构
 
@@ -31,7 +45,7 @@ YJWJ/
 ├── index.html               # 主页面（770行 → 精简后）
 ├── package.json              # npm start / npx serve .
 │
-├── css/                      # CSS（12个文件，按模块拆分）
+├── css/                      # CSS（12个源文件 + 1个合并文件）
 │   ├── variables.css         #   设计令牌：颜色、间距、圆角、阴影
 │   ├── layout.css            #   全局布局：导航栏、主容器、标签系统
 │   ├── components.css        #   通用组件：按钮、弹窗、表单、卡片、滚动框
@@ -43,7 +57,8 @@ YJWJ/
 │   ├── wheel.css              #   转盘Canvas、配置面板
 │   ├── scoreboard.css         #   计分板三栏布局、编辑器、排行榜
 │   ├── overlay.css            #   OBS悬浮窗样式
-│   └── responsive.css         #   响应式：480px / 768px / 1024px 断点
+│   ├── responsive.css         #   响应式：480px / 768px / 1024px 断点
+│   └── main.css              #   ⚡ 生产加载（1次HTTP请求代替12次）
 │
 ├── js/
 │   ├── config.js              # 全局配置（非模块 script，最先加载）
@@ -80,12 +95,16 @@ YJWJ/
 │   └── minigames/             # 模块九（未来）：小游戏集合
 │       └── _template.js       #   游戏开发模板
 │
-└── assets/                    # 图片资源
-    ├── bg.png                 #   页面背景（建议压缩至 <300KB）
-    ├── card-bg*.png           #   卡片背景（7张，建议压缩去重）
-    ├── heroes/                #   27个英雄头像（14-19KB PNG）
-    ├── weapons/               #   24个武器图标（14-24KB PNG）
-    └── players/               #   5个选手照片（8-23KB JPEG）
+├── tools/                    # 构建工具脚本
+│   ├── build-css.sh           #   CSS 合并脚本
+│   └── compress_images.py     #   PNG/JPEG → WebP 批量转换
+│
+└── assets/                    # 图片资源（WebP + 原始 PNG）
+    ├── bg.webp                #   页面背景（139 KB，原 7 MB）
+    ├── card-bg*.webp          #   卡片背景（7张，共 0.6 MB，原 51 MB）
+    ├── heroes/                #   27个英雄头像（2-4 KB WebP）
+    ├── weapons/               #   24个武器图标（2-5 KB WebP）
+    └── players/               #   5个选手照片（7-28 KB WebP）
 ```
 
 ## 架构设计
@@ -181,29 +200,24 @@ border-color: #b3863b;
 color: #aaa;
 ```
 
-### 图片压缩
+### 图片格式
 
-当前背景图总计 ~50MB，对 Web 部署不友好。建议：
-- 使用 [Squoosh](https://squoosh.app/) 或 [TinyPNG](https://tinypng.com/) 压缩
-- 背景图转为 WebP，目标每张 < 300KB
-- 英雄/武器图标保持 PNG（需透明通道），但可进一步压缩
+图片已全部转为 WebP（卡片背景 50MB → 1MB，节省 98%）。新增图片请使用 WebP 格式，或放入 `assets/` 后运行 `python tools/compress_images.py` 批量转换。原始 PNG 文件保留在 `assets/` 下作为备份。
 
 ## 部署上线
 
+> **当前状态**：已部署在 **[yjwj666.top](https://yjwj666.top/)**，通过 Cloudflare DNS 代理 GitHub Pages，国内直连访问。
+
 本项目是纯静态文件，可部署到任何静态托管服务。
 
-**推荐：GitHub Pages（免费）**
-1. 创建 GitHub 仓库，推送代码
-2. Settings → Pages → 选择分支 → 保存
-3. 获得 `https://用户名.github.io/仓库名` 域名
-4. 可选：绑定自定义域名
+**当前方案：GitHub Pages + Cloudflare 自定义域名**
+1. 代码推送至 GitHub → GitHub Pages 自动部署 `lys050510.github.io/YJWJ/`
+2. Cloudflare DNS 将 `yjwj666.top` CNAME 到 GitHub Pages
+3. Cloudflare CDN 提供国内加速 + 免费 HTTPS
 
-**注意事项**：
-- 页面已添加 `<base href="./">` 确保子目录部署时资源路径正确
-- LocalStorage 键名基于 `location.pathname` 自动生成命名空间，避免同一域名下多项目数据冲突
-- GitHub Pages 等共享 `*.github.io` 源的服务，不同仓库的数据天然隔离
+**更新流程**：`git push` → 等 1-2 分钟自动生效（如有缓存，在 Cloudflare 清除）
 
-也支持 Vercel、Netlify、Cloudflare Pages 等，直接拖拽文件夹即可上线。
+**备选平台**：也支持 Vercel、Netlify、Cloudflare Pages、腾讯云 EdgeOne Pages 等，直接拖拽文件夹即可上线。
 
 ## 安全性
 
