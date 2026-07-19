@@ -109,7 +109,10 @@ const DEFAULT_CONFIG = {
         { name: "Spider", image: "assets/players/spider.webp" },
         { name: "南一", image: "assets/players/nanyi.webp" },
         { name: "薄荷奶绿", image: "assets/players/bohenailv.webp" },
-        { name: "麻辣毛蛋", image: "assets/players/malamamaodan.webp" }
+        { name: "麻辣毛蛋", image: "assets/players/malamamaodan.webp" },
+        { name: "Pigg", image: "assets/players/pigg.webp" },
+        { name: "夜雨声烦", image: "assets/players/yeyushengfan.webp" },
+        { name: "猪排小肥", image: "assets/players/zhupaixiaofei.webp" }
     ],
 
     // 默认激活的人员名单

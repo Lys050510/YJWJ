@@ -10,13 +10,13 @@
     margin-bottom: var(--spacing-lg);
 }
 
-/* 卡牌网格容器 */
+/* 卡牌网格容器 — 居中布局，少量卡片时聚拢 */
 .cards-grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: var(--spacing-lg);
     margin: var(--spacing-xl) 0;
-    justify-items: center;
 }
 
 /* 3D 卡片外盒 */
