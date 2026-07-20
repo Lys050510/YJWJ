@@ -8,7 +8,7 @@ const STORAGE_KEY = (function() {
 // 默认初始数据
 const DEFAULT_CONFIG = {
     // 【核心】智能同步版本号。手动在电脑上修改此文件后，只需将此数字 +1，网页刷新时即可自动载入最新修改！
-    configVersion: 18, // 升级为版本 18：新增3名人员（Pigg/夜雨声烦/猪排小肥），调整排序及默认激活
+    configVersion: 19, // 升级为版本 19：Pigg→崔狱、夜雨声烦→校裙
 
     // 1. 27个英雄基础数据
     heroes: [
@@ -110,8 +110,8 @@ const DEFAULT_CONFIG = {
         { name: "南一", image: "assets/players/nanyi.webp" },
         { name: "薄荷奶绿", image: "assets/players/bohenailv.webp" },
         { name: "麻辣毛蛋", image: "assets/players/malamamaodan.webp" },
-        { name: "Pigg", image: "assets/players/pigg.webp" },
-        { name: "夜雨声烦", image: "assets/players/yeyushengfan.webp" },
+        { name: "崔狱", image: "assets/players/cuiyu.webp" },
+        { name: "校裙", image: "assets/players/xiaoqun.webp" },
         { name: "猪排小肥", image: "assets/players/zhupaixiaofei.webp" }
     ],
 
