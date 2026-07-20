@@ -22,7 +22,9 @@
       "Bash(chmod +x *)",
       "Bash(git push *)",
       "Bash(node *)",
-      "Bash(pip install *)"
+      "Bash(pip install *)",
+      "Bash(bash tools/build-css.sh)",
+      "Bash(git rm *)"
     ]
   }
 }

@@ -632,6 +632,161 @@ h2 {
 .delete-btn:hover {
     background: var(--color-danger-dark-hover);
 }
+
+/* ==================== 赞助支持 ==================== */
+
+/* 左上角固定定位按钮 */
+.sponsor-btn {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 998;                 /* 低于弹窗 999，高于其他内容 */
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: transparent;
+    color: var(--color-gold);
+    border: 1px dashed var(--border-gold);
+    padding: 4px 10px;
+    font-size: 13px;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    opacity: 0.4;
+    transition: opacity var(--transition-smooth),
+                border-color var(--transition-smooth),
+                background var(--transition-smooth);
+    font-family: var(--font-main);
+}
+
+.sponsor-btn:hover {
+    opacity: 1;
+    border-color: var(--color-gold-bright);
+    border-style: solid;
+    background: rgba(179, 134, 59, 0.1);
+}
+
+/* Tooltip 悬停提示 */
+.sponsor-btn::after {
+    content: "☕ 给作者买杯coffee，支持本站长期维护";
+    position: absolute;
+    left: 0;
+    top: calc(100% + 8px);
+    white-space: nowrap;
+    background: var(--color-bg-mid-alt);
+    color: var(--color-text-secondary);
+    border: 1px solid var(--border-gold);
+    border-radius: var(--radius-sm);
+    padding: 6px 12px;
+    font-size: 12px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-smooth);
+    box-shadow: var(--shadow-card);
+    z-index: 1000;
+}
+
+.sponsor-btn:hover::after {
+    opacity: 1;
+}
+
+/* 赞助弹窗 — 带 fade 动画 */
+.sponsor-modal-overlay {
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.sponsor-modal-overlay.active {
+    opacity: 1;
+}
+
+/* 弹窗内容微微上浮 */
+.sponsor-modal-content {
+    transform: translateY(10px);
+    transition: transform 0.25s ease;
+}
+
+.sponsor-modal-overlay.active .sponsor-modal-content {
+    transform: translateY(0);
+}
+
+/* 二维码并排区域 */
+.sponsor-qr-row {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-xxl);
+    margin: var(--spacing-xl) 0;
+    flex-wrap: wrap;
+}
+
+.sponsor-qr-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    background: rgba(0, 0, 0, 0.3);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-gold-subtle);
+}
+
+.sponsor-qr-card img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    border-radius: var(--radius-sm);
+    background: #fff;
+    padding: 8px;
+}
+
+/* 图片加载失败回落 */
+.sponsor-qr-fallback {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--color-bg-input-alt);
+    border-radius: var(--radius-sm);
+    border: 1px dashed var(--border-gold);
+}
+
+.sponsor-qr-label {
+    color: var(--color-text-muted);
+    font-size: 14px;
+    margin: 0;
+}
+
+/* 底部免责声明 */
+.sponsor-disclaimer {
+    text-align: center;
+    color: var(--color-text-dimmer);
+    font-size: 13px;
+    margin: var(--spacing-md) 0 0 0;
+    line-height: 1.6;
+}
+
+/* 关闭按钮微调 */
+.sponsor-modal-content .modal-close-btn {
+    background: transparent;
+    color: var(--color-text-muted);
+    font-size: 18px;
+    padding: 4px 10px;
+    border: 1px solid var(--border-gold);
+}
+
+.sponsor-modal-content .modal-close-btn:hover {
+    background: var(--color-gold);
+    color: #000;
+}
+
+/* 手机端/平板端彻底隐藏赞助按钮 */
+@media (max-width: 768px) {
+    .sponsor-btn {
+        display: none !important;
+    }
+}
 /* ==================== 所有 @keyframes 动画 ==================== */
 
 /* 淡入 */

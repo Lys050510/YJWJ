@@ -10,13 +10,14 @@ import './modules/player.js';
 import './modules/tips.js';
 import './modules/wheel.js';
 import './modules/scoreboard.js';
+import './modules/sponsor.js';
 
 // ── 挂载全局函数（保持 HTML onclick 兼容） ──
 window.switchTab = switchTab;
 
 function mountGlobalFunctions() {
     const modules = ['PrizeModule', 'HeroModule', 'WeaponModule', 'PlayerModule',
-                     'TipsModule', 'WheelModule', 'ScoreboardModule'];
+                     'TipsModule', 'WheelModule', 'ScoreboardModule', 'SponsorModule'];
     modules.forEach(name => {
         const mod = window[name];
         if (mod) {

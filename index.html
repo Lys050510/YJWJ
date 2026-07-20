@@ -22,8 +22,12 @@
     <link rel="modulepreload" href="js/modules/prize.js">
     <link rel="modulepreload" href="js/modules/wheel.js">
     <link rel="modulepreload" href="js/modules/scoreboard.js">
+    <link rel="modulepreload" href="js/modules/sponsor.js">
 </head>
 <body>
+
+    <!-- 赞助支持按钮（PC端左上角固定定位，手机端隐藏） -->
+    <button id="sponsor-btn" class="sponsor-btn" onclick="openSponsorModal()">☕ <span class="sponsor-btn-text">支持</span></button>
 
     <!-- 顶部导航栏 -->
     <div class="nav-bar">
@@ -778,6 +782,41 @@
             <div id="hero-picker-grid" class="hero-picker-grid">
                 <!-- JS 动态渲染英雄头像网格 -->
             </div>
+        </div>
+    </div>
+
+    <!-- 赞助支持弹窗 -->
+    <div id="sponsor-modal" class="modal-overlay sponsor-modal-overlay" onclick="closeSponsorModal(event)">
+        <div class="modal-content sponsor-modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header-row">
+                <h3>💝 感谢您的关注与支持！</h3>
+                <button class="modal-close-btn" onclick="closeSponsorModal()">✕</button>
+            </div>
+
+            <div class="sponsor-qr-row">
+                <div class="sponsor-qr-card">
+                    <img src="assets/sponsor-wechat.webp" alt="微信赞赏码"
+                         onerror="this.parentElement.querySelector('.sponsor-qr-fallback').style.display='flex'; this.style.display='none';">
+                    <div class="sponsor-qr-fallback" style="display:none;">
+                        <span style="font-size:48px;">💚</span>
+                        <span style="color:var(--color-text-dim);">微信扫码赞赏</span>
+                    </div>
+                    <p class="sponsor-qr-label">微信赞赏码</p>
+                </div>
+                <div class="sponsor-qr-card">
+                    <img src="assets/sponsor-alipay.webp" alt="支付宝收款码"
+                         onerror="this.parentElement.querySelector('.sponsor-qr-fallback').style.display='flex'; this.style.display='none';">
+                    <div class="sponsor-qr-fallback" style="display:none;">
+                        <span style="font-size:48px;">💙</span>
+                        <span style="color:var(--color-text-dim);">支付宝扫码支持</span>
+                    </div>
+                    <p class="sponsor-qr-label">支付宝收款码</p>
+                </div>
+            </div>
+
+            <p class="sponsor-disclaimer">
+                本站所有功能完全免费。您的每一份支持，都是作者继续的动力！
+            </p>
         </div>
     </div>
 
