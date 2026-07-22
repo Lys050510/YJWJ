@@ -66,5 +66,8 @@ export function switchTab(tabId) {
         case 'scoreboard':
             if (window.ScoreboardModule) window.ScoreboardModule.initScoreboardDashboard();
             break;
+        case 'lootbox':
+            if (window.LootboxModule) window.LootboxModule.initLootboxDashboard();
+            break;
     }
 }

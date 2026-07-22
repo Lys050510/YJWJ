@@ -1,7 +1,7 @@
 {
   "name": "yjwj-lottery",
   "version": "2.0.0",
-  "description": "永劫无间擂台赛随机抽取工具",
+  "description": "永劫无间工具 — 随机抽取、计分排名、模拟开箱",
   "scripts": {
     "start": "npx serve .",
     "dev": "python -m http.server 8080"

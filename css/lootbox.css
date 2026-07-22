@@ -1,0 +1,870 @@
+/* ==================== 模块八：模拟开箱 ==================== */
+
+/* ── 三栏布局 ── */
+.lootbox-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr 280px;
+    gap: 0;
+    min-height: calc(100vh - 200px);
+}
+
+/* ── 左侧：宝箱列表 ── */
+.lootbox-left {
+    border-right: 1px solid var(--border-gold-subtle, rgba(179,134,59,0.15));
+    padding-right: 12px;
+    overflow-y: auto;
+    max-height: calc(100vh - 160px);
+}
+.lootbox-search {
+    width: 100%;
+    box-sizing: border-box;
+    background: var(--color-bg-input, #1a1a1a);
+    color: var(--color-text-primary, #fff);
+    border: 1px solid var(--border-gold-light, rgba(179,134,59,0.3));
+    padding: 8px 10px;
+    border-radius: var(--radius-sm, 4px);
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+.lootbox-search:focus { outline: none; border-color: var(--color-gold, #b3863b); }
+.lootbox-search::placeholder { color: #666; }
+
+.lootbox-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.lootbox-list-section {
+    color: var(--color-gold, #b3863b);
+    font-size: 12px;
+    font-weight: bold;
+    padding: 8px 0 4px 4px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    margin-top: 4px;
+}
+.lootbox-card {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 8px;
+    border-radius: var(--radius-sm, 4px);
+    background: transparent;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all var(--transition-fast, 0.15s);
+}
+.lootbox-card:hover {
+    background: var(--color-bg-mid, #111);
+    border-color: rgba(179,134,59,0.3);
+}
+.lootbox-card.active {
+    background: rgba(179,134,59,0.12);
+    border-color: var(--color-gold, #b3863b);
+}
+.lootbox-card.hidden { display: none; }
+.lootbox-card.dragging { opacity: 0.4; }
+.lootbox-card.drag-over { border-color: var(--color-gold, #b3863b); box-shadow: 0 0 8px rgba(179,134,59,0.5); }
+.lootbox-card[draggable="true"] { cursor: grab; }
+.lootbox-card[draggable="true"]:active { cursor: grabbing; }
+.lootbox-card-thumb {
+    width: 44px; height: 44px;
+    border-radius: var(--radius-xs, 3px);
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.lootbox-card-info { flex: 1; min-width: 0; }
+.lootbox-card-name {
+    font-size: 13px;
+    color: var(--color-text-primary, #fff);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.lootbox-card-count {
+    font-size: 11px;
+    color: var(--color-text-dim, #888);
+}
+
+/* ── 中间：抽奖区域 ── */
+.lootbox-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 20px;
+    position: relative;
+}
+/* 音效开关按钮 */
+.lootbox-sound-toggle {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    z-index: 20;
+    background: rgba(0,0,0,0.55);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 6px;
+    font-size: 18px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    padding: 0;
+    line-height: 1;
+    backdrop-filter: blur(4px);
+}
+.lootbox-sound-toggle:hover {
+    background: rgba(0,0,0,0.75);
+    border-color: rgba(255,255,255,0.3);
+}
+.lootbox-canvas-wrap {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    border-radius: var(--radius-lg, 8px);
+    overflow: hidden;
+    background: url('../assets/box/bg.webp') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.lootbox-canvas-wrap canvas {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 6;
+}
+.lootbox-canvas-wrap.shake {
+    animation: lootboxScreenShake 0.6s ease-out;
+}
+
+/* 宝箱封面图 — 缩小为原先1/3，再放大1.25倍，下移 */
+.lootbox-cover-img {
+    position: absolute;
+    width: 35%;
+    height: 35%;
+    object-fit: contain;
+    z-index: 5;
+    pointer-events: none;
+    transition: transform 0.1s ease-out;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.lootbox-cover-fallback {
+    position: absolute;
+    width: 200px; height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    z-index: 5;
+}
+/* 宝箱摇摆动画 */
+.lootbox-cover-img.swaying {
+    animation: lootboxSway 0.15s ease-in-out infinite alternate;
+}
+@keyframes lootboxSway {
+    0% { transform: translate(-50%, -50%) rotate(-3deg); }
+    100% { transform: translate(-50%, -50%) rotate(3deg); }
+}
+
+/* ── 结果展示（覆盖整个中间区域）── */
+.lootbox-result-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.85);
+    z-index: 30;
+    gap: 12px;
+}
+.lootbox-result-grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 750px;
+    padding: 10px;
+}
+/* Unified item size for all draw counts */
+.lootbox-result-card .result-img-wrap {
+    width: 140px;
+    height: 140px;
+}
+.lootbox-result-card {
+    text-align: center;
+    animation: lootboxResultPop 0.45s ease-out backwards;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    position: relative;
+}
+.result-img-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: var(--radius-md, 6px);
+}
+.result-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-md, 6px);
+}
+.result-img-wrap img.result-border-red { border: 3px solid #ff4444; box-shadow: 0 0 18px rgba(255,68,68,0.5); }
+.result-img-wrap img.result-border-gold { border: 3px solid #ffcc00; box-shadow: 0 0 15px rgba(255,204,0,0.45); }
+.result-img-wrap img.result-border-purple { border: 2px solid #bf5af2; box-shadow: 0 0 10px rgba(191,90,242,0.35); }
+.result-img-wrap img.result-border-blue { border: 2px solid #4da6ff; box-shadow: 0 0 8px rgba(77,166,255,0.3); }
+.result-img-fallback {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background: #222;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    border-radius: var(--radius-md, 6px);
+}
+.result-owned-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,200,83,0.85);
+    color: #fff;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+    padding: 3px 0;
+    border-radius: 0 0 var(--radius-md, 6px) var(--radius-md, 6px);
+    pointer-events: none;
+}
+.result-item-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+}
+.result-quality {
+    font-size: 13px;
+    font-weight: bold;
+}
+.result-item-name {
+    font-size: 12px;
+    color: var(--color-text-secondary, #ddd);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    text-align: center;
+}
+/* Single item larger text */
+.result-count-1 .result-quality { font-size: 18px; }
+.result-count-1 .result-item-name { font-size: 16px; }
+
+.lootbox-big-text {
+    font-size: 72px;
+    font-weight: bold;
+    background: linear-gradient(180deg, #ffcc00 0%, #ff4444 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: lootboxBigTextIn 0.6s ease-out;
+    filter: drop-shadow(0 0 20px rgba(255,68,68,0.6));
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 31;
+    pointer-events: none;
+}
+
+/* ── 品质颜色 ── */
+.lootbox-quality-red { color: #ff4444; text-shadow: 0 0 8px rgba(255,68,68,0.5); }
+.lootbox-quality-gold { color: #ffcc00; text-shadow: 0 0 8px rgba(255,204,0,0.5); }
+.lootbox-quality-purple { color: #bf5af2; text-shadow: 0 0 8px rgba(191,90,242,0.5); }
+.lootbox-quality-blue { color: #4da6ff; text-shadow: 0 0 8px rgba(77,166,255,0.5); }
+.lootbox-quality-orange { color: #ff8800; text-shadow: 0 0 8px rgba(255,136,0,0.5); }
+
+.result-border-red { border: 2px solid #ff4444; box-shadow: 0 0 15px rgba(255,68,68,0.4); }
+.result-border-gold { border: 2px solid #ffcc00; box-shadow: 0 0 15px rgba(255,204,0,0.4); }
+.result-border-purple { border: 2px solid #bf5af2; box-shadow: 0 0 10px rgba(191,90,242,0.3); }
+.result-border-blue { border: 2px solid #4da6ff; box-shadow: 0 0 8px rgba(77,166,255,0.25); }
+
+/* ── 新春系列按钮 ── */
+.lootbox-xinchun-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+}
+.xinchun-btn-row-four {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    max-width: 388px;
+    margin: 0 auto;
+}
+.xinchun-btn-row-four .xinchun-btn {
+    flex: 1;
+    min-width: 0;
+}
+.xinchun-btn {
+    padding: 10px 4px;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: var(--radius-md, 6px);
+    border: 2px solid var(--color-gold, #b3863b);
+    background: linear-gradient(135deg, #1a1a1a, #2a1010);
+    color: var(--color-gold-highlight, #ffcc00);
+    cursor: pointer;
+    transition: all var(--transition-smooth, 0.3s);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.xinchun-btn:hover {
+    background: linear-gradient(135deg, #2a1a1a, #3a2010);
+    box-shadow: 0 0 15px rgba(179,134,59,0.4);
+    transform: translateY(-1px);
+}
+.xinchun-btn:active { transform: scale(0.97); }
+.xinchun-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+.xinchun-btn-all {
+    width: 100%;
+    max-width: 388px;
+    margin: 0 auto;
+    padding: 12px 20px;
+    font-size: 17px;
+    font-weight: bold;
+    border-radius: var(--radius-md, 6px);
+    border: 2px solid var(--color-gold-bright, #ffcc00);
+    background: linear-gradient(135deg, #b3863b, #d9aa5a);
+    color: #000;
+    cursor: pointer;
+    transition: all var(--transition-smooth, 0.3s);
+    text-align: center;
+}
+.xinchun-btn-all:hover {
+    background: linear-gradient(135deg, #d9aa5a, #e3c070);
+    box-shadow: 0 0 20px rgba(255,204,0,0.5);
+}
+.xinchun-btn-all:active { transform: scale(0.97); }
+.xinchun-btn-all:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+/* 新春滚动球列 */
+.xinchun-columns {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    max-width: 440px;
+    justify-content: center;
+}
+.xinchun-column {
+    flex: 1;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    border: 2px solid rgba(179,134,59,0.3);
+    border-radius: var(--radius-md, 6px);
+    background: rgba(0,0,0,0.4);
+}
+.xinchun-column-inner {
+    position: absolute;
+    left: 0; right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
+}
+.xinchun-ball {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: bold;
+    color: #000;
+    transition: transform 0.1s, box-shadow 0.2s;
+}
+.xinchun-ball.highlight {
+    transform: scale(1.3);
+    box-shadow: 0 0 25px rgba(255,255,255,0.8), 0 0 50px currentColor;
+    z-index: 10;
+}
+/* 单抽一列居中 */
+.xinchun-columns.single-col {
+    justify-content: center;
+    gap: 0;
+}
+.xinchun-columns.single-col .xinchun-column {
+    max-width: 100px;
+    height: 280px;
+}
+.xinchun-columns.single-col .xinchun-ball {
+    width: 72px; height: 72px;
+    font-size: 15px;
+}
+
+/* ── 右侧：统计面板 ── */
+.lootbox-right {
+    border-left: 1px solid var(--border-gold-subtle, rgba(179,134,59,0.15));
+    padding-left: 12px;
+    overflow-y: auto;
+    max-height: calc(100vh - 160px);
+}
+.lootbox-stats {
+    background: var(--color-bg-mid, #111);
+    border-radius: var(--radius-md, 6px);
+    padding: 12px;
+    border: 1px solid rgba(179,134,59,0.15);
+}
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    font-size: 13px;
+    color: var(--color-text-secondary, #ddd);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.stat-row:last-child { border-bottom: none; }
+.stat-row .clickable {
+    color: var(--color-gold, #b3863b);
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 3px;
+}
+.stat-row .clickable:hover { color: var(--color-gold-bright, #ffcc00); }
+
+/* 心愿面板 — 独立区块，金色背景 */
+.lootbox-wish-panel {
+    background: linear-gradient(135deg, rgba(179,134,59,0.2), rgba(255,204,0,0.1));
+    border: 2px solid var(--color-gold, #b3863b);
+    border-radius: var(--radius-md, 6px);
+    padding: 12px;
+    margin-top: 12px;
+}
+.lootbox-wish-panel h4 {
+    color: var(--color-gold-bright, #ffcc00);
+    margin: 0;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+.wish-header-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.wish-current-preview {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto;
+}
+.wish-preview-img {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm, 4px);
+    object-fit: cover;
+    border: 2px solid var(--color-gold, #b3863b);
+}
+.wish-preview-placeholder {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm, 4px);
+    border: 2px dashed var(--color-gold, #b3863b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: #666;
+    background: rgba(0,0,0,0.3);
+}
+.wish-preview-name {
+    color: var(--color-text-primary, #fff);
+    font-size: 13px;
+    font-weight: bold;
+}
+.lootbox-wish-panel .wish-charges {
+    color: #ffcc00;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+.wish-items-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    max-height: 210px;
+    overflow-y: auto;
+    padding: 2px;
+}
+.wish-item-opt {
+    position: relative;
+    border-radius: var(--radius-sm, 4px);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all var(--transition-fast, 0.15s);
+    overflow: hidden;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.wish-item-opt:hover {
+    border-color: var(--color-gold, #b3863b);
+    transform: scale(1.04);
+}
+.wish-item-opt.active {
+    border-color: var(--color-gold-bright, #ffcc00);
+    box-shadow: 0 0 10px rgba(255,204,0,0.4);
+}
+.wish-item-opt.owned {
+    opacity: 0.6;
+}
+.wish-item-opt-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+}
+.wish-item-opt span {
+    display: none;
+}
+.wish-item-opt .owned-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,200,83,0.85);
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    padding: 2px 0;
+}
+.wish-select-btn {
+    width: 100%;
+    margin-top: 6px;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm, 4px);
+    border: 2px solid var(--color-gold, #b3863b);
+    background: linear-gradient(135deg, rgba(179,134,59,0.3), rgba(255,204,0,0.15));
+    color: var(--color-gold-bright, #ffcc00);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    transition: all var(--transition-fast, 0.15s);
+}
+.wish-select-btn:hover {
+    background: var(--color-gold, #b3863b);
+    color: #000;
+}
+.wish-select-btn.disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: auto;
+}
+.wish-select-btn.disabled:hover {
+    background: linear-gradient(135deg, rgba(179,134,59,0.3), rgba(255,204,0,0.15));
+    color: var(--color-gold-bright, #ffcc00);
+}
+.lootbox-wish-panel .wish-set-btn {
+    margin-top: 6px;
+    padding: 5px 12px;
+    border-radius: var(--radius-sm, 4px);
+    border: 1px solid var(--color-gold, #b3863b);
+    background: rgba(179,134,59,0.2);
+    color: var(--color-gold, #b3863b);
+    cursor: pointer;
+    font-size: 12px;
+    transition: all var(--transition-fast, 0.15s);
+}
+.lootbox-wish-panel .wish-set-btn:hover {
+    background: var(--color-gold, #b3863b);
+    color: #000;
+}
+.lootbox-wish-panel.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* ── 历史记录 ── */
+.lootbox-history {
+    margin-top: 15px;
+}
+.lootbox-history ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.lootbox-history li {
+    font-size: 11px;
+    color: var(--color-text-dim, #888);
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    animation: fadeHistory 0.3s ease-out;
+    line-height: 1.4;
+    position: relative;
+}
+.history-del-btn {
+    position: absolute;
+    right: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: 1px solid transparent;
+    color: #ff4444;
+    cursor: pointer;
+    font-size: 10px;
+    padding: 1px 5px;
+    border-radius: 2px;
+    opacity: 0;
+    transition: opacity 0.15s;
+}
+.lootbox-history li:hover .history-del-btn {
+    opacity: 1;
+}
+.history-del-btn:hover {
+    border-color: #ff4444;
+    background: rgba(255,68,68,0.15);
+}
+
+/* ── 设置弹窗物品网格 ── */
+.lootbox-items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 8px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 4px;
+}
+.lootbox-item-card {
+    position: relative;
+    border-radius: var(--radius-sm, 4px);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all var(--transition-fast, 0.15s);
+    overflow: hidden;
+    aspect-ratio: 1;
+}
+.lootbox-item-card:hover {
+    border-color: var(--color-gold, #b3863b);
+    transform: scale(1.03);
+}
+.lootbox-item-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.lootbox-item-card .owned-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,200,83,0.85);
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    padding: 4px 0;
+}
+.lootbox-item-card .quality-badge {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 1px 5px;
+    border-radius: 3px;
+    background: rgba(0,0,0,0.7);
+}
+.lootbox-item-card .item-name-overlay {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    font-size: 9px;
+    color: #fff;
+    background: rgba(0,0,0,0.6);
+    padding: 1px 4px;
+    border-radius: 2px;
+    max-width: calc(100% - 40px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ── 动画 ── */
+@keyframes lootboxResultPop {
+    0% { transform: scale(0); opacity: 0; }
+    70% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+@keyframes lootboxBigTextIn {
+    0% { transform: scale(3); opacity: 0; }
+    60% { transform: scale(0.9); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+@keyframes lootboxScreenShake {
+    0%, 100% { transform: translate(0, 0); }
+    10% { transform: translate(-5px, 4px); }
+    20% { transform: translate(5px, -3px); }
+    30% { transform: translate(-3px, -2px); }
+    40% { transform: translate(4px, 3px); }
+    50% { transform: translate(-2px, -4px); }
+    60% { transform: translate(3px, 2px); }
+    70% { transform: translate(-3px, 1px); }
+    80% { transform: translate(2px, -1px); }
+    90% { transform: translate(-1px, -2px); }
+}
+
+/* ── CS开箱切换按钮 ── */
+.lootbox-liuguang-toggle {
+    position: absolute;
+    top: 8px;
+    right: 56px;
+    z-index: 20;
+    background: rgba(0,0,0,0.55);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 6px;
+    font-size: 18px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    padding: 0;
+    line-height: 1;
+    backdrop-filter: blur(4px);
+}
+.lootbox-liuguang-toggle:hover {
+    background: rgba(0,0,0,0.75);
+    border-color: rgba(255,255,255,0.3);
+}
+
+/* ── 流光逐影弹窗 ── */
+.lootbox-liuguang-canvas-wrap {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #0a0a0a 0%, #1a1a0a 50%, #0a0a0a 100%);
+    border: 2px solid rgba(179,134,59,0.3);
+    border-radius: 8px;
+    margin: 16px 0;
+}
+.lootbox-liuguang-canvas-wrap canvas {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* 中心指针 */
+.lootbox-liuguang-pointer {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg,
+        rgba(255,210,80,0) 0%,
+        rgba(255,210,80,0.9) 15%,
+        rgba(255,210,80,0.9) 85%,
+        rgba(255,210,80,0) 100%);
+    pointer-events: none;
+    z-index: 10;
+    box-shadow: 0 0 12px rgba(255,210,80,0.4);
+}
+.lootbox-liuguang-pointer::before,
+.lootbox-liuguang-pointer::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+}
+.lootbox-liuguang-pointer::before {
+    top: 2px;
+    border-bottom: 10px solid rgba(255,210,80,0.9);
+}
+.lootbox-liuguang-pointer::after {
+    bottom: 2px;
+    border-top: 10px solid rgba(255,210,80,0.9);
+}
+
+/* 获胜物品闪烁 */
+@keyframes lootboxLGFflash {
+    0%, 100% { box-shadow: 0 0 8px rgba(255,210,80,0.3); }
+    50%      { box-shadow: 0 0 30px rgba(255,210,80,0.9), 0 0 60px rgba(255,204,0,0.6); }
+}
+
+/* God槽位特殊光晕 */
+@keyframes lootboxLGGodGlow {
+    0%, 100% { box-shadow: 0 0 10px rgba(255,68,68,0.5), 0 0 20px rgba(255,204,0,0.3); }
+    50%      { box-shadow: 0 0 25px rgba(255,68,68,0.8), 0 0 50px rgba(255,204,0,0.7); }
+}
+
+.lootbox-liuguang-controls {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+/* ── 响应式 ── */
+@media (max-width: 1024px) {
+    .lootbox-layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        gap: 15px;
+    }
+    .lootbox-left, .lootbox-right {
+        border: none;
+        padding: 0;
+        max-height: none;
+    }
+    .lootbox-left {
+        display: flex;
+        gap: 6px;
+        overflow-x: auto;
+    }
+    .lootbox-list {
+        flex-direction: row;
+        gap: 4px;
+    }
+    .lootbox-card { flex-shrink: 0; min-width: 120px; }
+    .lootbox-card-thumb { width: 36px; height: 36px; }
+    .lootbox-canvas-wrap {
+        width: 100%;
+        max-width: 400px;
+        height: 400px;
+    }
+}

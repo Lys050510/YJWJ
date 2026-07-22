@@ -1,6 +1,6 @@
-# 永劫无间擂台赛随机抽取工具
+# 永劫无间工具
 
-纯前端静态网页，为永劫无间擂台赛直播提供：英雄/武器/人员/锦囊/奖品抽取、转盘、计分排名等功能。
+纯前端静态网页，为所有永劫无间玩家提供：英雄/武器/人员/锦囊/奖品抽取、转盘、计分排名、模拟开箱等功能。支持 OBS 悬浮窗双屏联动，适合直播场景使用。
 
 > 🚀 已上线：**[yjwj666.top](https://yjwj666.top/)**（Cloudflare + GitHub Pages，国内可直接访问）
 
@@ -83,28 +83,61 @@ YJWJ/
 │   │   ├── tabs.js            #   标签页切换 switchTab() + 模块激活注册
 │   │   └── toast.js           #   Toast 通知系统 showToast(msg, type)（替代 alert）
 │   │
-│   ├── modules/               # 业务模块（7个，每个 ≈300-500 行）
+│   ├── modules/               # 业务模块（9个，每个 ≈300-1600 行）
 │   │   ├── hero.js            #   模块一：英雄抽取 + 英雄配置弹窗
 │   │   ├── weapon.js          #   模块二：武器抽取 + 武器配置弹窗
 │   │   ├── player.js          #   模块三：人员卡牌抽取 + 3D翻转洗牌
 │   │   ├── tips.js            #   模块四：锦囊抽取 + 跑马灯 + 品质概率
 │   │   ├── prize.js           #   模块五：奖品跑马灯 + 权重抽奖
 │   │   ├── wheel.js           #   模块六：Canvas转盘 + 5个动态预设
-│   │   └── scoreboard.js      #   模块七：计分板 + OBS悬浮窗 + 排名总览
+│   │   ├── scoreboard.js      #   模块七：计分板 + OBS悬浮窗 + 排名总览
+│   │   ├── lootbox.js         #   模块八：模拟开箱 + Canvas动画 + 保底系统
+│   │   └── lootbox-sound.js   #   配套音效：Web Audio API 程序化生成 + 预生成缓冲
 │   │
 │   └── minigames/             # 模块九（未来）：小游戏集合
 │       └── _template.js       #   游戏开发模板
 │
 ├── tools/                    # 构建工具脚本
 │   ├── build-css.sh           #   CSS 合并脚本
-│   └── compress_images.py     #   PNG/JPEG → WebP 批量转换
+│   ├── compress_images.py     #   PNG/JPEG → WebP 批量转换
+│   └── process_box_icons.py   #   开箱图标批量处理：裁黑边→统一尺寸→锐化→WebP
 │
-└── assets/                    # 图片资源（WebP + 原始 PNG）
+└── assets/                    # 图片资源（WebP）
     ├── bg.webp                #   页面背景（139 KB，原 7 MB）
     ├── card-bg*.webp          #   卡片背景（7张，共 0.6 MB，原 51 MB）
     ├── heroes/                #   27个英雄头像（2-4 KB WebP）
     ├── weapons/               #   24个武器图标（2-5 KB WebP）
-    └── players/               #   15个选手照片（7-28 KB WebP）
+    ├── players/               #   15个选手照片（7-28 KB WebP）
+    ├── sponsor-wechat.webp    #   微信赞赏码
+    ├── sponsor-alipay.webp    #   支付宝收款码
+    └── box/                   #   27种宝箱/宝囊/宝炉（共1112张WebP，5.4 MB）
+        ├── cangmangbaonang/   #   苍莽宝囊（28件物品）
+        ├── changshengbaoxia/  #   长生宝匣（28件物品）
+        ├── cuilianruizhu/     #   淬炼瑞珠（28件物品）
+        ├── hualongbaozhu/     #   化龙宝珠（95件物品）
+        ├── huiguangbaolu/     #   辉光宝炉（28件物品）
+        ├── jinlinbaonang/     #   锦鳞宝囊（96件物品）
+        ├── langchaobaoxiang/  #   浪潮宝箱（22件物品）
+        ├── liebianbaolu/      #   裂变宝炉（32件物品）
+        ├── linglongbaolian/   #   玲珑宝莲（98件物品）
+        ├── lingxiaobaoxiang/  #   凌霄宝箱（27件物品）
+        ├── pozhenbaoxiang/    #   破阵宝箱（26件物品）
+        ├── qianjishenbei/     #   千机神杯(游戏内还未上线)
+        ├── qizhenbaoxiang/    #   奇珍宝箱（99件物品）
+        ├── ranyaobaolu/       #   燃耀宝炉（32件物品）
+        ├── shanhaibaoding/    #   山海宝鼎（28件物品）
+        ├── shenjunbaolu/      #   神骏宝炉（95件物品）
+        ├── tiangongbaozhu/    #   天工宝珠（32件物品）
+        ├── tianzongbaolu/     #   天纵宝炉（28件物品）
+        ├── wuchangbaojian/    #   无常宝鉴（28件物品）
+        ├── wuwangbaoding/     #   无妄宝鼎（27件物品）
+        ├── xiafengbaonang/    #   侠风宝囊（32件物品）
+        ├── xinchunbaodeng/    #   新春宝灯（32件物品）
+        ├── xinchunfudeng/     #   新春福灯（24件物品）
+        ├── xinchunhuadeng/    #   新春华灯（32件物品）
+        ├── xinchunjideng/     #   新春吉灯（28件物品）
+        ├── xinchunruideng/    #   新春瑞灯（28件物品）
+        └── yongzhoushenbei/   #   永昼神杯（32件物品）
 ```
 
 ## 架构设计
@@ -237,5 +270,5 @@ color: #aaa;
 | 奖品抽取 | 5 | 变速跑马灯、权重抽奖、中奖记录 |
 | 转盘 | 6 | Canvas绘制、5个动态预设、自定义转盘CRUD |
 | 计分板 | 7 | 8/12人局、回合编辑、排名分、OBS悬浮窗双屏联动 |
-| 模拟开箱 | — | 🚧 计划中 |
+| 模拟开箱 | 8 | Canvas 动画开箱，27 宝箱/1000+ 物品，保底+心愿系统，Web Audio 音效 |
 | 小游戏 | — | 🚧 计划中，动态import懒加载 |

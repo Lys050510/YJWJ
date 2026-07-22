@@ -1,4 +1,4 @@
-// ==================== 模块：计分板 + 悬浮窗 ====================
+// ==================== 模块：计分板 + 排名悬浮窗 ====================
 // 从 script.js 行 2539-4049 提取
 
 import { state } from '../core/state.js';
@@ -756,7 +756,7 @@ export function renderScoreboardLeaderboard() {
     container.innerHTML = html;
 }
 
-// ==================== 悬浮窗 OBS 纯净排行榜 ====================
+// ==================== 悬浮窗纯净排行榜（OBS / 直播伴侣可用） ====================
 
 export function openOverlayWindow(scope) {
     // scope = 'current' | 'global'，默认 'global' 兼容旧行为
@@ -1418,7 +1418,7 @@ export function copyOverviewToClipboard() {
     const leaderboard = computeLeaderboard();
     const modeLabel = getActiveMode() === '8' ? '8人局' : '12人局';
 
-    let text = `永劫无间擂台赛 - 计分排名总览\n`;
+    let text = `永劫无间 - 计分排名总览\n`;
     text += `比赛模式：${modeLabel}（共 ${rounds.length} 局）\n`;
     text += `计分规则：击败数 + 排名分\n\n`;
 

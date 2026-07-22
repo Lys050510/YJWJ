@@ -1,0 +1,6181 @@
+// 宝箱数据（自动生成，26个宝箱，1089件物品）
+window.BOX_DATA = [
+  {
+    "id": "cangmangbaonang",
+    "name": "苍莽宝囊",
+    "type": "regular",
+    "image": "assets/box/cangmangbaonang/cangmangbaonang.png",
+    "items": [
+      {
+        "name": "阴阳师·蛉魂梦使",
+        "quality": "red",
+        "image": "assets/box/cangmangbaonang/01.webp"
+      },
+      {
+        "name": "2674·九阴",
+        "quality": "red",
+        "image": "assets/box/cangmangbaonang/02.webp"
+      },
+      {
+        "name": "探海裙",
+        "quality": "gold",
+        "image": "assets/box/cangmangbaonang/03.webp"
+      },
+      {
+        "name": "2674·街头烈火",
+        "quality": "gold",
+        "image": "assets/box/cangmangbaonang/04.webp"
+      },
+      {
+        "name": "斑斓衣",
+        "quality": "gold",
+        "image": "assets/box/cangmangbaonang/05.webp"
+      },
+      {
+        "name": "阴阳师·魂梦残响",
+        "quality": "gold",
+        "image": "assets/box/cangmangbaonang/06.webp"
+      },
+      {
+        "name": "银镰枪",
+        "quality": "gold",
+        "image": "assets/box/cangmangbaonang/07.webp"
+      },
+      {
+        "name": "【挑染】千丝",
+        "quality": "gold",
+        "image": "assets/box/cangmangbaonang/08.webp"
+      },
+      {
+        "name": "【挑染】忠嘉",
+        "quality": "gold",
+        "image": "assets/box/cangmangbaonang/09.webp"
+      },
+      {
+        "name": "竹笙",
+        "quality": "gold",
+        "image": "assets/box/cangmangbaonang/10.webp"
+      },
+      {
+        "name": "海宴玉",
+        "quality": "gold",
+        "image": "assets/box/cangmangbaonang/11.webp"
+      },
+      {
+        "name": "倨傲",
+        "quality": "gold",
+        "image": "assets/box/cangmangbaonang/12.webp"
+      },
+      {
+        "name": "漆具足·忍",
+        "quality": "purple",
+        "image": "assets/box/cangmangbaonang/13.webp"
+      },
+      {
+        "name": "绣罗衣·春草",
+        "quality": "purple",
+        "image": "assets/box/cangmangbaonang/14.webp"
+      },
+      {
+        "name": "将军甲·平南",
+        "quality": "purple",
+        "image": "assets/box/cangmangbaonang/15.webp"
+      },
+      {
+        "name": "定秦·锈绿",
+        "quality": "purple",
+        "image": "assets/box/cangmangbaonang/16.webp"
+      },
+      {
+        "name": "雷鸣·紫电",
+        "quality": "purple",
+        "image": "assets/box/cangmangbaonang/17.webp"
+      },
+      {
+        "name": "绮梦·莽林",
+        "quality": "purple",
+        "image": "assets/box/cangmangbaonang/18.webp"
+      },
+      {
+        "name": "铜玉刻刀",
+        "quality": "purple",
+        "image": "assets/box/cangmangbaonang/19.webp"
+      },
+      {
+        "name": "花乐铃",
+        "quality": "purple",
+        "image": "assets/box/cangmangbaonang/20.webp"
+      },
+      {
+        "name": "金缨盔",
+        "quality": "purple",
+        "image": "assets/box/cangmangbaonang/21.webp"
+      },
+      {
+        "name": "顾清寒·冰寒飞影",
+        "quality": "purple",
+        "image": "assets/box/cangmangbaonang/22.webp"
+      },
+      {
+        "name": "无尘·两仪剑",
+        "quality": "purple",
+        "image": "assets/box/cangmangbaonang/23.webp"
+      },
+      {
+        "name": "凌空",
+        "quality": "purple",
+        "image": "assets/box/cangmangbaonang/24.webp"
+      },
+      {
+        "name": "紫阳台",
+        "quality": "purple",
+        "image": "assets/box/cangmangbaonang/25.webp"
+      },
+      {
+        "name": "香案",
+        "quality": "purple",
+        "image": "assets/box/cangmangbaonang/26.webp"
+      },
+      {
+        "name": "鲤帜",
+        "quality": "purple",
+        "image": "assets/box/cangmangbaonang/27.webp"
+      },
+      {
+        "name": "海上花",
+        "quality": "purple",
+        "image": "assets/box/cangmangbaonang/28.webp"
+      }
+    ],
+    "probabilities": {
+      "red": 0.006,
+      "gold": 0.084,
+      "purple": 0.91
+    },
+    "pity": {
+      "cycle": {
+        "targetQuality": "red",
+        "count": 100,
+        "repeatable": true
+      },
+      "special": null,
+      "extraGoldPity": null,
+      "noRepeatRed": true,
+      "wishEnabled": true,
+      "wishDescription": "每次抽中神品外观，获得1次指定极品外观的机会",
+      "hasDualPity": false,
+      "notes": ""
+    }
+  },
+  {
+    "id": "changshengbaoxia",
+    "name": "长生宝匣",
+    "type": "regular",
+    "image": "assets/box/changshengbaoxia/changshengbaoxia.png",
+    "items": [
+      {
+        "name": "守墨麒",
+        "quality": "red",
+        "image": "assets/box/changshengbaoxia/01.webp"
+      },
+      {
+        "name": "麒麟魄",
+        "quality": "red",
+        "image": "assets/box/changshengbaoxia/02.webp"
+      },
+      {
+        "name": "观山海·獬豸",
+        "quality": "gold",
+        "image": "assets/box/changshengbaoxia/03.webp"
+      },
+      {
+        "name": "观山海·相柳",
+        "quality": "gold",
+        "image": "assets/box/changshengbaoxia/04.webp"
+      },
+      {
+        "name": "梨园传奇·柳生",
+        "quality": "gold",
+        "image": "assets/box/changshengbaoxia/05.webp"
+      },
+      {
+        "name": "冰辉",
+        "quality": "gold",
+        "image": "assets/box/changshengbaoxia/06.webp"
+      },
+      {
+        "name": "暝视",
+        "quality": "gold",
+        "image": "assets/box/changshengbaoxia/07.webp"
+      },
+      {
+        "name": "【挑染】逐影",
+        "quality": "gold",
+        "image": "assets/box/changshengbaoxia/08.webp"
+      },
+      {
+        "name": "【挑染】填海",
+        "quality": "gold",
+        "image": "assets/box/changshengbaoxia/09.webp"
+      },
+      {
+        "name": "盗墓笔记·踏火麒麟",
+        "quality": "gold",
+        "image": "assets/box/changshengbaoxia/10.webp"
+      },
+      {
+        "name": "观山海·洪兽",
+        "quality": "gold",
+        "image": "assets/box/changshengbaoxia/11.webp"
+      },
+      {
+        "name": "观山海·神羊",
+        "quality": "gold",
+        "image": "assets/box/changshengbaoxia/12.webp"
+      },
+      {
+        "name": "倚罗衫·靛青",
+        "quality": "purple",
+        "image": "assets/box/changshengbaoxia/13.webp"
+      },
+      {
+        "name": "鳞袍·馥郁",
+        "quality": "purple",
+        "image": "assets/box/changshengbaoxia/14.webp"
+      },
+      {
+        "name": "绝命衣·怨",
+        "quality": "purple",
+        "image": "assets/box/changshengbaoxia/15.webp"
+      },
+      {
+        "name": "风行天",
+        "quality": "purple",
+        "image": "assets/box/changshengbaoxia/16.webp"
+      },
+      {
+        "name": "雷鸣·暗木",
+        "quality": "purple",
+        "image": "assets/box/changshengbaoxia/17.webp"
+      },
+      {
+        "name": "墨攻·铸陶",
+        "quality": "purple",
+        "image": "assets/box/changshengbaoxia/18.webp"
+      },
+      {
+        "name": "玉玫",
+        "quality": "purple",
+        "image": "assets/box/changshengbaoxia/19.webp"
+      },
+      {
+        "name": "竹马·翠",
+        "quality": "purple",
+        "image": "assets/box/changshengbaoxia/20.webp"
+      },
+      {
+        "name": "素净瓶",
+        "quality": "purple",
+        "image": "assets/box/changshengbaoxia/21.webp"
+      },
+      {
+        "name": "凛冬",
+        "quality": "purple",
+        "image": "assets/box/changshengbaoxia/22.webp"
+      },
+      {
+        "name": "山玉",
+        "quality": "purple",
+        "image": "assets/box/changshengbaoxia/23.webp"
+      },
+      {
+        "name": "西子湖",
+        "quality": "purple",
+        "image": "assets/box/changshengbaoxia/24.webp"
+      },
+      {
+        "name": "麝香旅店",
+        "quality": "purple",
+        "image": "assets/box/changshengbaoxia/25.webp"
+      },
+      {
+        "name": "幽矿窟",
+        "quality": "purple",
+        "image": "assets/box/changshengbaoxia/26.webp"
+      },
+      {
+        "name": "妖刀姬·哭泣",
+        "quality": "purple",
+        "image": "assets/box/changshengbaoxia/27.webp"
+      },
+      {
+        "name": "沈妙·打水仗",
+        "quality": "purple",
+        "image": "assets/box/changshengbaoxia/28.webp"
+      }
+    ],
+    "probabilities": {
+      "red": 0.006,
+      "gold": 0.084,
+      "purple": 0.91
+    },
+    "pity": {
+      "cycle": {
+        "targetQuality": "red",
+        "count": 100,
+        "repeatable": true
+      },
+      "special": null,
+      "extraGoldPity": null,
+      "noRepeatRed": true,
+      "wishEnabled": true,
+      "wishDescription": "每次抽中神品外观，获得1次指定极品外观的机会",
+      "hasDualPity": false,
+      "notes": ""
+    }
+  },
+  {
+    "id": "cuilianruizhu",
+    "name": "淬炼瑞珠",
+    "type": "regular",
+    "image": "assets/box/cuilianruizhu/cuilianruizhu.png",
+    "items": [
+      {
+        "name": "樱云天女",
+        "quality": "red",
+        "image": "assets/box/cuilianruizhu/01.webp"
+      },
+      {
+        "name": "惊百里",
+        "quality": "red",
+        "image": "assets/box/cuilianruizhu/02.webp"
+      },
+      {
+        "name": "楚韵九歌·山鬼",
+        "quality": "gold",
+        "image": "assets/box/cuilianruizhu/03.webp"
+      },
+      {
+        "name": "楚韵九歌·湘夫人",
+        "quality": "gold",
+        "image": "assets/box/cuilianruizhu/04.webp"
+      },
+      {
+        "name": "楚韵九歌·云中君",
+        "quality": "gold",
+        "image": "assets/box/cuilianruizhu/05.webp"
+      },
+      {
+        "name": "樱落",
+        "quality": "gold",
+        "image": "assets/box/cuilianruizhu/06.webp"
+      },
+      {
+        "name": "雷落",
+        "quality": "gold",
+        "image": "assets/box/cuilianruizhu/07.webp"
+      },
+      {
+        "name": "【挑染】樱舞",
+        "quality": "gold",
+        "image": "assets/box/cuilianruizhu/08.webp"
+      },
+      {
+        "name": "【挑染】风吹雪",
+        "quality": "gold",
+        "image": "assets/box/cuilianruizhu/09.webp"
+      },
+      {
+        "name": "猎兽阱",
+        "quality": "gold",
+        "image": "assets/box/cuilianruizhu/10.webp"
+      },
+      {
+        "name": "楚韵九歌·洞庭波",
+        "quality": "gold",
+        "image": "assets/box/cuilianruizhu/11.webp"
+      },
+      {
+        "name": "楚韵九歌·灵皇",
+        "quality": "gold",
+        "image": "assets/box/cuilianruizhu/12.webp"
+      },
+      {
+        "name": "锦缎衣·勇毅",
+        "quality": "purple",
+        "image": "assets/box/cuilianruizhu/13.webp"
+      },
+      {
+        "name": "软烟罗裳·龙胆",
+        "quality": "purple",
+        "image": "assets/box/cuilianruizhu/14.webp"
+      },
+      {
+        "name": "绮罗衫",
+        "quality": "purple",
+        "image": "assets/box/cuilianruizhu/15.webp"
+      },
+      {
+        "name": "风雷·紫电",
+        "quality": "purple",
+        "image": "assets/box/cuilianruizhu/16.webp"
+      },
+      {
+        "name": "墨攻·蓝漆",
+        "quality": "purple",
+        "image": "assets/box/cuilianruizhu/17.webp"
+      },
+      {
+        "name": "照空",
+        "quality": "purple",
+        "image": "assets/box/cuilianruizhu/18.webp"
+      },
+      {
+        "name": "堇花盒",
+        "quality": "purple",
+        "image": "assets/box/cuilianruizhu/19.webp"
+      },
+      {
+        "name": "紫毫笔",
+        "quality": "purple",
+        "image": "assets/box/cuilianruizhu/20.webp"
+      },
+      {
+        "name": "蓝珠贝",
+        "quality": "purple",
+        "image": "assets/box/cuilianruizhu/21.webp"
+      },
+      {
+        "name": "怒石",
+        "quality": "purple",
+        "image": "assets/box/cuilianruizhu/22.webp"
+      },
+      {
+        "name": "书剑台",
+        "quality": "purple",
+        "image": "assets/box/cuilianruizhu/23.webp"
+      },
+      {
+        "name": "根须冢",
+        "quality": "purple",
+        "image": "assets/box/cuilianruizhu/24.webp"
+      },
+      {
+        "name": "商船·莹",
+        "quality": "purple",
+        "image": "assets/box/cuilianruizhu/25.webp"
+      },
+      {
+        "name": "丹鼎",
+        "quality": "purple",
+        "image": "assets/box/cuilianruizhu/26.webp"
+      },
+      {
+        "name": "玉桂",
+        "quality": "purple",
+        "image": "assets/box/cuilianruizhu/27.webp"
+      },
+      {
+        "name": "魏轻·执金卫",
+        "quality": "purple",
+        "image": "assets/box/cuilianruizhu/28.webp"
+      }
+    ],
+    "probabilities": {
+      "red": 0.006,
+      "gold": 0.084,
+      "purple": 0.91
+    },
+    "pity": {
+      "cycle": {
+        "targetQuality": "red",
+        "count": 100,
+        "repeatable": true
+      },
+      "special": null,
+      "extraGoldPity": null,
+      "noRepeatRed": true,
+      "wishEnabled": true,
+      "wishDescription": "每次抽中神品外观，获得1次指定极品外观的机会",
+      "hasDualPity": false,
+      "notes": ""
+    }
+  },
+  {
+    "id": "hualongbaozhu",
+    "name": "化龙宝珠",
+    "type": "regular",
+    "image": "assets/box/hualongbaozhu/hualongbaozhu.png",
+    "items": [
+      {
+        "name": "星辉魔纱",
+        "quality": "red",
+        "image": "assets/box/hualongbaozhu/01.webp"
+      },
+      {
+        "name": "流金晓锦",
+        "quality": "red",
+        "image": "assets/box/hualongbaozhu/02.webp"
+      },
+      {
+        "name": "帝星",
+        "quality": "red",
+        "image": "assets/box/hualongbaozhu/03.webp"
+      },
+      {
+        "name": "苍穹之光",
+        "quality": "red",
+        "image": "assets/box/hualongbaozhu/04.webp"
+      },
+      {
+        "name": "暖冬茶馨",
+        "quality": "gold",
+        "image": "assets/box/hualongbaozhu/05.webp"
+      },
+      {
+        "name": "赤焰战灵",
+        "quality": "gold",
+        "image": "assets/box/hualongbaozhu/06.webp"
+      },
+      {
+        "name": "寿竹云春",
+        "quality": "gold",
+        "image": "assets/box/hualongbaozhu/07.webp"
+      },
+      {
+        "name": "金财聚辉",
+        "quality": "gold",
+        "image": "assets/box/hualongbaozhu/08.webp"
+      },
+      {
+        "name": "仙彩",
+        "quality": "gold",
+        "image": "assets/box/hualongbaozhu/09.webp"
+      },
+      {
+        "name": "断月影",
+        "quality": "gold",
+        "image": "assets/box/hualongbaozhu/10.webp"
+      },
+      {
+        "name": "醒狮",
+        "quality": "gold",
+        "image": "assets/box/hualongbaozhu/11.webp"
+      },
+      {
+        "name": "财神剑",
+        "quality": "gold",
+        "image": "assets/box/hualongbaozhu/12.webp"
+      },
+      {
+        "name": "兔华笼",
+        "quality": "gold",
+        "image": "assets/box/hualongbaozhu/13.webp"
+      },
+      {
+        "name": "御气弩",
+        "quality": "gold",
+        "image": "assets/box/hualongbaozhu/14.webp"
+      },
+      {
+        "name": "辉晶星辰",
+        "quality": "gold",
+        "image": "assets/box/hualongbaozhu/15.webp"
+      },
+      {
+        "name": "怜光满",
+        "quality": "gold",
+        "image": "assets/box/hualongbaozhu/16.webp"
+      },
+      {
+        "name": "安乐冠",
+        "quality": "gold",
+        "image": "assets/box/hualongbaozhu/17.webp"
+      },
+      {
+        "name": "飞光",
+        "quality": "gold",
+        "image": "assets/box/hualongbaozhu/18.webp"
+      },
+      {
+        "name": "千秋匠心·鸾花镜",
+        "quality": "gold",
+        "image": "assets/box/hualongbaozhu/19.webp"
+      },
+      {
+        "name": "昼百合",
+        "quality": "gold",
+        "image": "assets/box/hualongbaozhu/20.webp"
+      },
+      {
+        "name": "跳跳糖",
+        "quality": "gold",
+        "image": "assets/box/hualongbaozhu/21.webp"
+      },
+      {
+        "name": "海渊",
+        "quality": "gold",
+        "image": "assets/box/hualongbaozhu/22.webp"
+      },
+      {
+        "name": "小蛋糕",
+        "quality": "gold",
+        "image": "assets/box/hualongbaozhu/23.webp"
+      },
+      {
+        "name": "叠裙·青蕙",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/24.webp"
+      },
+      {
+        "name": "神机袍·铅丹",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/25.webp"
+      },
+      {
+        "name": "织锦衫·矾石",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/26.webp"
+      },
+      {
+        "name": "行旅服·阴山",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/27.webp"
+      },
+      {
+        "name": "祷光袍·温和",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/28.webp"
+      },
+      {
+        "name": "天旭·紫铜",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/29.webp"
+      },
+      {
+        "name": "虎目·青璃",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/30.webp"
+      },
+      {
+        "name": "雷鸣·柏影",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/31.webp"
+      },
+      {
+        "name": "墨攻·含翠",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/32.webp"
+      },
+      {
+        "name": "命运·乌木",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/33.webp"
+      },
+      {
+        "name": "风雷·空青",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/34.webp"
+      },
+      {
+        "name": "斩风·解",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/35.webp"
+      },
+      {
+        "name": "悍厉·青锋",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/36.webp"
+      },
+      {
+        "name": "陷阵·无畏",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/37.webp"
+      },
+      {
+        "name": "照空·寒星",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/38.webp"
+      },
+      {
+        "name": "铁旗·楚铁",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/39.webp"
+      },
+      {
+        "name": "心魔刺·绛红",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/40.webp"
+      },
+      {
+        "name": "绮墨莲",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/41.webp"
+      },
+      {
+        "name": "藏青佩",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/42.webp"
+      },
+      {
+        "name": "影韵锁",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/43.webp"
+      },
+      {
+        "name": "盈香玉",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/44.webp"
+      },
+      {
+        "name": "崔三娘·点赞",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/45.webp"
+      },
+      {
+        "name": "玉玲珑·妩媚",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/46.webp"
+      },
+      {
+        "name": "天海·秀肌肉",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/47.webp"
+      },
+      {
+        "name": "哈迪·扮鬼脸",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/48.webp"
+      },
+      {
+        "name": "殷紫萍·没问题",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/49.webp"
+      },
+      {
+        "name": "红月沙",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/50.webp"
+      },
+      {
+        "name": "蚀曦",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/51.webp"
+      },
+      {
+        "name": "温馨",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/52.webp"
+      },
+      {
+        "name": "海葬棺",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/53.webp"
+      },
+      {
+        "name": "席拉·嘲讽",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/54.webp"
+      },
+      {
+        "name": "哈迪·拒绝",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/55.webp"
+      },
+      {
+        "name": "张起灵·噤声",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/56.webp"
+      },
+      {
+        "name": "冷蝶",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/57.webp"
+      },
+      {
+        "name": "游鲤",
+        "quality": "purple",
+        "image": "assets/box/hualongbaozhu/58.webp"
+      },
+      {
+        "name": "束衣·晚秋",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/59.webp"
+      },
+      {
+        "name": "帆布衣·褐",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/60.webp"
+      },
+      {
+        "name": "护胸甲·生",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/61.webp"
+      },
+      {
+        "name": "直垂衣·草纹",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/62.webp"
+      },
+      {
+        "name": "布衫·新橘",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/63.webp"
+      },
+      {
+        "name": "诛心·黑铁",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/64.webp"
+      },
+      {
+        "name": "凌风·槐木",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/65.webp"
+      },
+      {
+        "name": "秋水·寒",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/66.webp"
+      },
+      {
+        "name": "骤雨·腐木",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/67.webp"
+      },
+      {
+        "name": "破军·厉",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/68.webp"
+      },
+      {
+        "name": "百寒·冰",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/69.webp"
+      },
+      {
+        "name": "厉兵·铁",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/70.webp"
+      },
+      {
+        "name": "锋爪·铜弑",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/71.webp"
+      },
+      {
+        "name": "君子·紫冥",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/72.webp"
+      },
+      {
+        "name": "童子切安纲·黑",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/73.webp"
+      },
+      {
+        "name": "神臂弩·水苔",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/74.webp"
+      },
+      {
+        "name": "破阵·紫泥",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/75.webp"
+      },
+      {
+        "name": "五雷轰·赤铜",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/76.webp"
+      },
+      {
+        "name": "惊鸿·赤筒",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/77.webp"
+      },
+      {
+        "name": "檀芙蕖",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/78.webp"
+      },
+      {
+        "name": "引星盘",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/79.webp"
+      },
+      {
+        "name": "平安锁",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/80.webp"
+      },
+      {
+        "name": "火石囊",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/81.webp"
+      },
+      {
+        "name": "画扇",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/82.webp"
+      },
+      {
+        "name": "织金",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/83.webp"
+      },
+      {
+        "name": "岩壁",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/84.webp"
+      },
+      {
+        "name": "宝银",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/85.webp"
+      },
+      {
+        "name": "碎石",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/86.webp"
+      },
+      {
+        "name": "书案",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/87.webp"
+      },
+      {
+        "name": "刀架",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/88.webp"
+      },
+      {
+        "name": "团木台",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/89.webp"
+      },
+      {
+        "name": "锦灯",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/90.webp"
+      },
+      {
+        "name": "王座",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/91.webp"
+      },
+      {
+        "name": "陶罐",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/92.webp"
+      },
+      {
+        "name": "罗盘",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/93.webp"
+      },
+      {
+        "name": "怀风",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/94.webp"
+      },
+      {
+        "name": "华盖",
+        "quality": "blue",
+        "image": "assets/box/hualongbaozhu/95.webp"
+      }
+    ],
+    "probabilities": {
+      "red": 0.003,
+      "gold": 0.039,
+      "purple": 0.261,
+      "blue": 0.697
+    },
+    "pity": {
+      "cycle": {
+        "targetQuality": "purple",
+        "count": 10,
+        "repeatable": true
+      },
+      "special": {
+        "targetQuality": "red",
+        "count": 100,
+        "repeatable": false,
+        "priorityOverCycle": true
+      },
+      "extraGoldPity": null,
+      "noRepeatRed": true,
+      "wishEnabled": false,
+      "wishDescription": "",
+      "hasDualPity": true,
+      "notes": "当“循环保底”和“特殊保底”同时触发时，会优先进行特殊保底。"
+    }
+  },
+  {
+    "id": "huiguangbaolu",
+    "name": "辉光宝炉",
+    "type": "regular",
+    "image": "assets/box/huiguangbaolu/huiguangbaolu.png",
+    "items": [
+      {
+        "name": "新倩女幽魂·长天藏锦",
+        "quality": "red",
+        "image": "assets/box/huiguangbaolu/01.webp"
+      },
+      {
+        "name": "烈阳",
+        "quality": "red",
+        "image": "assets/box/huiguangbaolu/02.webp"
+      },
+      {
+        "name": "梨园传奇·法海",
+        "quality": "gold",
+        "image": "assets/box/huiguangbaolu/03.webp"
+      },
+      {
+        "name": "火罗圣女",
+        "quality": "gold",
+        "image": "assets/box/huiguangbaolu/04.webp"
+      },
+      {
+        "name": "夏日派对·弄潮逐浪",
+        "quality": "gold",
+        "image": "assets/box/huiguangbaolu/05.webp"
+      },
+      {
+        "name": "烛神令",
+        "quality": "gold",
+        "image": "assets/box/huiguangbaolu/06.webp"
+      },
+      {
+        "name": "猎犸铳",
+        "quality": "gold",
+        "image": "assets/box/huiguangbaolu/07.webp"
+      },
+      {
+        "name": "【挑染】沸海",
+        "quality": "gold",
+        "image": "assets/box/huiguangbaolu/08.webp"
+      },
+      {
+        "name": "【挑染】冰羽",
+        "quality": "gold",
+        "image": "assets/box/huiguangbaolu/09.webp"
+      },
+      {
+        "name": "月玉枝",
+        "quality": "gold",
+        "image": "assets/box/huiguangbaolu/10.webp"
+      },
+      {
+        "name": "山樱之鞘",
+        "quality": "gold",
+        "image": "assets/box/huiguangbaolu/11.webp"
+      },
+      {
+        "name": "银雀台",
+        "quality": "gold",
+        "image": "assets/box/huiguangbaolu/12.webp"
+      },
+      {
+        "name": "百衲衣·石金刚",
+        "quality": "purple",
+        "image": "assets/box/huiguangbaolu/13.webp"
+      },
+      {
+        "name": "叠裙·稻荷",
+        "quality": "purple",
+        "image": "assets/box/huiguangbaolu/14.webp"
+      },
+      {
+        "name": "昆仑服·竹叶",
+        "quality": "purple",
+        "image": "assets/box/huiguangbaolu/15.webp"
+      },
+      {
+        "name": "骨刃·荣",
+        "quality": "purple",
+        "image": "assets/box/huiguangbaolu/16.webp"
+      },
+      {
+        "name": "夜隼·青云",
+        "quality": "purple",
+        "image": "assets/box/huiguangbaolu/17.webp"
+      },
+      {
+        "name": "村正·桔釉",
+        "quality": "purple",
+        "image": "assets/box/huiguangbaolu/18.webp"
+      },
+      {
+        "name": "穹宇",
+        "quality": "purple",
+        "image": "assets/box/huiguangbaolu/19.webp"
+      },
+      {
+        "name": "竹筒",
+        "quality": "purple",
+        "image": "assets/box/huiguangbaolu/20.webp"
+      },
+      {
+        "name": "奚宣帽",
+        "quality": "purple",
+        "image": "assets/box/huiguangbaolu/21.webp"
+      },
+      {
+        "name": "季沧海·点火",
+        "quality": "purple",
+        "image": "assets/box/huiguangbaolu/22.webp"
+      },
+      {
+        "name": "岳山·放马过来",
+        "quality": "purple",
+        "image": "assets/box/huiguangbaolu/23.webp"
+      },
+      {
+        "name": "外出",
+        "quality": "purple",
+        "image": "assets/box/huiguangbaolu/24.webp"
+      },
+      {
+        "name": "白莲华",
+        "quality": "purple",
+        "image": "assets/box/huiguangbaolu/25.webp"
+      },
+      {
+        "name": "弄莲·蓬舟",
+        "quality": "purple",
+        "image": "assets/box/huiguangbaolu/26.webp"
+      },
+      {
+        "name": "本草",
+        "quality": "purple",
+        "image": "assets/box/huiguangbaolu/27.webp"
+      },
+      {
+        "name": "夜行鸟居",
+        "quality": "purple",
+        "image": "assets/box/huiguangbaolu/28.webp"
+      }
+    ],
+    "probabilities": {
+      "red": 0.006,
+      "gold": 0.084,
+      "purple": 0.91
+    },
+    "pity": {
+      "cycle": {
+        "targetQuality": "red",
+        "count": 100,
+        "repeatable": true
+      },
+      "special": null,
+      "extraGoldPity": null,
+      "noRepeatRed": true,
+      "wishEnabled": true,
+      "wishDescription": "每次抽中神品外观，获得1次指定极品外观的机会",
+      "hasDualPity": false,
+      "notes": ""
+    }
+  },
+  {
+    "id": "jinlinbaonang",
+    "name": "锦鳞宝囊",
+    "type": "regular",
+    "image": "assets/box/jinlinbaonang/jinlinbaonang.png",
+    "items": [
+      {
+        "name": "赤皓新囍",
+        "quality": "red",
+        "image": "assets/box/jinlinbaonang/01.webp"
+      },
+      {
+        "name": "监兵凶神",
+        "quality": "red",
+        "image": "assets/box/jinlinbaonang/02.webp"
+      },
+      {
+        "name": "飞将戟",
+        "quality": "red",
+        "image": "assets/box/jinlinbaonang/03.webp"
+      },
+      {
+        "name": "天罚",
+        "quality": "red",
+        "image": "assets/box/jinlinbaonang/04.webp"
+      },
+      {
+        "name": "街头狂欢·涂鸦少女",
+        "quality": "gold",
+        "image": "assets/box/jinlinbaonang/05.webp"
+      },
+      {
+        "name": "街头狂欢·不败擂主",
+        "quality": "gold",
+        "image": "assets/box/jinlinbaonang/06.webp"
+      },
+      {
+        "name": "日影花阴",
+        "quality": "gold",
+        "image": "assets/box/jinlinbaonang/07.webp"
+      },
+      {
+        "name": "天工奥妙",
+        "quality": "gold",
+        "image": "assets/box/jinlinbaonang/08.webp"
+      },
+      {
+        "name": "曼提柯尔之牙",
+        "quality": "gold",
+        "image": "assets/box/jinlinbaonang/09.webp"
+      },
+      {
+        "name": "无韵",
+        "quality": "gold",
+        "image": "assets/box/jinlinbaonang/10.webp"
+      },
+      {
+        "name": "傲骨",
+        "quality": "gold",
+        "image": "assets/box/jinlinbaonang/11.webp"
+      },
+      {
+        "name": "千堆雪",
+        "quality": "gold",
+        "image": "assets/box/jinlinbaonang/12.webp"
+      },
+      {
+        "name": "逆逢",
+        "quality": "gold",
+        "image": "assets/box/jinlinbaonang/13.webp"
+      },
+      {
+        "name": "赤霞",
+        "quality": "gold",
+        "image": "assets/box/jinlinbaonang/14.webp"
+      },
+      {
+        "name": "染红纱",
+        "quality": "gold",
+        "image": "assets/box/jinlinbaonang/15.webp"
+      },
+      {
+        "name": "烈阳羽",
+        "quality": "gold",
+        "image": "assets/box/jinlinbaonang/16.webp"
+      },
+      {
+        "name": "街头狂欢·嗷呜",
+        "quality": "gold",
+        "image": "assets/box/jinlinbaonang/17.webp"
+      },
+      {
+        "name": "街头狂欢·制胜之道",
+        "quality": "gold",
+        "image": "assets/box/jinlinbaonang/18.webp"
+      },
+      {
+        "name": "沐芳花篮",
+        "quality": "gold",
+        "image": "assets/box/jinlinbaonang/19.webp"
+      },
+      {
+        "name": "赤金镜",
+        "quality": "gold",
+        "image": "assets/box/jinlinbaonang/20.webp"
+      },
+      {
+        "name": "九泉",
+        "quality": "gold",
+        "image": "assets/box/jinlinbaonang/21.webp"
+      },
+      {
+        "name": "幕夜",
+        "quality": "gold",
+        "image": "assets/box/jinlinbaonang/22.webp"
+      },
+      {
+        "name": "玉玲珑·扇舞",
+        "quality": "gold",
+        "image": "assets/box/jinlinbaonang/23.webp"
+      },
+      {
+        "name": "神机袍·页岩",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/24.webp"
+      },
+      {
+        "name": "褡护·群青",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/25.webp"
+      },
+      {
+        "name": "绝命衣·病",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/26.webp"
+      },
+      {
+        "name": "仙袍·绯烟",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/27.webp"
+      },
+      {
+        "name": "织锦衫·松石",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/28.webp"
+      },
+      {
+        "name": "夜隼·紫羽",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/29.webp"
+      },
+      {
+        "name": "墨攻·沙铜",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/30.webp"
+      },
+      {
+        "name": "命运·朱釉",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/31.webp"
+      },
+      {
+        "name": "虎目·暗玉",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/32.webp"
+      },
+      {
+        "name": "雷鸣·朱漆",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/33.webp"
+      },
+      {
+        "name": "悍厉·邪阴",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/34.webp"
+      },
+      {
+        "name": "照空·莽山",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/35.webp"
+      },
+      {
+        "name": "撞钟槌·钢",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/36.webp"
+      },
+      {
+        "name": "倚天·苍蓝",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/37.webp"
+      },
+      {
+        "name": "风雷·红烛",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/38.webp"
+      },
+      {
+        "name": "风行天·持",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/39.webp"
+      },
+      {
+        "name": "陷阵·凯旋",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/40.webp"
+      },
+      {
+        "name": "火云折",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/41.webp"
+      },
+      {
+        "name": "三眼号炮·湛蓝",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/42.webp"
+      },
+      {
+        "name": "花钿配",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/43.webp"
+      },
+      {
+        "name": "瓶中信",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/44.webp"
+      },
+      {
+        "name": "胡为·你过来啊",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/45.webp"
+      },
+      {
+        "name": "玉玲珑·嘻嘻",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/46.webp"
+      },
+      {
+        "name": "沈妙·诶嘿",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/47.webp"
+      },
+      {
+        "name": "季莹莹·嫌弃",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/48.webp"
+      },
+      {
+        "name": "哈迪·研究",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/49.webp"
+      },
+      {
+        "name": "密林",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/50.webp"
+      },
+      {
+        "name": "间架",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/51.webp"
+      },
+      {
+        "name": "榫卯",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/52.webp"
+      },
+      {
+        "name": "枷锁台",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/53.webp"
+      },
+      {
+        "name": "露台",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/54.webp"
+      },
+      {
+        "name": "起势",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/55.webp"
+      },
+      {
+        "name": "千姿",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/56.webp"
+      },
+      {
+        "name": "游火",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/57.webp"
+      },
+      {
+        "name": "鬼焰",
+        "quality": "purple",
+        "image": "assets/box/jinlinbaonang/58.webp"
+      },
+      {
+        "name": "工衣·栗",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/59.webp"
+      },
+      {
+        "name": "竖褐·棕",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/60.webp"
+      },
+      {
+        "name": "软革·昏",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/61.webp"
+      },
+      {
+        "name": "短袄·铜",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/62.webp"
+      },
+      {
+        "name": "窄衣·碧",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/63.webp"
+      },
+      {
+        "name": "童子切安纲·靛",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/64.webp"
+      },
+      {
+        "name": "开山·疾",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/65.webp"
+      },
+      {
+        "name": "厉兵·石",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/66.webp"
+      },
+      {
+        "name": "骤雨·黑枝",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/67.webp"
+      },
+      {
+        "name": "君子·水草",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/68.webp"
+      },
+      {
+        "name": "凌风·蓝漆",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/69.webp"
+      },
+      {
+        "name": "百寒·兰",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/70.webp"
+      },
+      {
+        "name": "寸锋·褐岩",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/71.webp"
+      },
+      {
+        "name": "破军·残",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/72.webp"
+      },
+      {
+        "name": "穿杨·水兰",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/73.webp"
+      },
+      {
+        "name": "五雷轰·碎茶",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/74.webp"
+      },
+      {
+        "name": "惊鸿·绿羽",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/75.webp"
+      },
+      {
+        "name": "神臂弩·漆红",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/76.webp"
+      },
+      {
+        "name": "破阵·残木",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/77.webp"
+      },
+      {
+        "name": "泥哨雀",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/78.webp"
+      },
+      {
+        "name": "妙墨囊",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/79.webp"
+      },
+      {
+        "name": "针式怀表",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/80.webp"
+      },
+      {
+        "name": "末济签",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/81.webp"
+      },
+      {
+        "name": "光绚",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/82.webp"
+      },
+      {
+        "name": "正净",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/83.webp"
+      },
+      {
+        "name": "红伞",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/84.webp"
+      },
+      {
+        "name": "山烟",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/85.webp"
+      },
+      {
+        "name": "齿轮",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/86.webp"
+      },
+      {
+        "name": "通巴鼓",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/87.webp"
+      },
+      {
+        "name": "戏鼓",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/88.webp"
+      },
+      {
+        "name": "判台",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/89.webp"
+      },
+      {
+        "name": "幽石",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/90.webp"
+      },
+      {
+        "name": "大哥",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/91.webp"
+      },
+      {
+        "name": "金蟾",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/92.webp"
+      },
+      {
+        "name": "吃药",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/93.webp"
+      },
+      {
+        "name": "给你凝血丸",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/94.webp"
+      },
+      {
+        "name": "给你护甲粉末",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/95.webp"
+      },
+      {
+        "name": "给你金武器",
+        "quality": "blue",
+        "image": "assets/box/jinlinbaonang/96.webp"
+      }
+    ],
+    "probabilities": {
+      "red": 0.003,
+      "gold": 0.039,
+      "purple": 0.256,
+      "blue": 0.702
+    },
+    "pity": {
+      "cycle": {
+        "targetQuality": "purple",
+        "count": 10,
+        "repeatable": true
+      },
+      "special": {
+        "targetQuality": "red",
+        "count": 100,
+        "repeatable": false,
+        "priorityOverCycle": true
+      },
+      "extraGoldPity": null,
+      "noRepeatRed": true,
+      "wishEnabled": false,
+      "wishDescription": "",
+      "hasDualPity": true,
+      "notes": "当“循环保底”和“特殊保底”同时触发时，会优先进行特殊保底。"
+    }
+  },
+  {
+    "id": "langchaobaoxiang",
+    "name": "浪潮宝箱",
+    "type": "regular",
+    "image": "assets/box/langchaobaoxiang/langchaobaoxiang.png",
+    "items": [
+      {
+        "name": "海之奇",
+        "quality": "red",
+        "image": "assets/box/langchaobaoxiang/01.webp"
+      },
+      {
+        "name": "冰魄",
+        "quality": "red",
+        "image": "assets/box/langchaobaoxiang/02.webp"
+      },
+      {
+        "name": "童趣",
+        "quality": "gold",
+        "image": "assets/box/langchaobaoxiang/03.webp"
+      },
+      {
+        "name": "沙狼之怒",
+        "quality": "gold",
+        "image": "assets/box/langchaobaoxiang/04.webp"
+      },
+      {
+        "name": "念珠丸",
+        "quality": "gold",
+        "image": "assets/box/langchaobaoxiang/05.webp"
+      },
+      {
+        "name": "穷奇",
+        "quality": "gold",
+        "image": "assets/box/langchaobaoxiang/06.webp"
+      },
+      {
+        "name": "委蛇朱冠",
+        "quality": "gold",
+        "image": "assets/box/langchaobaoxiang/07.webp"
+      },
+      {
+        "name": "怒狼铜盔",
+        "quality": "gold",
+        "image": "assets/box/langchaobaoxiang/08.webp"
+      },
+      {
+        "name": "鱼皮甲·兰鲷",
+        "quality": "purple",
+        "image": "assets/box/langchaobaoxiang/09.webp"
+      },
+      {
+        "name": "鳞袍·绵柔",
+        "quality": "purple",
+        "image": "assets/box/langchaobaoxiang/10.webp"
+      },
+      {
+        "name": "天志·铜蚀",
+        "quality": "purple",
+        "image": "assets/box/langchaobaoxiang/11.webp"
+      },
+      {
+        "name": "雾海鲛灵",
+        "quality": "purple",
+        "image": "assets/box/langchaobaoxiang/12.webp"
+      },
+      {
+        "name": "风雨头巾",
+        "quality": "purple",
+        "image": "assets/box/langchaobaoxiang/13.webp"
+      },
+      {
+        "name": "玉狐面",
+        "quality": "purple",
+        "image": "assets/box/langchaobaoxiang/14.webp"
+      },
+      {
+        "name": "精编斗笠",
+        "quality": "purple",
+        "image": "assets/box/langchaobaoxiang/15.webp"
+      },
+      {
+        "name": "迦南·起飞",
+        "quality": "purple",
+        "image": "assets/box/langchaobaoxiang/16.webp"
+      },
+      {
+        "name": "妖刀姬·撇嘴",
+        "quality": "purple",
+        "image": "assets/box/langchaobaoxiang/17.webp"
+      },
+      {
+        "name": "苍狼先锋",
+        "quality": "purple",
+        "image": "assets/box/langchaobaoxiang/18.webp"
+      },
+      {
+        "name": "暗流",
+        "quality": "purple",
+        "image": "assets/box/langchaobaoxiang/19.webp"
+      },
+      {
+        "name": "苍狼岩画",
+        "quality": "purple",
+        "image": "assets/box/langchaobaoxiang/20.webp"
+      },
+      {
+        "name": "青竹庭院",
+        "quality": "purple",
+        "image": "assets/box/langchaobaoxiang/21.webp"
+      },
+      {
+        "name": "踏浪",
+        "quality": "purple",
+        "image": "assets/box/langchaobaoxiang/22.webp"
+      }
+    ],
+    "probabilities": {
+      "red": 0.006,
+      "gold": 0.076,
+      "purple": 0.918
+    },
+    "pity": {
+      "cycle": {
+        "targetQuality": "red",
+        "count": 100,
+        "repeatable": true
+      },
+      "special": null,
+      "extraGoldPity": null,
+      "noRepeatRed": false,
+      "wishEnabled": false,
+      "wishDescription": "",
+      "hasDualPity": false,
+      "notes": ""
+    }
+  },
+  {
+    "id": "liebianbaolu",
+    "name": "裂变宝炉",
+    "type": "regular",
+    "image": "assets/box/liebianbaolu/liebianbaolu.png",
+    "items": [
+      {
+        "name": "人偶之梦",
+        "quality": "red",
+        "image": "assets/box/liebianbaolu/01.webp"
+      },
+      {
+        "name": "太玄之刃",
+        "quality": "red",
+        "image": "assets/box/liebianbaolu/02.webp"
+      },
+      {
+        "name": "倒反阴阳·炽羽",
+        "quality": "gold",
+        "image": "assets/box/liebianbaolu/03.webp"
+      },
+      {
+        "name": "觉明尊者",
+        "quality": "gold",
+        "image": "assets/box/liebianbaolu/04.webp"
+      },
+      {
+        "name": "秋藏桂",
+        "quality": "gold",
+        "image": "assets/box/liebianbaolu/05.webp"
+      },
+      {
+        "name": "塑梦钥匙",
+        "quality": "gold",
+        "image": "assets/box/liebianbaolu/06.webp"
+      },
+      {
+        "name": "宝月琉璃",
+        "quality": "gold",
+        "image": "assets/box/liebianbaolu/07.webp"
+      },
+      {
+        "name": "【挑染】雷霆客",
+        "quality": "gold",
+        "image": "assets/box/liebianbaolu/08.webp"
+      },
+      {
+        "name": "【挑染】狐绯",
+        "quality": "gold",
+        "image": "assets/box/liebianbaolu/09.webp"
+      },
+      {
+        "name": "倒反阴阳·盲乌",
+        "quality": "gold",
+        "image": "assets/box/liebianbaolu/10.webp"
+      },
+      {
+        "name": "伏魔镜",
+        "quality": "gold",
+        "image": "assets/box/liebianbaolu/11.webp"
+      },
+      {
+        "name": "月桂兔",
+        "quality": "gold",
+        "image": "assets/box/liebianbaolu/12.webp"
+      },
+      {
+        "name": "惊雷蕴",
+        "quality": "gold",
+        "image": "assets/box/liebianbaolu/13.webp"
+      },
+      {
+        "name": "机械之芯",
+        "quality": "gold",
+        "image": "assets/box/liebianbaolu/14.webp"
+      },
+      {
+        "name": "璇机回响",
+        "quality": "gold",
+        "image": "assets/box/liebianbaolu/15.webp"
+      },
+      {
+        "name": "金蔓萦音",
+        "quality": "gold",
+        "image": "assets/box/liebianbaolu/16.webp"
+      },
+      {
+        "name": "叠裙·胧月",
+        "quality": "purple",
+        "image": "assets/box/liebianbaolu/17.webp"
+      },
+      {
+        "name": "炼气服·溯云",
+        "quality": "purple",
+        "image": "assets/box/liebianbaolu/18.webp"
+      },
+      {
+        "name": "褡护·彪玄",
+        "quality": "purple",
+        "image": "assets/box/liebianbaolu/19.webp"
+      },
+      {
+        "name": "悍厉·乌水",
+        "quality": "purple",
+        "image": "assets/box/liebianbaolu/20.webp"
+      },
+      {
+        "name": "禅意·衔草",
+        "quality": "purple",
+        "image": "assets/box/liebianbaolu/21.webp"
+      },
+      {
+        "name": "墨攻·紫霄",
+        "quality": "purple",
+        "image": "assets/box/liebianbaolu/22.webp"
+      },
+      {
+        "name": "羽毛笔",
+        "quality": "purple",
+        "image": "assets/box/liebianbaolu/23.webp"
+      },
+      {
+        "name": "都统印",
+        "quality": "purple",
+        "image": "assets/box/liebianbaolu/24.webp"
+      },
+      {
+        "name": "缚鞭",
+        "quality": "purple",
+        "image": "assets/box/liebianbaolu/25.webp"
+      },
+      {
+        "name": "青玉木莲",
+        "quality": "purple",
+        "image": "assets/box/liebianbaolu/26.webp"
+      },
+      {
+        "name": "凤翎台",
+        "quality": "purple",
+        "image": "assets/box/liebianbaolu/27.webp"
+      },
+      {
+        "name": "青云铃",
+        "quality": "purple",
+        "image": "assets/box/liebianbaolu/28.webp"
+      },
+      {
+        "name": "卷隐云山",
+        "quality": "purple",
+        "image": "assets/box/liebianbaolu/29.webp"
+      },
+      {
+        "name": "功成",
+        "quality": "purple",
+        "image": "assets/box/liebianbaolu/30.webp"
+      },
+      {
+        "name": "万钧·脑壳痛",
+        "quality": "purple",
+        "image": "assets/box/liebianbaolu/31.webp"
+      },
+      {
+        "name": "蓝梦·比心",
+        "quality": "purple",
+        "image": "assets/box/liebianbaolu/32.webp"
+      }
+    ],
+    "probabilities": {
+      "red": 0.006,
+      "gold": 0.08,
+      "purple": 0.914
+    },
+    "pity": {
+      "cycle": {
+        "targetQuality": "red",
+        "count": 100,
+        "repeatable": true
+      },
+      "special": null,
+      "extraGoldPity": {
+        "count": 25,
+        "maxTriggers": 14
+      },
+      "noRepeatRed": true,
+      "wishEnabled": true,
+      "wishDescription": "每次抽中神品外观，获得1次指定极品外观的机会",
+      "hasDualPity": false,
+      "notes": ""
+    }
+  },
+  {
+    "id": "linglongbaolian",
+    "name": "玲珑宝莲",
+    "type": "regular",
+    "image": "assets/box/linglongbaolian/linglongbaolian.png",
+    "items": [
+      {
+        "name": "化生明王",
+        "quality": "red",
+        "image": "assets/box/linglongbaolian/01.webp"
+      },
+      {
+        "name": "泣珠龙纱",
+        "quality": "red",
+        "image": "assets/box/linglongbaolian/02.webp"
+      },
+      {
+        "name": "少阳剑",
+        "quality": "red",
+        "image": "assets/box/linglongbaolian/03.webp"
+      },
+      {
+        "name": "狂龙",
+        "quality": "red",
+        "image": "assets/box/linglongbaolian/04.webp"
+      },
+      {
+        "name": "赤雾烟霞",
+        "quality": "gold",
+        "image": "assets/box/linglongbaolian/05.webp"
+      },
+      {
+        "name": "朝闻道",
+        "quality": "gold",
+        "image": "assets/box/linglongbaolian/06.webp"
+      },
+      {
+        "name": "新倩女幽魂·瑶光沐月",
+        "quality": "gold",
+        "image": "assets/box/linglongbaolian/07.webp"
+      },
+      {
+        "name": "弘毅袍",
+        "quality": "gold",
+        "image": "assets/box/linglongbaolian/08.webp"
+      },
+      {
+        "name": "麟鹿大铠",
+        "quality": "gold",
+        "image": "assets/box/linglongbaolian/09.webp"
+      },
+      {
+        "name": "赤丹朱湛",
+        "quality": "gold",
+        "image": "assets/box/linglongbaolian/10.webp"
+      },
+      {
+        "name": "赤霄",
+        "quality": "gold",
+        "image": "assets/box/linglongbaolian/11.webp"
+      },
+      {
+        "name": "焦钰",
+        "quality": "gold",
+        "image": "assets/box/linglongbaolian/12.webp"
+      },
+      {
+        "name": "祸忌",
+        "quality": "gold",
+        "image": "assets/box/linglongbaolian/13.webp"
+      },
+      {
+        "name": "雷王锯",
+        "quality": "gold",
+        "image": "assets/box/linglongbaolian/14.webp"
+      },
+      {
+        "name": "鹦鹉螺",
+        "quality": "gold",
+        "image": "assets/box/linglongbaolian/15.webp"
+      },
+      {
+        "name": "萤火",
+        "quality": "gold",
+        "image": "assets/box/linglongbaolian/16.webp"
+      },
+      {
+        "name": "造景",
+        "quality": "gold",
+        "image": "assets/box/linglongbaolian/17.webp"
+      },
+      {
+        "name": "鲛人角",
+        "quality": "gold",
+        "image": "assets/box/linglongbaolian/18.webp"
+      },
+      {
+        "name": "凛夜扇",
+        "quality": "gold",
+        "image": "assets/box/linglongbaolian/19.webp"
+      },
+      {
+        "name": "知天命",
+        "quality": "gold",
+        "image": "assets/box/linglongbaolian/20.webp"
+      },
+      {
+        "name": "镰鼬刃",
+        "quality": "gold",
+        "image": "assets/box/linglongbaolian/21.webp"
+      },
+      {
+        "name": "素心流光卷",
+        "quality": "gold",
+        "image": "assets/box/linglongbaolian/22.webp"
+      },
+      {
+        "name": "将军令",
+        "quality": "gold",
+        "image": "assets/box/linglongbaolian/23.webp"
+      },
+      {
+        "name": "鱼皮甲·金鲟",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/24.webp"
+      },
+      {
+        "name": "绣罗衣·法翠",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/25.webp"
+      },
+      {
+        "name": "炼气服·荧感",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/26.webp"
+      },
+      {
+        "name": "软烟罗裳·黄芪",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/27.webp"
+      },
+      {
+        "name": "将军甲·卫南",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/28.webp"
+      },
+      {
+        "name": "漆具足·仁",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/29.webp"
+      },
+      {
+        "name": "夜隼・鸣镝",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/30.webp"
+      },
+      {
+        "name": "墨攻·暗铜",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/31.webp"
+      },
+      {
+        "name": "命运·古银",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/32.webp"
+      },
+      {
+        "name": "虎目·花梨",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/33.webp"
+      },
+      {
+        "name": "雷鸣·金叶",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/34.webp"
+      },
+      {
+        "name": "天旭·镇涛",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/35.webp"
+      },
+      {
+        "name": "村正·翠石",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/36.webp"
+      },
+      {
+        "name": "禅意·铜辉",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/37.webp"
+      },
+      {
+        "name": "倚天·紫兰",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/38.webp"
+      },
+      {
+        "name": "风雷·苍梧",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/39.webp"
+      },
+      {
+        "name": "恶念·幽冥",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/40.webp"
+      },
+      {
+        "name": "骨刃·枯",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/41.webp"
+      },
+      {
+        "name": "蹈海金币",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/42.webp"
+      },
+      {
+        "name": "阴阳环",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/43.webp"
+      },
+      {
+        "name": "武田徽",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/44.webp"
+      },
+      {
+        "name": "水芸瓶",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/45.webp"
+      },
+      {
+        "name": "竹马",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/46.webp"
+      },
+      {
+        "name": "水鸢·扇",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/47.webp"
+      },
+      {
+        "name": "崔三娘·摸鱼",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/48.webp"
+      },
+      {
+        "name": "岳山·所向披靡",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/49.webp"
+      },
+      {
+        "name": "顾清寒·打不着",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/50.webp"
+      },
+      {
+        "name": "武田信忠·喝茶",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/51.webp"
+      },
+      {
+        "name": "殷紫萍·送花",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/52.webp"
+      },
+      {
+        "name": "无尘·先走一步",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/53.webp"
+      },
+      {
+        "name": "弄莲·柳色",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/54.webp"
+      },
+      {
+        "name": "练武场",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/55.webp"
+      },
+      {
+        "name": "千鸟之魂",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/56.webp"
+      },
+      {
+        "name": "坐隐",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/57.webp"
+      },
+      {
+        "name": "菡萏",
+        "quality": "purple",
+        "image": "assets/box/linglongbaolian/58.webp"
+      },
+      {
+        "name": "帆布衣·白",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/59.webp"
+      },
+      {
+        "name": "素衫·紫靛",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/60.webp"
+      },
+      {
+        "name": "清净衣·离",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/61.webp"
+      },
+      {
+        "name": "布衫·黄霞",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/62.webp"
+      },
+      {
+        "name": "护胸甲·永",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/63.webp"
+      },
+      {
+        "name": "直垂衣·蛇纹",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/64.webp"
+      },
+      {
+        "name": "穿杨·靛蓝",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/65.webp"
+      },
+      {
+        "name": "五雷轰·镀银",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/66.webp"
+      },
+      {
+        "name": "惊鸿·黄木",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/67.webp"
+      },
+      {
+        "name": "神臂弩·亮银",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/68.webp"
+      },
+      {
+        "name": "破阵·漆蓝",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/69.webp"
+      },
+      {
+        "name": "威武·灰石",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/70.webp"
+      },
+      {
+        "name": "童子切安纲·青",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/71.webp"
+      },
+      {
+        "name": "诛心·黑炭",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/72.webp"
+      },
+      {
+        "name": "君子·赤刃",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/73.webp"
+      },
+      {
+        "name": "凌风·乌木",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/74.webp"
+      },
+      {
+        "name": "寸锋·玉黄",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/75.webp"
+      },
+      {
+        "name": "秋水·渊",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/76.webp"
+      },
+      {
+        "name": "信瓶",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/77.webp"
+      },
+      {
+        "name": "白果叶",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/78.webp"
+      },
+      {
+        "name": "方玉",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/79.webp"
+      },
+      {
+        "name": "长寿御守",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/80.webp"
+      },
+      {
+        "name": "白玉石",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/81.webp"
+      },
+      {
+        "name": "三环满盈袋",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/82.webp"
+      },
+      {
+        "name": "落雪",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/83.webp"
+      },
+      {
+        "name": "山峦",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/84.webp"
+      },
+      {
+        "name": "早稻",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/85.webp"
+      },
+      {
+        "name": "日暮",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/86.webp"
+      },
+      {
+        "name": "阵眼",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/87.webp"
+      },
+      {
+        "name": "海螺",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/88.webp"
+      },
+      {
+        "name": "玄岩",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/89.webp"
+      },
+      {
+        "name": "浮萍",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/90.webp"
+      },
+      {
+        "name": "警戒",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/91.webp"
+      },
+      {
+        "name": "横刃",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/92.webp"
+      },
+      {
+        "name": "你不行",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/93.webp"
+      },
+      {
+        "name": "快逃",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/94.webp"
+      },
+      {
+        "name": "黑眼圈",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/95.webp"
+      },
+      {
+        "name": "哼哼",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/96.webp"
+      },
+      {
+        "name": "瘫了",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/97.webp"
+      },
+      {
+        "name": "我们能赢",
+        "quality": "blue",
+        "image": "assets/box/linglongbaolian/98.webp"
+      }
+    ],
+    "probabilities": {
+      "red": 0.003,
+      "gold": 0.038,
+      "purple": 0.247,
+      "blue": 0.712
+    },
+    "pity": {
+      "cycle": {
+        "targetQuality": "purple",
+        "count": 10,
+        "repeatable": true
+      },
+      "special": {
+        "targetQuality": "red",
+        "count": 100,
+        "repeatable": false,
+        "priorityOverCycle": true
+      },
+      "extraGoldPity": null,
+      "noRepeatRed": true,
+      "wishEnabled": false,
+      "wishDescription": "",
+      "hasDualPity": true,
+      "notes": "当“循环保底”和“特殊保底”同时触发时，会优先进行特殊保底。"
+    }
+  },
+  {
+    "id": "lingxiaobaoxiang",
+    "name": "凌霄宝箱",
+    "type": "regular",
+    "image": "assets/box/lingxiaobaoxiang/lingxiaobaoxiang.png",
+    "items": [
+      {
+        "name": "香雪水兰",
+        "quality": "red",
+        "image": "assets/box/lingxiaobaoxiang/01.webp"
+      },
+      {
+        "name": "灵狐幻刃",
+        "quality": "red",
+        "image": "assets/box/lingxiaobaoxiang/02.webp"
+      },
+      {
+        "name": "华夏宝甲·汉光",
+        "quality": "gold",
+        "image": "assets/box/lingxiaobaoxiang/03.webp"
+      },
+      {
+        "name": "红川仙子",
+        "quality": "gold",
+        "image": "assets/box/lingxiaobaoxiang/04.webp"
+      },
+      {
+        "name": "委蛇矛",
+        "quality": "gold",
+        "image": "assets/box/lingxiaobaoxiang/05.webp"
+      },
+      {
+        "name": "九霄寒",
+        "quality": "gold",
+        "image": "assets/box/lingxiaobaoxiang/06.webp"
+      },
+      {
+        "name": "【挑染】腾烟",
+        "quality": "gold",
+        "image": "assets/box/lingxiaobaoxiang/07.webp"
+      },
+      {
+        "name": "【挑染】云霞",
+        "quality": "gold",
+        "image": "assets/box/lingxiaobaoxiang/08.webp"
+      },
+      {
+        "name": "月梦",
+        "quality": "gold",
+        "image": "assets/box/lingxiaobaoxiang/09.webp"
+      },
+      {
+        "name": "烟火",
+        "quality": "gold",
+        "image": "assets/box/lingxiaobaoxiang/10.webp"
+      },
+      {
+        "name": "锁龙灯台",
+        "quality": "gold",
+        "image": "assets/box/lingxiaobaoxiang/11.webp"
+      },
+      {
+        "name": "炼气服·仙风",
+        "quality": "purple",
+        "image": "assets/box/lingxiaobaoxiang/12.webp"
+      },
+      {
+        "name": "猎装·白狼",
+        "quality": "purple",
+        "image": "assets/box/lingxiaobaoxiang/13.webp"
+      },
+      {
+        "name": "绣罗衣·伽罗",
+        "quality": "purple",
+        "image": "assets/box/lingxiaobaoxiang/14.webp"
+      },
+      {
+        "name": "倚天·墨砚",
+        "quality": "purple",
+        "image": "assets/box/lingxiaobaoxiang/15.webp"
+      },
+      {
+        "name": "雷鸣·金石",
+        "quality": "purple",
+        "image": "assets/box/lingxiaobaoxiang/16.webp"
+      },
+      {
+        "name": "命运·野火",
+        "quality": "purple",
+        "image": "assets/box/lingxiaobaoxiang/17.webp"
+      },
+      {
+        "name": "湘绯兔",
+        "quality": "purple",
+        "image": "assets/box/lingxiaobaoxiang/18.webp"
+      },
+      {
+        "name": "八风笠",
+        "quality": "purple",
+        "image": "assets/box/lingxiaobaoxiang/19.webp"
+      },
+      {
+        "name": "燧发",
+        "quality": "purple",
+        "image": "assets/box/lingxiaobaoxiang/20.webp"
+      },
+      {
+        "name": "崔三娘·好姐姐",
+        "quality": "purple",
+        "image": "assets/box/lingxiaobaoxiang/21.webp"
+      },
+      {
+        "name": "天海·祈祷",
+        "quality": "purple",
+        "image": "assets/box/lingxiaobaoxiang/22.webp"
+      },
+      {
+        "name": "偏锋",
+        "quality": "purple",
+        "image": "assets/box/lingxiaobaoxiang/23.webp"
+      },
+      {
+        "name": "斩尽",
+        "quality": "purple",
+        "image": "assets/box/lingxiaobaoxiang/24.webp"
+      },
+      {
+        "name": "星晷",
+        "quality": "purple",
+        "image": "assets/box/lingxiaobaoxiang/25.webp"
+      },
+      {
+        "name": "兽谷",
+        "quality": "purple",
+        "image": "assets/box/lingxiaobaoxiang/26.webp"
+      },
+      {
+        "name": "烽烟",
+        "quality": "purple",
+        "image": "assets/box/lingxiaobaoxiang/27.webp"
+      }
+    ],
+    "probabilities": {
+      "red": 0.006,
+      "gold": 0.084,
+      "purple": 0.91
+    },
+    "pity": {
+      "cycle": {
+        "targetQuality": "red",
+        "count": 100,
+        "repeatable": true
+      },
+      "special": null,
+      "extraGoldPity": null,
+      "noRepeatRed": true,
+      "wishEnabled": false,
+      "wishDescription": "",
+      "hasDualPity": false,
+      "notes": ""
+    }
+  },
+  {
+    "id": "pozhenbaoxiang",
+    "name": "破阵宝箱",
+    "type": "regular",
+    "image": "assets/box/pozhenbaoxiang/pozhenbaoxiang.png",
+    "items": [
+      {
+        "name": "青龙将星",
+        "quality": "red",
+        "image": "assets/box/pozhenbaoxiang/01.webp"
+      },
+      {
+        "name": "灵犀",
+        "quality": "red",
+        "image": "assets/box/pozhenbaoxiang/02.webp"
+      },
+      {
+        "name": "龙之道·至纯",
+        "quality": "gold",
+        "image": "assets/box/pozhenbaoxiang/03.webp"
+      },
+      {
+        "name": "狻猊吼",
+        "quality": "gold",
+        "image": "assets/box/pozhenbaoxiang/04.webp"
+      },
+      {
+        "name": "玉矩",
+        "quality": "gold",
+        "image": "assets/box/pozhenbaoxiang/05.webp"
+      },
+      {
+        "name": "【挑染】凤姿",
+        "quality": "gold",
+        "image": "assets/box/pozhenbaoxiang/06.webp"
+      },
+      {
+        "name": "【挑染】自在",
+        "quality": "gold",
+        "image": "assets/box/pozhenbaoxiang/07.webp"
+      },
+      {
+        "name": "青龙盔",
+        "quality": "gold",
+        "image": "assets/box/pozhenbaoxiang/08.webp"
+      },
+      {
+        "name": "龙之意·柔",
+        "quality": "gold",
+        "image": "assets/box/pozhenbaoxiang/09.webp"
+      },
+      {
+        "name": "龙之意·傲",
+        "quality": "gold",
+        "image": "assets/box/pozhenbaoxiang/10.webp"
+      },
+      {
+        "name": "将军甲·征西",
+        "quality": "purple",
+        "image": "assets/box/pozhenbaoxiang/11.webp"
+      },
+      {
+        "name": "鱼皮甲·蓝旗",
+        "quality": "purple",
+        "image": "assets/box/pozhenbaoxiang/12.webp"
+      },
+      {
+        "name": "昆仑服·锦蟒",
+        "quality": "purple",
+        "image": "assets/box/pozhenbaoxiang/13.webp"
+      },
+      {
+        "name": "琅玕",
+        "quality": "purple",
+        "image": "assets/box/pozhenbaoxiang/14.webp"
+      },
+      {
+        "name": "虎目·翡翠",
+        "quality": "purple",
+        "image": "assets/box/pozhenbaoxiang/15.webp"
+      },
+      {
+        "name": "异兽腰扣",
+        "quality": "purple",
+        "image": "assets/box/pozhenbaoxiang/16.webp"
+      },
+      {
+        "name": "金粉雪青",
+        "quality": "purple",
+        "image": "assets/box/pozhenbaoxiang/17.webp"
+      },
+      {
+        "name": "荷叶帽",
+        "quality": "purple",
+        "image": "assets/box/pozhenbaoxiang/18.webp"
+      },
+      {
+        "name": "别被双抓",
+        "quality": "purple",
+        "image": "assets/box/pozhenbaoxiang/19.webp"
+      },
+      {
+        "name": "草里有人",
+        "quality": "purple",
+        "image": "assets/box/pozhenbaoxiang/20.webp"
+      },
+      {
+        "name": "妖刀姬·暗中观察",
+        "quality": "purple",
+        "image": "assets/box/pozhenbaoxiang/21.webp"
+      },
+      {
+        "name": "沧涛",
+        "quality": "purple",
+        "image": "assets/box/pozhenbaoxiang/22.webp"
+      },
+      {
+        "name": "青云",
+        "quality": "purple",
+        "image": "assets/box/pozhenbaoxiang/23.webp"
+      },
+      {
+        "name": "苦修岩台",
+        "quality": "purple",
+        "image": "assets/box/pozhenbaoxiang/24.webp"
+      },
+      {
+        "name": "仪轨",
+        "quality": "purple",
+        "image": "assets/box/pozhenbaoxiang/25.webp"
+      },
+      {
+        "name": "武神",
+        "quality": "purple",
+        "image": "assets/box/pozhenbaoxiang/26.webp"
+      }
+    ],
+    "probabilities": {
+      "red": 0.006,
+      "gold": 0.08,
+      "purple": 0.914
+    },
+    "pity": {
+      "cycle": {
+        "targetQuality": "red",
+        "count": 100,
+        "repeatable": true
+      },
+      "special": null,
+      "extraGoldPity": null,
+      "noRepeatRed": true,
+      "wishEnabled": false,
+      "wishDescription": "",
+      "hasDualPity": false,
+      "notes": ""
+    }
+  },
+  {
+    "id": "qizhenbaoxiang",
+    "name": "奇珍宝箱",
+    "type": "regular",
+    "image": "assets/box/qizhenbaoxiang/qizhenbaoxiang.png",
+    "items": [
+      {
+        "name": "沙漠香风",
+        "quality": "red",
+        "image": "assets/box/qizhenbaoxiang/01.webp"
+      },
+      {
+        "name": "蝶梦",
+        "quality": "red",
+        "image": "assets/box/qizhenbaoxiang/02.webp"
+      },
+      {
+        "name": "狼主",
+        "quality": "red",
+        "image": "assets/box/qizhenbaoxiang/03.webp"
+      },
+      {
+        "name": "墨离",
+        "quality": "red",
+        "image": "assets/box/qizhenbaoxiang/04.webp"
+      },
+      {
+        "name": "九阴圣女",
+        "quality": "gold",
+        "image": "assets/box/qizhenbaoxiang/05.webp"
+      },
+      {
+        "name": "瀚海苍鹰",
+        "quality": "gold",
+        "image": "assets/box/qizhenbaoxiang/06.webp"
+      },
+      {
+        "name": "贵胄少女",
+        "quality": "gold",
+        "image": "assets/box/qizhenbaoxiang/07.webp"
+      },
+      {
+        "name": "御宅罗梦",
+        "quality": "gold",
+        "image": "assets/box/qizhenbaoxiang/08.webp"
+      },
+      {
+        "name": "追猎",
+        "quality": "gold",
+        "image": "assets/box/qizhenbaoxiang/09.webp"
+      },
+      {
+        "name": "游四海",
+        "quality": "gold",
+        "image": "assets/box/qizhenbaoxiang/10.webp"
+      },
+      {
+        "name": "八宝龙王",
+        "quality": "gold",
+        "image": "assets/box/qizhenbaoxiang/11.webp"
+      },
+      {
+        "name": "壶中日月",
+        "quality": "gold",
+        "image": "assets/box/qizhenbaoxiang/12.webp"
+      },
+      {
+        "name": "数珠丸",
+        "quality": "gold",
+        "image": "assets/box/qizhenbaoxiang/13.webp"
+      },
+      {
+        "name": "听涛",
+        "quality": "gold",
+        "image": "assets/box/qizhenbaoxiang/14.webp"
+      },
+      {
+        "name": "猩红之月",
+        "quality": "gold",
+        "image": "assets/box/qizhenbaoxiang/15.webp"
+      },
+      {
+        "name": "朱雀",
+        "quality": "gold",
+        "image": "assets/box/qizhenbaoxiang/16.webp"
+      },
+      {
+        "name": "龙啸",
+        "quality": "gold",
+        "image": "assets/box/qizhenbaoxiang/17.webp"
+      },
+      {
+        "name": "心魔",
+        "quality": "gold",
+        "image": "assets/box/qizhenbaoxiang/18.webp"
+      },
+      {
+        "name": "石中火",
+        "quality": "gold",
+        "image": "assets/box/qizhenbaoxiang/19.webp"
+      },
+      {
+        "name": "狼首腰扣",
+        "quality": "gold",
+        "image": "assets/box/qizhenbaoxiang/20.webp"
+      },
+      {
+        "name": "雾隐繁花",
+        "quality": "gold",
+        "image": "assets/box/qizhenbaoxiang/21.webp"
+      },
+      {
+        "name": "业火残红笛",
+        "quality": "gold",
+        "image": "assets/box/qizhenbaoxiang/22.webp"
+      },
+      {
+        "name": "青莲唤云铃",
+        "quality": "gold",
+        "image": "assets/box/qizhenbaoxiang/23.webp"
+      },
+      {
+        "name": "昆仑服·乌风",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/24.webp"
+      },
+      {
+        "name": "昆仑服·银环",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/25.webp"
+      },
+      {
+        "name": "宝衫·珍珠",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/26.webp"
+      },
+      {
+        "name": "宝衫·堇青",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/27.webp"
+      },
+      {
+        "name": "叠裙·初樱",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/28.webp"
+      },
+      {
+        "name": "叠裙·水仙",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/29.webp"
+      },
+      {
+        "name": "猎装·棕狼",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/30.webp"
+      },
+      {
+        "name": "猎装·赤狼",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/31.webp"
+      },
+      {
+        "name": "鳞袍·淡雅",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/32.webp"
+      },
+      {
+        "name": "鳞袍·醇厚",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/33.webp"
+      },
+      {
+        "name": "百衲衣·土金刚",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/34.webp"
+      },
+      {
+        "name": "百衲衣·黑金刚",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/35.webp"
+      },
+      {
+        "name": "定秦·青金",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/36.webp"
+      },
+      {
+        "name": "禅意·琉璃",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/37.webp"
+      },
+      {
+        "name": "龙弧",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/38.webp"
+      },
+      {
+        "name": "天旭",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/39.webp"
+      },
+      {
+        "name": "绮梦",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/40.webp"
+      },
+      {
+        "name": "绮梦·万花",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/41.webp"
+      },
+      {
+        "name": "虎目",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/42.webp"
+      },
+      {
+        "name": "雷鸣",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/43.webp"
+      },
+      {
+        "name": "墨攻·云母",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/44.webp"
+      },
+      {
+        "name": "命运",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/45.webp"
+      },
+      {
+        "name": "铜山印",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/46.webp"
+      },
+      {
+        "name": "一点青",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/47.webp"
+      },
+      {
+        "name": "错彩镂金",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/48.webp"
+      },
+      {
+        "name": "纸人·红夜",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/49.webp"
+      },
+      {
+        "name": "千纸鹤",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/50.webp"
+      },
+      {
+        "name": "星辉",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/51.webp"
+      },
+      {
+        "name": "赤红",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/52.webp"
+      },
+      {
+        "name": "女性通用·挑战",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/53.webp"
+      },
+      {
+        "name": "女性通用·万福",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/54.webp"
+      },
+      {
+        "name": "男性通用·行礼",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/55.webp"
+      },
+      {
+        "name": "男性通用·崩溃",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/56.webp"
+      },
+      {
+        "name": "宁红夜·威胁",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/57.webp"
+      },
+      {
+        "name": "迦南·嘲讽",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/58.webp"
+      },
+      {
+        "name": "胡桃·胜利",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/59.webp"
+      },
+      {
+        "name": "特木尔·挑衅",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/60.webp"
+      },
+      {
+        "name": "天海·嫌弃",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/61.webp"
+      },
+      {
+        "name": "季沧海·挑衅",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/62.webp"
+      },
+      {
+        "name": "胡桃·捏脸",
+        "quality": "purple",
+        "image": "assets/box/qizhenbaoxiang/63.webp"
+      },
+      {
+        "name": "束衣·绯月",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/64.webp"
+      },
+      {
+        "name": "束衣·丹素",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/65.webp"
+      },
+      {
+        "name": "便装·青蓝",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/66.webp"
+      },
+      {
+        "name": "便装·黛红",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/67.webp"
+      },
+      {
+        "name": "单衣·淡黄",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/68.webp"
+      },
+      {
+        "name": "单衣·黛青",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/69.webp"
+      },
+      {
+        "name": "皮甲·浊风",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/70.webp"
+      },
+      {
+        "name": "皮甲·漠黄",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/71.webp"
+      },
+      {
+        "name": "练功服·湛蓝",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/72.webp"
+      },
+      {
+        "name": "练功服·素白",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/73.webp"
+      },
+      {
+        "name": "短禅·黑檀",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/74.webp"
+      },
+      {
+        "name": "短禅·蓝灰",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/75.webp"
+      },
+      {
+        "name": "君子·红铜",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/76.webp"
+      },
+      {
+        "name": "君子·青冥",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/77.webp"
+      },
+      {
+        "name": "诛心·乌木",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/78.webp"
+      },
+      {
+        "name": "童子切安纲·蓝",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/79.webp"
+      },
+      {
+        "name": "武威·古铜",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/80.webp"
+      },
+      {
+        "name": "武威·黑铁",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/81.webp"
+      },
+      {
+        "name": "穿杨·绢白",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/82.webp"
+      },
+      {
+        "name": "穿杨·胭脂",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/83.webp"
+      },
+      {
+        "name": "神臂弩·木白",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/84.webp"
+      },
+      {
+        "name": "破阵·玄岩",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/85.webp"
+      },
+      {
+        "name": "破阵·狼烟",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/86.webp"
+      },
+      {
+        "name": "五雷轰·紫藤",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/87.webp"
+      },
+      {
+        "name": "五雷轰·琉璃",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/88.webp"
+      },
+      {
+        "name": "惊鸿·灰碳",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/89.webp"
+      },
+      {
+        "name": "惊鸿·黑砚",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/90.webp"
+      },
+      {
+        "name": "招福达摩·男",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/91.webp"
+      },
+      {
+        "name": "招福达摩·女",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/92.webp"
+      },
+      {
+        "name": "远山镜",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/93.webp"
+      },
+      {
+        "name": "蓝芙蕖",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/94.webp"
+      },
+      {
+        "name": "感谢",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/95.webp"
+      },
+      {
+        "name": "吓你一跳",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/96.webp"
+      },
+      {
+        "name": "无情嘲笑",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/97.webp"
+      },
+      {
+        "name": "你醒啦？",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/98.webp"
+      },
+      {
+        "name": "得意",
+        "quality": "blue",
+        "image": "assets/box/qizhenbaoxiang/99.webp"
+      },
+    ],
+    "probabilities": {"red": 0.003, "gold": 0.038, "purple": 0.247, "blue": 0.712},
+    "pity": {
+      "cycle": {
+        "targetQuality": "purple",
+        "count": 10,
+        "repeatable": true
+      },
+      "special": {
+        "targetQuality": "red",
+        "count": 100,
+        "repeatable": false,
+        "priorityOverCycle": true
+      },
+      "extraGoldPity": null,
+      "noRepeatRed": false,
+      "wishEnabled": false,
+      "wishDescription": "",
+      "hasDualPity": true,
+      "notes": "当“循环保底”和“特殊保底”同时触发时，会优先进行特殊保底。"
+    }
+  },
+  {
+    "id": "ranyaobaolu",
+    "name": "燃耀宝炉",
+    "type": "regular",
+    "image": "assets/box/ranyaobaolu/ranyaobaolu.png",
+    "items": [
+      {
+        "name": "狱炎烬甲",
+        "quality": "red",
+        "image": "assets/box/ranyaobaolu/01.webp"
+      },
+      {
+        "name": "赤帝炎轮",
+        "quality": "red",
+        "image": "assets/box/ranyaobaolu/02.webp"
+      },
+      {
+        "name": "赤阳天狐",
+        "quality": "gold",
+        "image": "assets/box/ranyaobaolu/03.webp"
+      },
+      {
+        "name": "天虹咏",
+        "quality": "gold",
+        "image": "assets/box/ranyaobaolu/04.webp"
+      },
+      {
+        "name": "祸津素盏",
+        "quality": "gold",
+        "image": "assets/box/ranyaobaolu/05.webp"
+      },
+      {
+        "name": "诡刃八岐",
+        "quality": "gold",
+        "image": "assets/box/ranyaobaolu/06.webp"
+      },
+      {
+        "name": "月虹弦角",
+        "quality": "gold",
+        "image": "assets/box/ranyaobaolu/07.webp"
+      },
+      {
+        "name": "【挑染】雾灼",
+        "quality": "gold",
+        "image": "assets/box/ranyaobaolu/08.webp"
+      },
+      {
+        "name": "【挑染】凛威",
+        "quality": "gold",
+        "image": "assets/box/ranyaobaolu/09.webp"
+      },
+      {
+        "name": "羽狐灵",
+        "quality": "gold",
+        "image": "assets/box/ranyaobaolu/10.webp"
+      },
+      {
+        "name": "幻彩晶",
+        "quality": "gold",
+        "image": "assets/box/ranyaobaolu/11.webp"
+      },
+      {
+        "name": "烬焚之尊",
+        "quality": "gold",
+        "image": "assets/box/ranyaobaolu/12.webp"
+      },
+      {
+        "name": "希希",
+        "quality": "gold",
+        "image": "assets/box/ranyaobaolu/13.webp"
+      },
+      {
+        "name": "圣辉",
+        "quality": "gold",
+        "image": "assets/box/ranyaobaolu/14.webp"
+      },
+      {
+        "name": "熔川赤焰",
+        "quality": "gold",
+        "image": "assets/box/ranyaobaolu/15.webp"
+      },
+      {
+        "name": "烬鳞浴火",
+        "quality": "gold",
+        "image": "assets/box/ranyaobaolu/16.webp"
+      },
+      {
+        "name": "褡护·苍苔",
+        "quality": "purple",
+        "image": "assets/box/ranyaobaolu/17.webp"
+      },
+      {
+        "name": "绝命衣·瘴",
+        "quality": "purple",
+        "image": "assets/box/ranyaobaolu/18.webp"
+      },
+      {
+        "name": "锦缎衣·凛然",
+        "quality": "purple",
+        "image": "assets/box/ranyaobaolu/19.webp"
+      },
+      {
+        "name": "逐星",
+        "quality": "purple",
+        "image": "assets/box/ranyaobaolu/20.webp"
+      },
+      {
+        "name": "风雷·碧落",
+        "quality": "purple",
+        "image": "assets/box/ranyaobaolu/21.webp"
+      },
+      {
+        "name": "心魔刺·靛石",
+        "quality": "purple",
+        "image": "assets/box/ranyaobaolu/22.webp"
+      },
+      {
+        "name": "戏梦香",
+        "quality": "purple",
+        "image": "assets/box/ranyaobaolu/23.webp"
+      },
+      {
+        "name": "碧玉玺",
+        "quality": "purple",
+        "image": "assets/box/ranyaobaolu/24.webp"
+      },
+      {
+        "name": "鸣珮",
+        "quality": "purple",
+        "image": "assets/box/ranyaobaolu/25.webp"
+      },
+      {
+        "name": "雅韵台",
+        "quality": "purple",
+        "image": "assets/box/ranyaobaolu/26.webp"
+      },
+      {
+        "name": "金翅台",
+        "quality": "purple",
+        "image": "assets/box/ranyaobaolu/27.webp"
+      },
+      {
+        "name": "天马灵辉",
+        "quality": "purple",
+        "image": "assets/box/ranyaobaolu/28.webp"
+      },
+      {
+        "name": "煌煌神威",
+        "quality": "purple",
+        "image": "assets/box/ranyaobaolu/29.webp"
+      },
+      {
+        "name": "蓝梦·碰瓷",
+        "quality": "purple",
+        "image": "assets/box/ranyaobaolu/30.webp"
+      },
+      {
+        "name": "张起灵·绷带",
+        "quality": "purple",
+        "image": "assets/box/ranyaobaolu/31.webp"
+      },
+      {
+        "name": "席拉·独角兽",
+        "quality": "purple",
+        "image": "assets/box/ranyaobaolu/32.webp"
+      }
+    ],
+    "probabilities": {
+      "red": 0.006,
+      "gold": 0.08,
+      "purple": 0.914
+    },
+    "pity": {
+      "cycle": {
+        "targetQuality": "red",
+        "count": 100,
+        "repeatable": true
+      },
+      "special": null,
+      "extraGoldPity": {
+        "count": 25,
+        "maxTriggers": 14
+      },
+      "noRepeatRed": true,
+      "wishEnabled": true,
+      "wishDescription": "每次抽中神品外观，获得1次指定极品外观的机会",
+      "hasDualPity": false,
+      "notes": ""
+    }
+  },
+  {
+    "id": "shanhaibaoding",
+    "name": "山海宝鼎",
+    "type": "regular",
+    "image": "assets/box/shanhaibaoding/shanhaibaoding.png",
+    "items": [
+      {
+        "name": "通天狐袄",
+        "quality": "red",
+        "image": "assets/box/shanhaibaoding/01.webp"
+      },
+      {
+        "name": "天琼",
+        "quality": "red",
+        "image": "assets/box/shanhaibaoding/02.webp"
+      },
+      {
+        "name": "观山海·腓腓",
+        "quality": "gold",
+        "image": "assets/box/shanhaibaoding/03.webp"
+      },
+      {
+        "name": "观山海·夏神祝融",
+        "quality": "gold",
+        "image": "assets/box/shanhaibaoding/04.webp"
+      },
+      {
+        "name": "观山海·文鳐",
+        "quality": "gold",
+        "image": "assets/box/shanhaibaoding/05.webp"
+      },
+      {
+        "name": "观山海·朱明",
+        "quality": "gold",
+        "image": "assets/box/shanhaibaoding/06.webp"
+      },
+      {
+        "name": "仙毫",
+        "quality": "gold",
+        "image": "assets/box/shanhaibaoding/07.webp"
+      },
+      {
+        "name": "【挑染】商月",
+        "quality": "gold",
+        "image": "assets/box/shanhaibaoding/08.webp"
+      },
+      {
+        "name": "【挑染】戾君",
+        "quality": "gold",
+        "image": "assets/box/shanhaibaoding/09.webp"
+      },
+      {
+        "name": "观山海·夏鼓",
+        "quality": "gold",
+        "image": "assets/box/shanhaibaoding/10.webp"
+      },
+      {
+        "name": "观山海·腓尾",
+        "quality": "gold",
+        "image": "assets/box/shanhaibaoding/11.webp"
+      },
+      {
+        "name": "观山海·腓耳",
+        "quality": "gold",
+        "image": "assets/box/shanhaibaoding/12.webp"
+      },
+      {
+        "name": "叠裙·风信",
+        "quality": "purple",
+        "image": "assets/box/shanhaibaoding/13.webp"
+      },
+      {
+        "name": "百衲衣·紫金刚",
+        "quality": "purple",
+        "image": "assets/box/shanhaibaoding/14.webp"
+      },
+      {
+        "name": "绝命衣·旱",
+        "quality": "purple",
+        "image": "assets/box/shanhaibaoding/15.webp"
+      },
+      {
+        "name": "禅意·苍蓝",
+        "quality": "purple",
+        "image": "assets/box/shanhaibaoding/16.webp"
+      },
+      {
+        "name": "村正·异黑",
+        "quality": "purple",
+        "image": "assets/box/shanhaibaoding/17.webp"
+      },
+      {
+        "name": "命运·片瓷",
+        "quality": "purple",
+        "image": "assets/box/shanhaibaoding/18.webp"
+      },
+      {
+        "name": "索魂钩",
+        "quality": "purple",
+        "image": "assets/box/shanhaibaoding/19.webp"
+      },
+      {
+        "name": "北风铃",
+        "quality": "purple",
+        "image": "assets/box/shanhaibaoding/20.webp"
+      },
+      {
+        "name": "皮影·狂虎",
+        "quality": "purple",
+        "image": "assets/box/shanhaibaoding/21.webp"
+      },
+      {
+        "name": "顾清寒·该打针了",
+        "quality": "purple",
+        "image": "assets/box/shanhaibaoding/22.webp"
+      },
+      {
+        "name": "宁红夜·顶级黑客",
+        "quality": "purple",
+        "image": "assets/box/shanhaibaoding/23.webp"
+      },
+      {
+        "name": "将临",
+        "quality": "purple",
+        "image": "assets/box/shanhaibaoding/24.webp"
+      },
+      {
+        "name": "败叶",
+        "quality": "purple",
+        "image": "assets/box/shanhaibaoding/25.webp"
+      },
+      {
+        "name": "勿忘台",
+        "quality": "purple",
+        "image": "assets/box/shanhaibaoding/26.webp"
+      },
+      {
+        "name": "神鹿",
+        "quality": "purple",
+        "image": "assets/box/shanhaibaoding/27.webp"
+      },
+      {
+        "name": "倒影",
+        "quality": "purple",
+        "image": "assets/box/shanhaibaoding/28.webp"
+      }
+    ],
+    "probabilities": {
+      "red": 0.006,
+      "gold": 0.084,
+      "purple": 0.91
+    },
+    "pity": {
+      "cycle": {
+        "targetQuality": "red",
+        "count": 100,
+        "repeatable": true
+      },
+      "special": null,
+      "extraGoldPity": null,
+      "noRepeatRed": true,
+      "wishEnabled": true,
+      "wishDescription": "每次抽中神品外观，获得1次指定极品外观的机会",
+      "hasDualPity": false,
+      "notes": ""
+    }
+  },
+  {
+    "id": "shenjunbaolu",
+    "name": "神骏宝炉",
+    "type": "regular",
+    "image": "assets/box/shenjunbaolu/shenjunbaolu.png",
+    "items": [
+      {
+        "name": "征天白龙",
+        "quality": "red",
+        "image": "assets/box/shenjunbaolu/01.webp"
+      },
+      {
+        "name": "命定之辉",
+        "quality": "red",
+        "image": "assets/box/shenjunbaolu/02.webp"
+      },
+      {
+        "name": "龙骧",
+        "quality": "red",
+        "image": "assets/box/shenjunbaolu/03.webp"
+      },
+      {
+        "name": "叩心",
+        "quality": "red",
+        "image": "assets/box/shenjunbaolu/04.webp"
+      },
+      {
+        "name": "墨染千秋·玄雷",
+        "quality": "gold",
+        "image": "assets/box/shenjunbaolu/05.webp"
+      },
+      {
+        "name": "江山胜景·簪朝霞",
+        "quality": "gold",
+        "image": "assets/box/shenjunbaolu/06.webp"
+      },
+      {
+        "name": "承武·昆仑",
+        "quality": "gold",
+        "image": "assets/box/shenjunbaolu/07.webp"
+      },
+      {
+        "name": "承武·禅法",
+        "quality": "gold",
+        "image": "assets/box/shenjunbaolu/08.webp"
+      },
+      {
+        "name": "解腕钉",
+        "quality": "gold",
+        "image": "assets/box/shenjunbaolu/09.webp"
+      },
+      {
+        "name": "斩春",
+        "quality": "gold",
+        "image": "assets/box/shenjunbaolu/10.webp"
+      },
+      {
+        "name": "衔断",
+        "quality": "gold",
+        "image": "assets/box/shenjunbaolu/11.webp"
+      },
+      {
+        "name": "赤忏",
+        "quality": "gold",
+        "image": "assets/box/shenjunbaolu/12.webp"
+      },
+      {
+        "name": "诛芳",
+        "quality": "gold",
+        "image": "assets/box/shenjunbaolu/13.webp"
+      },
+      {
+        "name": "狩猎都市·连霆",
+        "quality": "gold",
+        "image": "assets/box/shenjunbaolu/14.webp"
+      },
+      {
+        "name": "霜角鸣",
+        "quality": "gold",
+        "image": "assets/box/shenjunbaolu/15.webp"
+      },
+      {
+        "name": "承武·乾元",
+        "quality": "gold",
+        "image": "assets/box/shenjunbaolu/16.webp"
+      },
+      {
+        "name": "江山胜景·花锦簇",
+        "quality": "gold",
+        "image": "assets/box/shenjunbaolu/17.webp"
+      },
+      {
+        "name": "云霆囊",
+        "quality": "gold",
+        "image": "assets/box/shenjunbaolu/18.webp"
+      },
+      {
+        "name": "蝶涟",
+        "quality": "gold",
+        "image": "assets/box/shenjunbaolu/19.webp"
+      },
+      {
+        "name": "惊霆照夜",
+        "quality": "gold",
+        "image": "assets/box/shenjunbaolu/20.webp"
+      },
+      {
+        "name": "灵龙天谒",
+        "quality": "gold",
+        "image": "assets/box/shenjunbaolu/21.webp"
+      },
+      {
+        "name": "映缘珠贝",
+        "quality": "gold",
+        "image": "assets/box/shenjunbaolu/22.webp"
+      },
+      {
+        "name": "誓约神殿",
+        "quality": "gold",
+        "image": "assets/box/shenjunbaolu/23.webp"
+      },
+      {
+        "name": "绣罗衣·夕岚",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/24.webp"
+      },
+      {
+        "name": "行旅服·苍野",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/25.webp"
+      },
+      {
+        "name": "织梦裳·聚财",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/26.webp"
+      },
+      {
+        "name": "行镖袍·沉朱",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/27.webp"
+      },
+      {
+        "name": "倦客衫·青冥",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/28.webp"
+      },
+      {
+        "name": "兽獠·玉君",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/29.webp"
+      },
+      {
+        "name": "虎目·沉香",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/30.webp"
+      },
+      {
+        "name": "断魂·木龙",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/31.webp"
+      },
+      {
+        "name": "墨攻·檀香",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/32.webp"
+      },
+      {
+        "name": "命运·檀紫",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/33.webp"
+      },
+      {
+        "name": "琅玕·冰清",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/34.webp"
+      },
+      {
+        "name": "风行天·逸",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/35.webp"
+      },
+      {
+        "name": "悍厉·裂地",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/36.webp"
+      },
+      {
+        "name": "陷阵·除魔",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/37.webp"
+      },
+      {
+        "name": "照空·竹影",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/38.webp"
+      },
+      {
+        "name": "裂岩·涛",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/39.webp"
+      },
+      {
+        "name": "逐星·炽焰",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/40.webp"
+      },
+      {
+        "name": "碎刃",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/41.webp"
+      },
+      {
+        "name": "皮影·雪虎",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/42.webp"
+      },
+      {
+        "name": "青金鱼印",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/43.webp"
+      },
+      {
+        "name": "古龙江湖·心湖念珠",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/44.webp"
+      },
+      {
+        "name": "万钧·就这一回",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/45.webp"
+      },
+      {
+        "name": "张起灵·看刀",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/46.webp"
+      },
+      {
+        "name": "蓝梦·哇哦",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/47.webp"
+      },
+      {
+        "name": "胡桃·让我听听",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/48.webp"
+      },
+      {
+        "name": "李寻欢·吹笛",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/49.webp"
+      },
+      {
+        "name": "炽焰照夜",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/50.webp"
+      },
+      {
+        "name": "江山胜景·渔乡",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/51.webp"
+      },
+      {
+        "name": "凌寒·玉",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/52.webp"
+      },
+      {
+        "name": "江山胜景·百花集",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/53.webp"
+      },
+      {
+        "name": "疏狂岩",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/54.webp"
+      },
+      {
+        "name": "蓝梦·挑衅",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/55.webp"
+      },
+      {
+        "name": "万钧·越想越气",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/56.webp"
+      },
+      {
+        "name": "彩球拋",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/57.webp"
+      },
+      {
+        "name": "吉珍至",
+        "quality": "purple",
+        "image": "assets/box/shenjunbaolu/58.webp"
+      },
+      {
+        "name": "工衣·烟",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/59.webp"
+      },
+      {
+        "name": "竖褐·青",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/60.webp"
+      },
+      {
+        "name": "软革·幽",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/61.webp"
+      },
+      {
+        "name": "短袄·朱",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/62.webp"
+      },
+      {
+        "name": "窄衣·青",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/63.webp"
+      },
+      {
+        "name": "诛心·暗金",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/64.webp"
+      },
+      {
+        "name": "凌风·青木",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/65.webp"
+      },
+      {
+        "name": "秋水·烈",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/66.webp"
+      },
+      {
+        "name": "骤雨·枣木",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/67.webp"
+      },
+      {
+        "name": "开山·怒",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/68.webp"
+      },
+      {
+        "name": "百寒·朔",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/69.webp"
+      },
+      {
+        "name": "厉兵·草",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/70.webp"
+      },
+      {
+        "name": "锋爪·炽石",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/71.webp"
+      },
+      {
+        "name": "君子·暗流",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/72.webp"
+      },
+      {
+        "name": "童子切安纲·黛",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/73.webp"
+      },
+      {
+        "name": "神臂弩·暗香",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/74.webp"
+      },
+      {
+        "name": "破阵·鹅黄",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/75.webp"
+      },
+      {
+        "name": "五雷轰·紫棠",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/76.webp"
+      },
+      {
+        "name": "惊鸿·绀枝",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/77.webp"
+      },
+      {
+        "name": "古龙江湖·残梅丝巾",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/78.webp"
+      },
+      {
+        "name": "苍石",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/79.webp"
+      },
+      {
+        "name": "遂意签",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/80.webp"
+      },
+      {
+        "name": "清凉玉",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/81.webp"
+      },
+      {
+        "name": "雷雨夜",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/82.webp"
+      },
+      {
+        "name": "梅香",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/83.webp"
+      },
+      {
+        "name": "香雪尽",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/84.webp"
+      },
+      {
+        "name": "问青山",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/85.webp"
+      },
+      {
+        "name": "石莲·莹玉",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/86.webp"
+      },
+      {
+        "name": "印鉴·莹玉",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/87.webp"
+      },
+      {
+        "name": "光台",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/88.webp"
+      },
+      {
+        "name": "群山座",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/89.webp"
+      },
+      {
+        "name": "暗香来",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/90.webp"
+      },
+      {
+        "name": "绒玉雪",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/91.webp"
+      },
+      {
+        "name": "铜骰",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/92.webp"
+      },
+      {
+        "name": "珊瑚刃",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/93.webp"
+      },
+      {
+        "name": "紫罗贝",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/94.webp"
+      },
+      {
+        "name": "玉狰",
+        "quality": "blue",
+        "image": "assets/box/shenjunbaolu/95.webp"
+      }
+    ],
+    "probabilities": {
+      "red": 0.003,
+      "gold": 0.039,
+      "purple": 0.261,
+      "blue": 0.697
+    },
+    "pity": {
+      "cycle": {
+        "targetQuality": "purple",
+        "count": 10,
+        "repeatable": true
+      },
+      "special": {
+        "targetQuality": "red",
+        "count": 100,
+        "repeatable": false,
+        "priorityOverCycle": true
+      },
+      "extraGoldPity": null,
+      "noRepeatRed": true,
+      "wishEnabled": false,
+      "wishDescription": "",
+      "hasDualPity": true,
+      "notes": "",
+      "permRedPity": {
+        "count": 400,
+        "maxTriggers": 3,
+        "targetQuality": "red"
+      }
+    }
+  },
+  {
+    "id": "tiangongbaozhu",
+    "name": "天工宝珠",
+    "type": "regular",
+    "image": "assets/box/tiangongbaozhu/tiangongbaozhu.png",
+    "items": [
+      {
+        "name": "天道之奕",
+        "quality": "red",
+        "image": "assets/box/tiangongbaozhu/01.webp"
+      },
+      {
+        "name": "列宿分芒·翼火",
+        "quality": "red",
+        "image": "assets/box/tiangongbaozhu/02.webp"
+      },
+      {
+        "name": "蓝渊魅影",
+        "quality": "gold",
+        "image": "assets/box/tiangongbaozhu/03.webp"
+      },
+      {
+        "name": "珀阑垂",
+        "quality": "gold",
+        "image": "assets/box/tiangongbaozhu/04.webp"
+      },
+      {
+        "name": "墨曜袍",
+        "quality": "gold",
+        "image": "assets/box/tiangongbaozhu/05.webp"
+      },
+      {
+        "name": "坦桑骨刃",
+        "quality": "gold",
+        "image": "assets/box/tiangongbaozhu/06.webp"
+      },
+      {
+        "name": "碎光链",
+        "quality": "gold",
+        "image": "assets/box/tiangongbaozhu/07.webp"
+      },
+      {
+        "name": "【挑染】岁烬",
+        "quality": "gold",
+        "image": "assets/box/tiangongbaozhu/08.webp"
+      },
+      {
+        "name": "【挑染】霜脊",
+        "quality": "gold",
+        "image": "assets/box/tiangongbaozhu/09.webp"
+      },
+      {
+        "name": "衡正冠",
+        "quality": "gold",
+        "image": "assets/box/tiangongbaozhu/10.webp"
+      },
+      {
+        "name": "灵漪双生",
+        "quality": "gold",
+        "image": "assets/box/tiangongbaozhu/11.webp"
+      },
+      {
+        "name": "念海纱",
+        "quality": "gold",
+        "image": "assets/box/tiangongbaozhu/12.webp"
+      },
+      {
+        "name": "墨瑾棠",
+        "quality": "gold",
+        "image": "assets/box/tiangongbaozhu/13.webp"
+      },
+      {
+        "name": "星徊",
+        "quality": "gold",
+        "image": "assets/box/tiangongbaozhu/14.webp"
+      },
+      {
+        "name": "沙海痕",
+        "quality": "gold",
+        "image": "assets/box/tiangongbaozhu/15.webp"
+      },
+      {
+        "name": "金砂基",
+        "quality": "gold",
+        "image": "assets/box/tiangongbaozhu/16.webp"
+      },
+      {
+        "name": "叠裙·烟堇",
+        "quality": "purple",
+        "image": "assets/box/tiangongbaozhu/17.webp"
+      },
+      {
+        "name": "猎装·玄",
+        "quality": "purple",
+        "image": "assets/box/tiangongbaozhu/18.webp"
+      },
+      {
+        "name": "褡护·红岩",
+        "quality": "purple",
+        "image": "assets/box/tiangongbaozhu/19.webp"
+      },
+      {
+        "name": "禅意·润玉",
+        "quality": "purple",
+        "image": "assets/box/tiangongbaozhu/20.webp"
+      },
+      {
+        "name": "夜隼·碧翎",
+        "quality": "purple",
+        "image": "assets/box/tiangongbaozhu/21.webp"
+      },
+      {
+        "name": "天旭·碧嶂",
+        "quality": "purple",
+        "image": "assets/box/tiangongbaozhu/22.webp"
+      },
+      {
+        "name": "铃刀",
+        "quality": "purple",
+        "image": "assets/box/tiangongbaozhu/23.webp"
+      },
+      {
+        "name": "玫瑰香囊",
+        "quality": "purple",
+        "image": "assets/box/tiangongbaozhu/24.webp"
+      },
+      {
+        "name": "雄威炮",
+        "quality": "purple",
+        "image": "assets/box/tiangongbaozhu/25.webp"
+      },
+      {
+        "name": "潜渊旧梦",
+        "quality": "purple",
+        "image": "assets/box/tiangongbaozhu/26.webp"
+      },
+      {
+        "name": "帷深影浅",
+        "quality": "purple",
+        "image": "assets/box/tiangongbaozhu/27.webp"
+      },
+      {
+        "name": "托梦古铃",
+        "quality": "purple",
+        "image": "assets/box/tiangongbaozhu/28.webp"
+      },
+      {
+        "name": "海宴台",
+        "quality": "purple",
+        "image": "assets/box/tiangongbaozhu/29.webp"
+      },
+      {
+        "name": "斜睨斩浪",
+        "quality": "purple",
+        "image": "assets/box/tiangongbaozhu/30.webp"
+      },
+      {
+        "name": "玉玲珑·惊喜",
+        "quality": "purple",
+        "image": "assets/box/tiangongbaozhu/31.webp"
+      },
+      {
+        "name": "巫真·好气",
+        "quality": "purple",
+        "image": "assets/box/tiangongbaozhu/32.webp"
+      }
+    ],
+    "probabilities": {
+      "red": 0.006,
+      "gold": 0.08,
+      "purple": 0.914
+    },
+    "pity": {
+      "cycle": {
+        "targetQuality": "red",
+        "count": 100,
+        "repeatable": true
+      },
+      "special": null,
+      "extraGoldPity": {
+        "count": 25,
+        "maxTriggers": 14
+      },
+      "noRepeatRed": true,
+      "wishEnabled": true,
+      "wishDescription": "每次抽中神品外观，获得1次指定极品外观的机会",
+      "hasDualPity": false,
+      "notes": ""
+    }
+  },
+  {
+    "id": "tianzongbaolu",
+    "name": "天纵宝炉",
+    "type": "regular",
+    "image": "assets/box/tianzongbaolu/tianzongbaolu.png",
+    "items": [
+      {
+        "name": "化道者",
+        "quality": "red",
+        "image": "assets/box/tianzongbaolu/01.webp"
+      },
+      {
+        "name": "逆晦朔",
+        "quality": "red",
+        "image": "assets/box/tianzongbaolu/02.webp"
+      },
+      {
+        "name": "长歌诗韵·遣唐使",
+        "quality": "gold",
+        "image": "assets/box/tianzongbaolu/03.webp"
+      },
+      {
+        "name": "长歌诗韵·戍关将",
+        "quality": "gold",
+        "image": "assets/box/tianzongbaolu/04.webp"
+      },
+      {
+        "name": "长歌诗韵·胡旋女",
+        "quality": "gold",
+        "image": "assets/box/tianzongbaolu/05.webp"
+      },
+      {
+        "name": "黑绳",
+        "quality": "gold",
+        "image": "assets/box/tianzongbaolu/06.webp"
+      },
+      {
+        "name": "长歌诗韵·夜观灯",
+        "quality": "gold",
+        "image": "assets/box/tianzongbaolu/07.webp"
+      },
+      {
+        "name": "【挑染】暮落",
+        "quality": "gold",
+        "image": "assets/box/tianzongbaolu/08.webp"
+      },
+      {
+        "name": "【挑染】狮鬃",
+        "quality": "gold",
+        "image": "assets/box/tianzongbaolu/09.webp"
+      },
+      {
+        "name": "桃夭扇",
+        "quality": "gold",
+        "image": "assets/box/tianzongbaolu/10.webp"
+      },
+      {
+        "name": "长歌诗韵·戏鱼灯",
+        "quality": "gold",
+        "image": "assets/box/tianzongbaolu/11.webp"
+      },
+      {
+        "name": "长歌诗韵·军令状",
+        "quality": "gold",
+        "image": "assets/box/tianzongbaolu/12.webp"
+      },
+      {
+        "name": "神机袍·石英",
+        "quality": "purple",
+        "image": "assets/box/tianzongbaolu/13.webp"
+      },
+      {
+        "name": "褡护·桑黄",
+        "quality": "purple",
+        "image": "assets/box/tianzongbaolu/14.webp"
+      },
+      {
+        "name": "炼气服·重玄",
+        "quality": "purple",
+        "image": "assets/box/tianzongbaolu/15.webp"
+      },
+      {
+        "name": "禅意·青萍",
+        "quality": "purple",
+        "image": "assets/box/tianzongbaolu/16.webp"
+      },
+      {
+        "name": "悍厉·分沙",
+        "quality": "purple",
+        "image": "assets/box/tianzongbaolu/17.webp"
+      },
+      {
+        "name": "命运·浑黄",
+        "quality": "purple",
+        "image": "assets/box/tianzongbaolu/18.webp"
+      },
+      {
+        "name": "清水珠",
+        "quality": "purple",
+        "image": "assets/box/tianzongbaolu/19.webp"
+      },
+      {
+        "name": "巧墨锁",
+        "quality": "purple",
+        "image": "assets/box/tianzongbaolu/20.webp"
+      },
+      {
+        "name": "紫罗贝",
+        "quality": "purple",
+        "image": "assets/box/tianzongbaolu/21.webp"
+      },
+      {
+        "name": "天海·金钟罩",
+        "quality": "purple",
+        "image": "assets/box/tianzongbaolu/22.webp"
+      },
+      {
+        "name": "沈妙·肉垫",
+        "quality": "purple",
+        "image": "assets/box/tianzongbaolu/23.webp"
+      },
+      {
+        "name": "出戟",
+        "quality": "purple",
+        "image": "assets/box/tianzongbaolu/24.webp"
+      },
+      {
+        "name": "断壁",
+        "quality": "purple",
+        "image": "assets/box/tianzongbaolu/25.webp"
+      },
+      {
+        "name": "荒井",
+        "quality": "purple",
+        "image": "assets/box/tianzongbaolu/26.webp"
+      },
+      {
+        "name": "狱岛",
+        "quality": "purple",
+        "image": "assets/box/tianzongbaolu/27.webp"
+      },
+      {
+        "name": "孤村",
+        "quality": "purple",
+        "image": "assets/box/tianzongbaolu/28.webp"
+      }
+    ],
+    "probabilities": {
+      "red": 0.006,
+      "gold": 0.084,
+      "purple": 0.91
+    },
+    "pity": {
+      "cycle": {
+        "targetQuality": "red",
+        "count": 100,
+        "repeatable": true
+      },
+      "special": null,
+      "extraGoldPity": null,
+      "noRepeatRed": true,
+      "wishEnabled": true,
+      "wishDescription": "每次抽中神品外观，获得1次指定极品外观的机会",
+      "hasDualPity": false,
+      "notes": ""
+    }
+  },
+  {
+    "id": "wuchangbaojian",
+    "name": "无常宝鉴",
+    "type": "regular",
+    "image": "assets/box/wuchangbaojian/wuchangbaojian.png",
+    "items": [
+      {
+        "name": "夜魅游莹",
+        "quality": "red",
+        "image": "assets/box/wuchangbaojian/01.webp"
+      },
+      {
+        "name": "西行劫·如意金箍棒",
+        "quality": "red",
+        "image": "assets/box/wuchangbaojian/02.webp"
+      },
+      {
+        "name": "西行劫·悟空",
+        "quality": "gold",
+        "image": "assets/box/wuchangbaojian/03.webp"
+      },
+      {
+        "name": "西行劫·杨戬",
+        "quality": "gold",
+        "image": "assets/box/wuchangbaojian/04.webp"
+      },
+      {
+        "name": "西行劫·紫衣仙子",
+        "quality": "gold",
+        "image": "assets/box/wuchangbaojian/05.webp"
+      },
+      {
+        "name": "西行劫·三尖两刃刀",
+        "quality": "gold",
+        "image": "assets/box/wuchangbaojian/06.webp"
+      },
+      {
+        "name": "西行劫·紫金宝剑",
+        "quality": "gold",
+        "image": "assets/box/wuchangbaojian/07.webp"
+      },
+      {
+        "name": "【挑染】宵烛",
+        "quality": "gold",
+        "image": "assets/box/wuchangbaojian/08.webp"
+      },
+      {
+        "name": "【挑染】清威",
+        "quality": "gold",
+        "image": "assets/box/wuchangbaojian/09.webp"
+      },
+      {
+        "name": "西行劫·紧箍儿",
+        "quality": "gold",
+        "image": "assets/box/wuchangbaojian/10.webp"
+      },
+      {
+        "name": "狐灵面",
+        "quality": "gold",
+        "image": "assets/box/wuchangbaojian/11.webp"
+      },
+      {
+        "name": "西行劫·嬉戏",
+        "quality": "gold",
+        "image": "assets/box/wuchangbaojian/12.webp"
+      },
+      {
+        "name": "昆仑服·草蟒",
+        "quality": "purple",
+        "image": "assets/box/wuchangbaojian/13.webp"
+      },
+      {
+        "name": "鱼皮甲·豹鲀",
+        "quality": "purple",
+        "image": "assets/box/wuchangbaojian/14.webp"
+      },
+      {
+        "name": "褡护·山花",
+        "quality": "purple",
+        "image": "assets/box/wuchangbaojian/15.webp"
+      },
+      {
+        "name": "铁旗·风痕",
+        "quality": "purple",
+        "image": "assets/box/wuchangbaojian/16.webp"
+      },
+      {
+        "name": "天志·赤金",
+        "quality": "purple",
+        "image": "assets/box/wuchangbaojian/17.webp"
+      },
+      {
+        "name": "虎目·翠玉",
+        "quality": "purple",
+        "image": "assets/box/wuchangbaojian/18.webp"
+      },
+      {
+        "name": "杏蝶",
+        "quality": "purple",
+        "image": "assets/box/wuchangbaojian/19.webp"
+      },
+      {
+        "name": "夜枭瓶",
+        "quality": "purple",
+        "image": "assets/box/wuchangbaojian/20.webp"
+      },
+      {
+        "name": "西行劫·清源君",
+        "quality": "purple",
+        "image": "assets/box/wuchangbaojian/21.webp"
+      },
+      {
+        "name": "特木尔·耍酷",
+        "quality": "purple",
+        "image": "assets/box/wuchangbaojian/22.webp"
+      },
+      {
+        "name": "殷紫萍·育苗",
+        "quality": "purple",
+        "image": "assets/box/wuchangbaojian/23.webp"
+      },
+      {
+        "name": "回望",
+        "quality": "purple",
+        "image": "assets/box/wuchangbaojian/24.webp"
+      },
+      {
+        "name": "始盛坛",
+        "quality": "purple",
+        "image": "assets/box/wuchangbaojian/25.webp"
+      },
+      {
+        "name": "西行劫·齐天大圣",
+        "quality": "purple",
+        "image": "assets/box/wuchangbaojian/26.webp"
+      },
+      {
+        "name": "西行劫·二郎神君",
+        "quality": "purple",
+        "image": "assets/box/wuchangbaojian/27.webp"
+      },
+      {
+        "name": "萧园",
+        "quality": "purple",
+        "image": "assets/box/wuchangbaojian/28.webp"
+      }
+    ],
+    "probabilities": {
+      "red": 0.006,
+      "gold": 0.084,
+      "purple": 0.91
+    },
+    "pity": {
+      "cycle": {
+        "targetQuality": "red",
+        "count": 100,
+        "repeatable": true
+      },
+      "special": null,
+      "extraGoldPity": null,
+      "noRepeatRed": true,
+      "wishEnabled": true,
+      "wishDescription": "每次抽中神品外观，获得1次指定极品外观的机会",
+      "hasDualPity": false,
+      "notes": ""
+    }
+  },
+  {
+    "id": "wuwangbaoding",
+    "name": "无妄宝鼎",
+    "type": "regular",
+    "image": "assets/box/wuwangbaoding/wuwangbaoding.png",
+    "items": [
+      {
+        "name": "暮光胴丸",
+        "quality": "red",
+        "image": "assets/box/wuwangbaoding/01.webp"
+      },
+      {
+        "name": "凤求凰",
+        "quality": "red",
+        "image": "assets/box/wuwangbaoding/02.webp"
+      },
+      {
+        "name": "瑞火麟",
+        "quality": "gold",
+        "image": "assets/box/wuwangbaoding/03.webp"
+      },
+      {
+        "name": "蛰龙呤",
+        "quality": "gold",
+        "image": "assets/box/wuwangbaoding/04.webp"
+      },
+      {
+        "name": "樱华",
+        "quality": "gold",
+        "image": "assets/box/wuwangbaoding/05.webp"
+      },
+      {
+        "name": "镰鼬剃",
+        "quality": "gold",
+        "image": "assets/box/wuwangbaoding/06.webp"
+      },
+      {
+        "name": "【挑染】水仙",
+        "quality": "gold",
+        "image": "assets/box/wuwangbaoding/07.webp"
+      },
+      {
+        "name": "【挑染】觅封侯",
+        "quality": "gold",
+        "image": "assets/box/wuwangbaoding/08.webp"
+      },
+      {
+        "name": "雁羽坠",
+        "quality": "gold",
+        "image": "assets/box/wuwangbaoding/09.webp"
+      },
+      {
+        "name": "瑞火壶",
+        "quality": "gold",
+        "image": "assets/box/wuwangbaoding/10.webp"
+      },
+      {
+        "name": "纳刀",
+        "quality": "gold",
+        "image": "assets/box/wuwangbaoding/11.webp"
+      },
+      {
+        "name": "昆仑服·黑蛟",
+        "quality": "purple",
+        "image": "assets/box/wuwangbaoding/12.webp"
+      },
+      {
+        "name": "猎装·幽狼",
+        "quality": "purple",
+        "image": "assets/box/wuwangbaoding/13.webp"
+      },
+      {
+        "name": "将军甲·伏波",
+        "quality": "purple",
+        "image": "assets/box/wuwangbaoding/14.webp"
+      },
+      {
+        "name": "风雷·天施",
+        "quality": "purple",
+        "image": "assets/box/wuwangbaoding/15.webp"
+      },
+      {
+        "name": "夜隼·天白",
+        "quality": "purple",
+        "image": "assets/box/wuwangbaoding/16.webp"
+      },
+      {
+        "name": "墨攻·金玉",
+        "quality": "purple",
+        "image": "assets/box/wuwangbaoding/17.webp"
+      },
+      {
+        "name": "河伯面",
+        "quality": "purple",
+        "image": "assets/box/wuwangbaoding/18.webp"
+      },
+      {
+        "name": "真阳剑",
+        "quality": "purple",
+        "image": "assets/box/wuwangbaoding/19.webp"
+      },
+      {
+        "name": "鹿毫笔",
+        "quality": "purple",
+        "image": "assets/box/wuwangbaoding/20.webp"
+      },
+      {
+        "name": "崔三娘·传奇船长",
+        "quality": "purple",
+        "image": "assets/box/wuwangbaoding/21.webp"
+      },
+      {
+        "name": "顾清寒·仙姿",
+        "quality": "purple",
+        "image": "assets/box/wuwangbaoding/22.webp"
+      },
+      {
+        "name": "寄情",
+        "quality": "purple",
+        "image": "assets/box/wuwangbaoding/23.webp"
+      },
+      {
+        "name": "遗迹台",
+        "quality": "purple",
+        "image": "assets/box/wuwangbaoding/24.webp"
+      },
+      {
+        "name": "燕石山梯",
+        "quality": "purple",
+        "image": "assets/box/wuwangbaoding/25.webp"
+      },
+      {
+        "name": "聪慧之境",
+        "quality": "purple",
+        "image": "assets/box/wuwangbaoding/26.webp"
+      },
+      {
+        "name": "手谈",
+        "quality": "purple",
+        "image": "assets/box/wuwangbaoding/27.webp"
+      }
+    ],
+    "probabilities": {
+      "red": 0.006,
+      "gold": 0.084,
+      "purple": 0.91
+    },
+    "pity": {
+      "cycle": {
+        "targetQuality": "red",
+        "count": 100,
+        "repeatable": true
+      },
+      "special": null,
+      "extraGoldPity": null,
+      "noRepeatRed": true,
+      "wishEnabled": false,
+      "wishDescription": "",
+      "hasDualPity": false,
+      "notes": ""
+    }
+  },
+  {
+    "id": "xiafengbaonang",
+    "name": "侠风宝囊",
+    "type": "regular",
+    "image": "assets/box/xiafengbaonang/xiafengbaonang.png",
+    "items": [
+      {
+        "name": "寒梅傲雪",
+        "quality": "red",
+        "image": "assets/box/xiafengbaonang/01.webp"
+      },
+      {
+        "name": "断昼呤",
+        "quality": "red",
+        "image": "assets/box/xiafengbaonang/02.webp"
+      },
+      {
+        "name": "倾国倾城·闭月",
+        "quality": "gold",
+        "image": "assets/box/xiafengbaonang/03.webp"
+      },
+      {
+        "name": "倾国倾城·羞花",
+        "quality": "gold",
+        "image": "assets/box/xiafengbaonang/04.webp"
+      },
+      {
+        "name": "孤影戎装",
+        "quality": "gold",
+        "image": "assets/box/xiafengbaonang/05.webp"
+      },
+      {
+        "name": "胧月魂",
+        "quality": "gold",
+        "image": "assets/box/xiafengbaonang/06.webp"
+      },
+      {
+        "name": "折寒英",
+        "quality": "gold",
+        "image": "assets/box/xiafengbaonang/07.webp"
+      },
+      {
+        "name": "【挑染】天涯醉",
+        "quality": "gold",
+        "image": "assets/box/xiafengbaonang/08.webp"
+      },
+      {
+        "name": "【挑染】鸿影",
+        "quality": "gold",
+        "image": "assets/box/xiafengbaonang/09.webp"
+      },
+      {
+        "name": "墨影浮沉",
+        "quality": "gold",
+        "image": "assets/box/xiafengbaonang/10.webp"
+      },
+      {
+        "name": "古龙江湖·冷香痕",
+        "quality": "gold",
+        "image": "assets/box/xiafengbaonang/11.webp"
+      },
+      {
+        "name": "蛋筒猫猫",
+        "quality": "gold",
+        "image": "assets/box/xiafengbaonang/12.webp"
+      },
+      {
+        "name": "占有",
+        "quality": "gold",
+        "image": "assets/box/xiafengbaonang/13.webp"
+      },
+      {
+        "name": "寒刃千流",
+        "quality": "gold",
+        "image": "assets/box/xiafengbaonang/14.webp"
+      },
+      {
+        "name": "山青黛",
+        "quality": "gold",
+        "image": "assets/box/xiafengbaonang/15.webp"
+      },
+      {
+        "name": "洗心池",
+        "quality": "gold",
+        "image": "assets/box/xiafengbaonang/16.webp"
+      },
+      {
+        "name": "鱼皮甲·碧鲟",
+        "quality": "purple",
+        "image": "assets/box/xiafengbaonang/17.webp"
+      },
+      {
+        "name": "绝命衣·胭",
+        "quality": "purple",
+        "image": "assets/box/xiafengbaonang/18.webp"
+      },
+      {
+        "name": "倦客衫",
+        "quality": "purple",
+        "image": "assets/box/xiafengbaonang/19.webp"
+      },
+      {
+        "name": "陷阵·怒涛",
+        "quality": "purple",
+        "image": "assets/box/xiafengbaonang/20.webp"
+      },
+      {
+        "name": "撞钟槌·鎏",
+        "quality": "purple",
+        "image": "assets/box/xiafengbaonang/21.webp"
+      },
+      {
+        "name": "虎目·钧紫",
+        "quality": "purple",
+        "image": "assets/box/xiafengbaonang/22.webp"
+      },
+      {
+        "name": "镖客面巾",
+        "quality": "purple",
+        "image": "assets/box/xiafengbaonang/23.webp"
+      },
+      {
+        "name": "萦金瓶",
+        "quality": "purple",
+        "image": "assets/box/xiafengbaonang/24.webp"
+      },
+      {
+        "name": "军哨",
+        "quality": "purple",
+        "image": "assets/box/xiafengbaonang/25.webp"
+      },
+      {
+        "name": "神术祭台·樱色",
+        "quality": "purple",
+        "image": "assets/box/xiafengbaonang/26.webp"
+      },
+      {
+        "name": "朱砂山石",
+        "quality": "purple",
+        "image": "assets/box/xiafengbaonang/27.webp"
+      },
+      {
+        "name": "倾国倾城·戟花恋",
+        "quality": "purple",
+        "image": "assets/box/xiafengbaonang/28.webp"
+      },
+      {
+        "name": "倾国倾城·人间乐",
+        "quality": "purple",
+        "image": "assets/box/xiafengbaonang/29.webp"
+      },
+      {
+        "name": "万钧·巴掌战神",
+        "quality": "purple",
+        "image": "assets/box/xiafengbaonang/30.webp"
+      },
+      {
+        "name": "胡为·嗯？",
+        "quality": "purple",
+        "image": "assets/box/xiafengbaonang/31.webp"
+      },
+      {
+        "name": "沈妙·机车",
+        "quality": "purple",
+        "image": "assets/box/xiafengbaonang/32.webp"
+      }
+    ],
+    "probabilities": {
+      "red": 0.006,
+      "gold": 0.08,
+      "purple": 0.914
+    },
+    "pity": {
+      "cycle": {
+        "targetQuality": "red",
+        "count": 100,
+        "repeatable": true
+      },
+      "special": null,
+      "extraGoldPity": {
+        "count": 25,
+        "maxTriggers": 14
+      },
+      "noRepeatRed": true,
+      "wishEnabled": true,
+      "wishDescription": "每次抽中神品外观，获得1次指定极品外观的机会",
+      "hasDualPity": false,
+      "notes": ""
+    }
+  },
+  {
+    "id": "xinchunbaodeng",
+    "name": "新春宝灯",
+    "type": "spring_festival",
+    "image": "assets/box/xinchunbaodeng/xinchunbaodeng.png",
+    "items": [
+      {
+        "name": "五行相",
+        "quality": "red",
+        "image": "assets/box/xinchunbaodeng/01.webp"
+      },
+      {
+        "name": "镇渊",
+        "quality": "red",
+        "image": "assets/box/xinchunbaodeng/02.webp"
+      },
+      {
+        "name": "倒反阴阳·狐踪",
+        "quality": "gold",
+        "image": "assets/box/xinchunbaodeng/03.webp"
+      },
+      {
+        "name": "墨染千秋·青玉案",
+        "quality": "gold",
+        "image": "assets/box/xinchunbaodeng/04.webp"
+      },
+      {
+        "name": "墨染千秋·钟鼎光",
+        "quality": "gold",
+        "image": "assets/box/xinchunbaodeng/05.webp"
+      },
+      {
+        "name": "福鱼刀",
+        "quality": "gold",
+        "image": "assets/box/xinchunbaodeng/06.webp"
+      },
+      {
+        "name": "饴锋藏",
+        "quality": "gold",
+        "image": "assets/box/xinchunbaodeng/07.webp"
+      },
+      {
+        "name": "【挑染】焚光",
+        "quality": "gold",
+        "image": "assets/box/xinchunbaodeng/08.webp"
+      },
+      {
+        "name": "【挑染】鎏渊",
+        "quality": "gold",
+        "image": "assets/box/xinchunbaodeng/09.webp"
+      },
+      {
+        "name": "冥昭光相",
+        "quality": "gold",
+        "image": "assets/box/xinchunbaodeng/10.webp"
+      },
+      {
+        "name": "倒反阴阳·赤狐尾",
+        "quality": "gold",
+        "image": "assets/box/xinchunbaodeng/11.webp"
+      },
+      {
+        "name": "倒反阴阳·赤狐耳",
+        "quality": "gold",
+        "image": "assets/box/xinchunbaodeng/12.webp"
+      },
+      {
+        "name": "同归",
+        "quality": "gold",
+        "image": "assets/box/xinchunbaodeng/13.webp"
+      },
+      {
+        "name": "御煞之主",
+        "quality": "gold",
+        "image": "assets/box/xinchunbaodeng/14.webp"
+      },
+      {
+        "name": "飞腾宇宙",
+        "quality": "gold",
+        "image": "assets/box/xinchunbaodeng/15.webp"
+      },
+      {
+        "name": "潜伏波涛",
+        "quality": "gold",
+        "image": "assets/box/xinchunbaodeng/16.webp"
+      },
+      {
+        "name": "织锦衫·青金",
+        "quality": "purple",
+        "image": "assets/box/xinchunbaodeng/17.webp"
+      },
+      {
+        "name": "昆仑服·绛螭",
+        "quality": "purple",
+        "image": "assets/box/xinchunbaodeng/18.webp"
+      },
+      {
+        "name": "神机袍·铜辉",
+        "quality": "purple",
+        "image": "assets/box/xinchunbaodeng/19.webp"
+      },
+      {
+        "name": "撞钟槌·暮",
+        "quality": "purple",
+        "image": "assets/box/xinchunbaodeng/20.webp"
+      },
+      {
+        "name": "断魂·玉京子",
+        "quality": "purple",
+        "image": "assets/box/xinchunbaodeng/21.webp"
+      },
+      {
+        "name": "流火",
+        "quality": "purple",
+        "image": "assets/box/xinchunbaodeng/22.webp"
+      },
+      {
+        "name": "皮影·云虎",
+        "quality": "purple",
+        "image": "assets/box/xinchunbaodeng/23.webp"
+      },
+      {
+        "name": "古龙江湖·塞外皮囊",
+        "quality": "purple",
+        "image": "assets/box/xinchunbaodeng/24.webp"
+      },
+      {
+        "name": "蓝绣球",
+        "quality": "purple",
+        "image": "assets/box/xinchunbaodeng/25.webp"
+      },
+      {
+        "name": "墨染千秋·铭铸",
+        "quality": "purple",
+        "image": "assets/box/xinchunbaodeng/26.webp"
+      },
+      {
+        "name": "墨染千秋·月笺",
+        "quality": "purple",
+        "image": "assets/box/xinchunbaodeng/27.webp"
+      },
+      {
+        "name": "墨染千秋·重煌",
+        "quality": "purple",
+        "image": "assets/box/xinchunbaodeng/28.webp"
+      },
+      {
+        "name": "墨染千秋·漱石",
+        "quality": "purple",
+        "image": "assets/box/xinchunbaodeng/29.webp"
+      },
+      {
+        "name": "闲庭倚",
+        "quality": "purple",
+        "image": "assets/box/xinchunbaodeng/30.webp"
+      },
+      {
+        "name": "胡桃·老师你看",
+        "quality": "purple",
+        "image": "assets/box/xinchunbaodeng/31.webp"
+      },
+      {
+        "name": "巫真·准备更坏",
+        "quality": "purple",
+        "image": "assets/box/xinchunbaodeng/32.webp"
+      }
+    ],
+    "probabilities": {
+      "red": 0.006,
+      "gold": 0.08,
+      "purple": 0.914
+    },
+    "pity": {
+      "cycle": {
+        "targetQuality": "red",
+        "count": 100,
+        "repeatable": true
+      },
+      "special": null,
+      "extraGoldPity": {
+        "count": 25,
+        "maxTriggers": 14
+      },
+      "noRepeatRed": true,
+      "wishEnabled": true,
+      "wishDescription": "每次抽中神品外观，获得1次指定极品外观的机会",
+      "hasDualPity": false,
+      "notes": ""
+    }
+  },
+  {
+    "id": "xinchunfudeng",
+    "name": "新春福灯",
+    "type": "spring_festival",
+    "image": "assets/box/xinchunfudeng/xinchunfudeng.png",
+    "items": [
+      {
+        "name": "毕方",
+        "quality": "red",
+        "image": "assets/box/xinchunfudeng/01.webp"
+      },
+      {
+        "name": "凌霄之羽",
+        "quality": "red",
+        "image": "assets/box/xinchunfudeng/02.webp"
+      },
+      {
+        "name": "春桃笑",
+        "quality": "gold",
+        "image": "assets/box/xinchunfudeng/03.webp"
+      },
+      {
+        "name": "伏波龙女",
+        "quality": "gold",
+        "image": "assets/box/xinchunfudeng/04.webp"
+      },
+      {
+        "name": "福禄双至",
+        "quality": "gold",
+        "image": "assets/box/xinchunfudeng/05.webp"
+      },
+      {
+        "name": "貔貅吞宝",
+        "quality": "gold",
+        "image": "assets/box/xinchunfudeng/06.webp"
+      },
+      {
+        "name": "木棉",
+        "quality": "gold",
+        "image": "assets/box/xinchunfudeng/07.webp"
+      },
+      {
+        "name": "瑞狮头",
+        "quality": "gold",
+        "image": "assets/box/xinchunfudeng/08.webp"
+      },
+      {
+        "name": "龙之意·腾",
+        "quality": "gold",
+        "image": "assets/box/xinchunfudeng/09.webp"
+      },
+      {
+        "name": "【挑染】羽客",
+        "quality": "gold",
+        "image": "assets/box/xinchunfudeng/10.webp"
+      },
+      {
+        "name": "百衲衣·跃虎",
+        "quality": "purple",
+        "image": "assets/box/xinchunfudeng/11.webp"
+      },
+      {
+        "name": "炼气服",
+        "quality": "purple",
+        "image": "assets/box/xinchunfudeng/12.webp"
+      },
+      {
+        "name": "禅意·布新",
+        "quality": "purple",
+        "image": "assets/box/xinchunfudeng/13.webp"
+      },
+      {
+        "name": "虎目·闹春",
+        "quality": "purple",
+        "image": "assets/box/xinchunfudeng/14.webp"
+      },
+      {
+        "name": "罗经仪",
+        "quality": "purple",
+        "image": "assets/box/xinchunfudeng/15.webp"
+      },
+      {
+        "name": "拨浪鼓",
+        "quality": "purple",
+        "image": "assets/box/xinchunfudeng/16.webp"
+      },
+      {
+        "name": "寅虎仔",
+        "quality": "purple",
+        "image": "assets/box/xinchunfudeng/17.webp"
+      },
+      {
+        "name": "烽火",
+        "quality": "purple",
+        "image": "assets/box/xinchunfudeng/18.webp"
+      },
+      {
+        "name": "星图",
+        "quality": "purple",
+        "image": "assets/box/xinchunfudeng/19.webp"
+      },
+      {
+        "name": "武神台",
+        "quality": "purple",
+        "image": "assets/box/xinchunfudeng/20.webp"
+      },
+      {
+        "name": "边关",
+        "quality": "purple",
+        "image": "assets/box/xinchunfudeng/21.webp"
+      },
+      {
+        "name": "月轮古堡",
+        "quality": "purple",
+        "image": "assets/box/xinchunfudeng/22.webp"
+      },
+      {
+        "name": "点鞭炮",
+        "quality": "purple",
+        "image": "assets/box/xinchunfudeng/23.webp"
+      },
+      {
+        "name": "发红包",
+        "quality": "purple",
+        "image": "assets/box/xinchunfudeng/24.webp"
+      }
+    ],
+    "probabilities": {
+      "red": 0.006,
+      "gold": 0.091,
+      "purple": 0.903
+    },
+    "pity": {
+      "cycle": {
+        "targetQuality": "red",
+        "count": 100,
+        "repeatable": true
+      },
+      "special": null,
+      "extraGoldPity": null,
+      "noRepeatRed": true,
+      "wishEnabled": false,
+      "wishDescription": "",
+      "hasDualPity": false,
+      "notes": ""
+    }
+  },
+  {
+    "id": "xinchunhuadeng",
+    "name": "新春华灯",
+    "type": "spring_festival",
+    "image": "assets/box/xinchunhuadeng/xinchunhuadeng.png",
+    "items": [
+      {
+        "name": "悍虎斩",
+        "quality": "red",
+        "image": "assets/box/xinchunhuadeng/01.webp"
+      },
+      {
+        "name": "画中仙",
+        "quality": "red",
+        "image": "assets/box/xinchunhuadeng/02.webp"
+      },
+      {
+        "name": "开辟鸿蒙·日月明",
+        "quality": "gold",
+        "image": "assets/box/xinchunhuadeng/03.webp"
+      },
+      {
+        "name": "开辟鸿蒙·金戈止",
+        "quality": "gold",
+        "image": "assets/box/xinchunhuadeng/04.webp"
+      },
+      {
+        "name": "开辟鸿蒙·风雨谐",
+        "quality": "gold",
+        "image": "assets/box/xinchunhuadeng/05.webp"
+      },
+      {
+        "name": "光影裁决",
+        "quality": "gold",
+        "image": "assets/box/xinchunhuadeng/06.webp"
+      },
+      {
+        "name": "雷厉",
+        "quality": "gold",
+        "image": "assets/box/xinchunhuadeng/07.webp"
+      },
+      {
+        "name": "【挑染】牵云霞",
+        "quality": "gold",
+        "image": "assets/box/xinchunhuadeng/08.webp"
+      },
+      {
+        "name": "【挑染】冷川",
+        "quality": "gold",
+        "image": "assets/box/xinchunhuadeng/09.webp"
+      },
+      {
+        "name": "开辟鸿蒙·凛寒星",
+        "quality": "gold",
+        "image": "assets/box/xinchunhuadeng/10.webp"
+      },
+      {
+        "name": "开辟鸿蒙·烟云聚",
+        "quality": "gold",
+        "image": "assets/box/xinchunhuadeng/11.webp"
+      },
+      {
+        "name": "月舞",
+        "quality": "gold",
+        "image": "assets/box/xinchunhuadeng/12.webp"
+      },
+      {
+        "name": "轻燕来",
+        "quality": "gold",
+        "image": "assets/box/xinchunhuadeng/13.webp"
+      },
+      {
+        "name": "开辟鸿蒙·簪金缨",
+        "quality": "gold",
+        "image": "assets/box/xinchunhuadeng/14.webp"
+      },
+      {
+        "name": "昼隐",
+        "quality": "gold",
+        "image": "assets/box/xinchunhuadeng/15.webp"
+      },
+      {
+        "name": "吉凶难料",
+        "quality": "gold",
+        "image": "assets/box/xinchunhuadeng/16.webp"
+      },
+      {
+        "name": "绮罗衫·焦茶",
+        "quality": "purple",
+        "image": "assets/box/xinchunhuadeng/17.webp"
+      },
+      {
+        "name": "织梦裳",
+        "quality": "purple",
+        "image": "assets/box/xinchunhuadeng/18.webp"
+      },
+      {
+        "name": "照空·青罗",
+        "quality": "purple",
+        "image": "assets/box/xinchunhuadeng/19.webp"
+      },
+      {
+        "name": "雷鸣·陶棕",
+        "quality": "purple",
+        "image": "assets/box/xinchunhuadeng/20.webp"
+      },
+      {
+        "name": "铁旗·吉金",
+        "quality": "purple",
+        "image": "assets/box/xinchunhuadeng/21.webp"
+      },
+      {
+        "name": "巧墨锁·檀木",
+        "quality": "purple",
+        "image": "assets/box/xinchunhuadeng/22.webp"
+      },
+      {
+        "name": "断罪枷",
+        "quality": "purple",
+        "image": "assets/box/xinchunhuadeng/23.webp"
+      },
+      {
+        "name": "八重宝函",
+        "quality": "purple",
+        "image": "assets/box/xinchunhuadeng/24.webp"
+      },
+      {
+        "name": "飞刀鞘",
+        "quality": "purple",
+        "image": "assets/box/xinchunhuadeng/25.webp"
+      },
+      {
+        "name": "青绿",
+        "quality": "purple",
+        "image": "assets/box/xinchunhuadeng/26.webp"
+      },
+      {
+        "name": "雄阙",
+        "quality": "purple",
+        "image": "assets/box/xinchunhuadeng/27.webp"
+      },
+      {
+        "name": "暮辉",
+        "quality": "purple",
+        "image": "assets/box/xinchunhuadeng/28.webp"
+      },
+      {
+        "name": "登云台",
+        "quality": "purple",
+        "image": "assets/box/xinchunhuadeng/29.webp"
+      },
+      {
+        "name": "倚剑立",
+        "quality": "purple",
+        "image": "assets/box/xinchunhuadeng/30.webp"
+      },
+      {
+        "name": "胡桃·呜哇",
+        "quality": "purple",
+        "image": "assets/box/xinchunhuadeng/31.webp"
+      },
+      {
+        "name": "张起灵·头痛",
+        "quality": "purple",
+        "image": "assets/box/xinchunhuadeng/32.webp"
+      }
+    ],
+    "probabilities": {
+      "red": 0.006,
+      "gold": 0.08,
+      "purple": 0.914
+    },
+    "pity": {
+      "cycle": {
+        "targetQuality": "red",
+        "count": 100,
+        "repeatable": true
+      },
+      "special": null,
+      "extraGoldPity": {
+        "count": 25,
+        "maxTriggers": 14
+      },
+      "noRepeatRed": true,
+      "wishEnabled": true,
+      "wishDescription": "每次抽中神品外观，获得1次指定极品外观的机会",
+      "hasDualPity": false,
+      "notes": ""
+    }
+  },
+  {
+    "id": "xinchunjideng",
+    "name": "新春吉灯",
+    "type": "spring_festival",
+    "image": "assets/box/xinchunjideng/xinchunjideng.png",
+    "items": [
+      {
+        "name": "涯角",
+        "quality": "red",
+        "image": "assets/box/xinchunjideng/01.webp"
+      },
+      {
+        "name": "朱雀星衣",
+        "quality": "red",
+        "image": "assets/box/xinchunjideng/02.webp"
+      },
+      {
+        "name": "常胜袍",
+        "quality": "gold",
+        "image": "assets/box/xinchunjideng/03.webp"
+      },
+      {
+        "name": "金襦玉衫",
+        "quality": "gold",
+        "image": "assets/box/xinchunjideng/04.webp"
+      },
+      {
+        "name": "灵鹿巫者",
+        "quality": "gold",
+        "image": "assets/box/xinchunjideng/05.webp"
+      },
+      {
+        "name": "除岁",
+        "quality": "gold",
+        "image": "assets/box/xinchunjideng/06.webp"
+      },
+      {
+        "name": "迎宵",
+        "quality": "gold",
+        "image": "assets/box/xinchunjideng/07.webp"
+      },
+      {
+        "name": "【挑染】白芷",
+        "quality": "gold",
+        "image": "assets/box/xinchunjideng/08.webp"
+      },
+      {
+        "name": "【挑染】熛怒",
+        "quality": "gold",
+        "image": "assets/box/xinchunjideng/09.webp"
+      },
+      {
+        "name": "伏魔杵",
+        "quality": "gold",
+        "image": "assets/box/xinchunjideng/10.webp"
+      },
+      {
+        "name": "赤浪坛",
+        "quality": "gold",
+        "image": "assets/box/xinchunjideng/11.webp"
+      },
+      {
+        "name": "妖刀旋",
+        "quality": "gold",
+        "image": "assets/box/xinchunjideng/12.webp"
+      },
+      {
+        "name": "神机袍·雄黄",
+        "quality": "purple",
+        "image": "assets/box/xinchunjideng/13.webp"
+      },
+      {
+        "name": "软烟罗裳·芍药",
+        "quality": "purple",
+        "image": "assets/box/xinchunjideng/14.webp"
+      },
+      {
+        "name": "柳叶·桃韵",
+        "quality": "purple",
+        "image": "assets/box/xinchunjideng/15.webp"
+      },
+      {
+        "name": "铁旗·天动",
+        "quality": "purple",
+        "image": "assets/box/xinchunjideng/16.webp"
+      },
+      {
+        "name": "虎目·新桃",
+        "quality": "purple",
+        "image": "assets/box/xinchunjideng/17.webp"
+      },
+      {
+        "name": "泛金印",
+        "quality": "purple",
+        "image": "assets/box/xinchunjideng/18.webp"
+      },
+      {
+        "name": "素馨灯",
+        "quality": "purple",
+        "image": "assets/box/xinchunjideng/19.webp"
+      },
+      {
+        "name": "铁侍面",
+        "quality": "purple",
+        "image": "assets/box/xinchunjideng/20.webp"
+      },
+      {
+        "name": "冰玫",
+        "quality": "purple",
+        "image": "assets/box/xinchunjideng/21.webp"
+      },
+      {
+        "name": "小队·名胜古迹",
+        "quality": "purple",
+        "image": "assets/box/xinchunjideng/22.webp"
+      },
+      {
+        "name": "海梦",
+        "quality": "purple",
+        "image": "assets/box/xinchunjideng/23.webp"
+      },
+      {
+        "name": "引雷阵",
+        "quality": "purple",
+        "image": "assets/box/xinchunjideng/24.webp"
+      },
+      {
+        "name": "满足",
+        "quality": "purple",
+        "image": "assets/box/xinchunjideng/25.webp"
+      },
+      {
+        "name": "小队·合照",
+        "quality": "purple",
+        "image": "assets/box/xinchunjideng/26.webp"
+      },
+      {
+        "name": "迦南·扮兔子",
+        "quality": "purple",
+        "image": "assets/box/xinchunjideng/27.webp"
+      },
+      {
+        "name": "沈妙·修理你",
+        "quality": "purple",
+        "image": "assets/box/xinchunjideng/28.webp"
+      }
+    ],
+    "probabilities": {
+      "red": 0.006,
+      "gold": 0.084,
+      "purple": 0.91
+    },
+    "pity": {
+      "cycle": {
+        "targetQuality": "red",
+        "count": 100,
+        "repeatable": true
+      },
+      "special": null,
+      "extraGoldPity": null,
+      "noRepeatRed": true,
+      "wishEnabled": true,
+      "wishDescription": "每次抽中神品外观，获得1次指定极品外观的机会",
+      "hasDualPity": false,
+      "notes": ""
+    }
+  },
+  {
+    "id": "xinchunruideng",
+    "name": "新春瑞灯",
+    "type": "spring_festival",
+    "image": "assets/box/xinchunruideng/xinchunruideng.png",
+    "items": [
+      {
+        "name": "比羿",
+        "quality": "red",
+        "image": "assets/box/xinchunruideng/01.webp"
+      },
+      {
+        "name": "执明神君",
+        "quality": "red",
+        "image": "assets/box/xinchunruideng/02.webp"
+      },
+      {
+        "name": "护世四法·持国天王",
+        "quality": "gold",
+        "image": "assets/box/xinchunruideng/03.webp"
+      },
+      {
+        "name": "护世四法·多闻天王",
+        "quality": "gold",
+        "image": "assets/box/xinchunruideng/04.webp"
+      },
+      {
+        "name": "护世四法·广目天王",
+        "quality": "gold",
+        "image": "assets/box/xinchunruideng/05.webp"
+      },
+      {
+        "name": "护世四法·螭龙",
+        "quality": "gold",
+        "image": "assets/box/xinchunruideng/06.webp"
+      },
+      {
+        "name": "护世四法·降魔",
+        "quality": "gold",
+        "image": "assets/box/xinchunruideng/07.webp"
+      },
+      {
+        "name": "【挑染】万仞山",
+        "quality": "gold",
+        "image": "assets/box/xinchunruideng/08.webp"
+      },
+      {
+        "name": "【挑染】玄冥",
+        "quality": "gold",
+        "image": "assets/box/xinchunruideng/09.webp"
+      },
+      {
+        "name": "护世四法·天王印",
+        "quality": "gold",
+        "image": "assets/box/xinchunruideng/10.webp"
+      },
+      {
+        "name": "玄天冠",
+        "quality": "gold",
+        "image": "assets/box/xinchunruideng/11.webp"
+      },
+      {
+        "name": "枭将",
+        "quality": "gold",
+        "image": "assets/box/xinchunruideng/12.webp"
+      },
+      {
+        "name": "叠裙·夕颜",
+        "quality": "purple",
+        "image": "assets/box/xinchunruideng/13.webp"
+      },
+      {
+        "name": "软烟罗裳·紫菀",
+        "quality": "purple",
+        "image": "assets/box/xinchunruideng/14.webp"
+      },
+      {
+        "name": "龙弧·石青",
+        "quality": "purple",
+        "image": "assets/box/xinchunruideng/15.webp"
+      },
+      {
+        "name": "风行天·渊",
+        "quality": "purple",
+        "image": "assets/box/xinchunruideng/16.webp"
+      },
+      {
+        "name": "夜隼·绀羽",
+        "quality": "purple",
+        "image": "assets/box/xinchunruideng/17.webp"
+      },
+      {
+        "name": "莲鱼",
+        "quality": "purple",
+        "image": "assets/box/xinchunruideng/18.webp"
+      },
+      {
+        "name": "山寅",
+        "quality": "purple",
+        "image": "assets/box/xinchunruideng/19.webp"
+      },
+      {
+        "name": "曜石月历",
+        "quality": "purple",
+        "image": "assets/box/xinchunruideng/20.webp"
+      },
+      {
+        "name": "穹苍",
+        "quality": "purple",
+        "image": "assets/box/xinchunruideng/21.webp"
+      },
+      {
+        "name": "神隐",
+        "quality": "purple",
+        "image": "assets/box/xinchunruideng/22.webp"
+      },
+      {
+        "name": "商船·炎",
+        "quality": "purple",
+        "image": "assets/box/xinchunruideng/23.webp"
+      },
+      {
+        "name": "昆仑台",
+        "quality": "purple",
+        "image": "assets/box/xinchunruideng/24.webp"
+      },
+      {
+        "name": "礁石",
+        "quality": "purple",
+        "image": "assets/box/xinchunruideng/25.webp"
+      },
+      {
+        "name": "抽刀",
+        "quality": "purple",
+        "image": "assets/box/xinchunruideng/26.webp"
+      },
+      {
+        "name": "季莹莹·持国",
+        "quality": "purple",
+        "image": "assets/box/xinchunruideng/27.webp"
+      },
+      {
+        "name": "玉玲珑·广目",
+        "quality": "purple",
+        "image": "assets/box/xinchunruideng/28.webp"
+      }
+    ],
+    "probabilities": {
+      "red": 0.006,
+      "gold": 0.088,
+      "purple": 0.906
+    },
+    "pity": {
+      "cycle": {
+        "targetQuality": "red",
+        "count": 100,
+        "repeatable": true
+      },
+      "special": null,
+      "extraGoldPity": null,
+      "noRepeatRed": true,
+      "wishEnabled": true,
+      "wishDescription": "每次抽中神品外观，获得1次指定极品外观的机会",
+      "hasDualPity": false,
+      "notes": ""
+    }
+  },
+  {
+    "id": "yongzhoushenbei",
+    "name": "永昼神杯",
+    "type": "regular",
+    "image": "assets/box/yongzhoushenbei/yongzhoushenbei.png",
+    "items": [
+      {
+        "name": "逐光者",
+        "quality": "red",
+        "image": "assets/box/yongzhoushenbei/01.webp"
+      },
+      {
+        "name": "锦鲤玉扇",
+        "quality": "red",
+        "image": "assets/box/yongzhoushenbei/02.webp"
+      },
+      {
+        "name": "紫徽星命",
+        "quality": "gold",
+        "image": "assets/box/yongzhoushenbei/03.webp"
+      },
+      {
+        "name": "云溪仙子",
+        "quality": "gold",
+        "image": "assets/box/yongzhoushenbei/04.webp"
+      },
+      {
+        "name": "九骊之君",
+        "quality": "gold",
+        "image": "assets/box/yongzhoushenbei/05.webp"
+      },
+      {
+        "name": "琴心",
+        "quality": "gold",
+        "image": "assets/box/yongzhoushenbei/06.webp"
+      },
+      {
+        "name": "无相印",
+        "quality": "gold",
+        "image": "assets/box/yongzhoushenbei/07.webp"
+      },
+      {
+        "name": "【挑染】璀璨",
+        "quality": "gold",
+        "image": "assets/box/yongzhoushenbei/08.webp"
+      },
+      {
+        "name": "【挑染】桀骜",
+        "quality": "gold",
+        "image": "assets/box/yongzhoushenbei/09.webp"
+      },
+      {
+        "name": "则元冠",
+        "quality": "gold",
+        "image": "assets/box/yongzhoushenbei/10.webp"
+      },
+      {
+        "name": "骊斗",
+        "quality": "gold",
+        "image": "assets/box/yongzhoushenbei/11.webp"
+      },
+      {
+        "name": "羽之华",
+        "quality": "gold",
+        "image": "assets/box/yongzhoushenbei/12.webp"
+      },
+      {
+        "name": "乌金带",
+        "quality": "gold",
+        "image": "assets/box/yongzhoushenbei/13.webp"
+      },
+      {
+        "name": "海雾钟",
+        "quality": "gold",
+        "image": "assets/box/yongzhoushenbei/14.webp"
+      },
+      {
+        "name": "朝华紫",
+        "quality": "gold",
+        "image": "assets/box/yongzhoushenbei/15.webp"
+      },
+      {
+        "name": "玉穗台",
+        "quality": "gold",
+        "image": "assets/box/yongzhoushenbei/16.webp"
+      },
+      {
+        "name": "仙袍·涛浪",
+        "quality": "purple",
+        "image": "assets/box/yongzhoushenbei/17.webp"
+      },
+      {
+        "name": "行旅服·怒海",
+        "quality": "purple",
+        "image": "assets/box/yongzhoushenbei/18.webp"
+      },
+      {
+        "name": "织锦衫·蓝岩",
+        "quality": "purple",
+        "image": "assets/box/yongzhoushenbei/19.webp"
+      },
+      {
+        "name": "村正·紫兰",
+        "quality": "purple",
+        "image": "assets/box/yongzhoushenbei/20.webp"
+      },
+      {
+        "name": "夜隼·墨白",
+        "quality": "purple",
+        "image": "assets/box/yongzhoushenbei/21.webp"
+      },
+      {
+        "name": "命运·青垚",
+        "quality": "purple",
+        "image": "assets/box/yongzhoushenbei/22.webp"
+      },
+      {
+        "name": "标绳",
+        "quality": "purple",
+        "image": "assets/box/yongzhoushenbei/23.webp"
+      },
+      {
+        "name": "怒狂鮟鱇",
+        "quality": "purple",
+        "image": "assets/box/yongzhoushenbei/24.webp"
+      },
+      {
+        "name": "燧灵玉",
+        "quality": "purple",
+        "image": "assets/box/yongzhoushenbei/25.webp"
+      },
+      {
+        "name": "青砖台",
+        "quality": "purple",
+        "image": "assets/box/yongzhoushenbei/26.webp"
+      },
+      {
+        "name": "铜木台",
+        "quality": "purple",
+        "image": "assets/box/yongzhoushenbei/27.webp"
+      },
+      {
+        "name": "静雅",
+        "quality": "purple",
+        "image": "assets/box/yongzhoushenbei/28.webp"
+      },
+      {
+        "name": "井心莲",
+        "quality": "purple",
+        "image": "assets/box/yongzhoushenbei/29.webp"
+      },
+      {
+        "name": "开路",
+        "quality": "purple",
+        "image": "assets/box/yongzhoushenbei/30.webp"
+      },
+      {
+        "name": "胡桃·超酷",
+        "quality": "purple",
+        "image": "assets/box/yongzhoushenbei/31.webp"
+      },
+      {
+        "name": "殷紫萍·喝饮料",
+        "quality": "purple",
+        "image": "assets/box/yongzhoushenbei/32.webp"
+      }
+    ],
+    "probabilities": {
+      "red": 0.006,
+      "gold": 0.07,
+      "purple": 0.924
+    },
+    "pity": {
+      "cycle": {
+        "targetQuality": "red",
+        "count": 100,
+        "repeatable": true
+      },
+      "special": null,
+      "extraGoldPity": {
+        "count": 25,
+        "maxTriggers": 14
+      },
+      "noRepeatRed": true,
+      "wishEnabled": true,
+      "wishDescription": "每次抽中神品外观，获得1次指定极品外观的机会",
+      "hasDualPity": false,
+      "notes": ""
+    }
+  }
+];

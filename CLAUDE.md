@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-永劫无间擂台赛随机抽取工具 — 纯前端静态网页项目。
+永劫无间工具 — 纯前端静态网页项目。面向所有永劫无间玩家，提供英雄/武器/人员/锦囊/奖品抽取、转盘、计分排名、模拟开箱等功能。
 
 ## 技术概要
 
@@ -16,7 +16,7 @@
 index.html
   ├── <link rel="stylesheet" href="css/main.css">   ← 合并后的 CSS（12→1）
   ├── <link rel="modulepreload" href="js/app.js">   ← 预加载 JS 模块，避免链式等待
-  ├── ... (15 个 modulepreload 链接)
+  ├── ... (16 个 modulepreload 链接)
   ├── <script src="js/config.js">                   ← 普通脚本，最优先加载
   └── <script type="module" src="js/app.js">        ← ES Module 入口
 ```
@@ -26,6 +26,7 @@ index.html
 ### 模块间通信
 - 各业务模块将公开函数挂载到 `window.XxxModule = { ... }`
 - `app.js` 的 `mountGlobalFunctions()` 将 `window.XxxModule.xxx` 复制到 `window.xxx`，供 HTML `onclick` 属性直接调用
+- **音效模块**（`lootbox-sound.js`）通过 `window.LootboxSoundModule` 直接访问，不挂载到全局 window（避免命名污染），由 `lootbox.js` 在动画关键帧中调用
 - 跨模块共享的可变状态存放在 `js/core/state.js` 导出的 `state` 对象中（ES Module 不能重新赋值 import 绑定，但可修改对象属性）
 
 ### 配置系统
@@ -57,8 +58,14 @@ index.html
 
 ## 添加新模块
 
+**普通模块**（如模块一~八）：
 1. 创建 `js/modules/xxx.js`，挂载 `window.XxxModule = { ... }`
 2. 在 `js/app.js` 添加 `import './modules/xxx.js'`，并在 `mountGlobalFunctions` 数组追加 `'XxxModule'`
 3. 在 `js/ui/tabs.js` 的 `switchTab` 添加 `case 'xxx':`
 4. 在 `index.html` 添加标签按钮和面板 div
 5. 创建 `css/xxx.css`，在 `index.html` 添加 `<link>`
+
+**配套子模块**（如音效模块，不挂载到全局）：
+1. 创建 `js/modules/xxx-sound.js`，挂载 `window.XxxSoundModule = { ... }`
+2. 在 `js/app.js` 的 import 区域放在主模块之前（确保先加载）
+3. 主模块通过 `window.XxxSoundModule` 直接调用，无需走 `mountGlobalFunctions`

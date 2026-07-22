@@ -23,6 +23,8 @@
     <link rel="modulepreload" href="js/modules/wheel.js">
     <link rel="modulepreload" href="js/modules/scoreboard.js">
     <link rel="modulepreload" href="js/modules/sponsor.js">
+    <link rel="modulepreload" href="js/modules/lootbox.js">
+    <link rel="modulepreload" href="js/modules/lootbox-sound.js">
 </head>
 <body>
 
@@ -38,6 +40,7 @@
         <button class="nav-btn" onclick="switchTab('prize')">5. 奖品抽取</button>
         <button class="nav-btn" onclick="switchTab('wheel')">6. 转盘</button>
         <button class="nav-btn" onclick="switchTab('scoreboard')">7. 计分板</button>
+        <button class="nav-btn" onclick="switchTab('lootbox')">8. 模拟开箱</button>
     </div>
 
     <!-- 主内容展示区 -->
@@ -370,9 +373,82 @@
             </div>
         </div>
 
+        <!-- 8. 模拟开箱面板 -->
+        <div id="tab-lootbox" class="tab-content">
+            <div class="lootbox-layout">
+                <!-- 左侧：宝箱列表 -->
+                <div class="lootbox-left">
+                    <h3 style="margin:0 0 12px 0; color:var(--color-gold);">📦 宝箱选择</h3>
+                    <input type="text" id="lootbox-search" class="lootbox-search" placeholder="🔍 搜索宝箱..." oninput="filterBoxList()">
+                    <div class="lootbox-list" id="lootbox-list">
+                        <!-- JS 动态渲染 -->
+                    </div>
+                </div>
+
+                <!-- 中间：抽奖区域 -->
+                <div class="lootbox-center">
+                    <button id="lootbox-liuguang-toggle" class="lootbox-liuguang-toggle" onclick="openLiuguangModal()" title="流光逐影">✨</button>
+                    <button id="lootbox-sound-toggle" class="lootbox-sound-toggle" onclick="window.LootboxSoundModule&&window.LootboxSoundModule.toggleSound()" title="音效开关">🔊</button>
+                    <div class="lootbox-canvas-wrap" id="lootbox-canvas-wrap">
+                        <canvas id="lootbox-canvas" width="500" height="500"></canvas>
+                        <!-- 宝箱封面图 -->
+                        <img id="lootbox-cover-img" class="lootbox-cover-img" src="" alt="宝箱"
+                             onerror="this.style.display='none'; document.getElementById('lootbox-cover-fallback').style.display='flex';">
+                        <div id="lootbox-cover-fallback" class="lootbox-cover-fallback" style="display:none;">
+                            <span style="font-size:64px;">📦</span>
+                        </div>
+                    </div>
+                    <!-- 结果展示覆盖层（覆盖整个中间区域） -->
+                    <div id="lootbox-result-overlay" class="lootbox-result-overlay hidden">
+                        <div id="lootbox-result-cards" class="lootbox-result-grid"></div>
+                        <div id="lootbox-big-text" class="lootbox-big-text hidden">神品</div>
+                    </div>
+                    <!-- 新春系列按钮：1×4 + 万事如意 -->
+                    <div id="lootbox-xinchun-btns" class="lootbox-xinchun-btns hidden">
+                        <div class="xinchun-btn-row-four">
+                            <button class="xinchun-btn" onclick="startXinchunDraw(0)">日月长明</button>
+                            <button class="xinchun-btn" onclick="startXinchunDraw(1)">山川秀润</button>
+                            <button class="xinchun-btn" onclick="startXinchunDraw(2)">风调雨顺</button>
+                            <button class="xinchun-btn" onclick="startXinchunDraw(3)">国泰民安</button>
+                        </div>
+                        <button class="xinchun-btn-all" onclick="startXinchunDraw(4)">🧧 万事如意</button>
+                    </div>
+                    <!-- 常规抽取按钮 -->
+                    <div class="btn-group" id="lootbox-draw-btns" style="gap:15px;">
+                        <button class="draw-btn" id="lootbox-single-btn" onclick="performSingleDraw()" style="font-size:18px; padding:10px 30px;">🔮 单抽</button>
+                        <button class="draw-btn" id="lootbox-ten-btn" onclick="performMultiDraw(10)" style="font-size:18px; padding:10px 30px; background:linear-gradient(135deg,#b3863b,#e3a94a);">✨ 十连抽</button>
+                    </div>
+                </div>
+
+                <!-- 右侧：数据统计与设置 -->
+                <div class="lootbox-right">
+                    <h3 style="margin:0 0 12px 0; color:var(--color-gold);">📊 数据统计</h3>
+                    <div class="lootbox-stats" id="lootbox-stats">
+                        <div class="stat-row"><span>已开启次数</span><span id="stat-total-draws">0</span></div>
+                        <div class="stat-row" id="stat-red-row"><span id="stat-red-pity" style="color:#ff5555;">-</span></div>
+                        <div class="stat-row" id="stat-purple-row"><span id="stat-purple-pity" style="color:#bf5af2;">-</span></div>
+                        <div class="stat-row" id="stat-gold-pity-row" style="display:none;"><span id="stat-gold-pity" style="color:#ffcc00;">-</span></div>
+                        <div class="stat-row" id="stat-extreme-row"><span>特殊保底</span><span id="stat-extreme-pity" style="color:#ffcc00;">-</span></div>
+                    </div>
+                    <!-- 心愿极品外观独立面板 -->
+                    <div id="lootbox-wish-container"></div>
+                    <button class="action-btn" onclick="openBoxSettings()" style="width:100%; margin-top:8px; font-weight:bold;">⚙️ 总设置</button>
+
+                    <!-- 开箱记录 -->
+                    <div class="lootbox-history" id="lootbox-history">
+                        <h4 style="margin:0 0 8px 0; padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.08); display:flex; justify-content:space-between; align-items:center;">
+                            <span>📜 开箱记录</span>
+                            <button onclick="clearHistory()" style="background:none;border:1px solid #ff4444;color:#ff4444;padding:2px 8px;border-radius:3px;cursor:pointer;font-size:11px;" title="清空记录">清空</button>
+                        </h4>
+                        <ul id="lootbox-history-list"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div> <!-- 闭合主容器 main-container -->
 
-<!-- 悬浮窗：OBS直播纯净排行榜 -->
+<!-- 悬浮窗：纯净排行榜（适用于 OBS / 直播伴侣窗口采集） -->
     <div id="overlay-container" style="display:none;">
         <div class="overlay-inner">
             <!-- 修改：使标题精简美观，适合窄版显示 -->
@@ -393,6 +469,18 @@
             </div>
             <div id="overlay-empty-hint" style="display:none; color:#888; text-align:center; padding:40px; font-size:18px;">
                 暂无选手数据<br><span style="font-size:14px;">请在主控制台计分板中填入选手名称</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 心愿选择弹窗 -->
+    <div id="lootbox-wish-modal" class="modal-overlay" style="z-index:1000;">
+        <div class="modal-content" style="max-width:560px; max-height:80vh;">
+            <div class="modal-header-row">
+                <h3>❤️ 选择心愿极品外观</h3>
+                <button class="modal-close-btn" onclick="closeWishModal()">✕</button>
+            </div>
+            <div id="wish-modal-grid" class="wish-items-grid" style="grid-template-columns: repeat(auto-fill, minmax(85px, 1fr)); max-height:50vh; overflow-y:auto;">
             </div>
         </div>
     </div>
@@ -820,6 +908,85 @@
         </div>
     </div>
 
+    <!-- 17. 开箱模拟器设置弹窗 -->
+    <div id="lootbox-settings-modal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 900px;">
+            <div class="modal-header-row">
+                <h3>⚙️ 宝箱设置 — <span id="settings-box-name"></span></h3>
+                <button class="small-btn" onclick="resetBoxState()" style="color:#ff9999; border-color:rgba(255,153,153,0.4);">🔄 重置本箱数据</button>
+            </div>
+            <!-- 高级设置行 — 基础字段 -->
+            <div class="setting-toggle-group" style="flex-wrap:wrap; gap:10px; margin-bottom:6px;">
+                <label>已开启次数: <input type="number" id="set-total-draws" min="0" style="width:60px; background:#222; color:#fff; border:1px solid #b3863b; padding:4px; text-align:center; border-radius:4px;" onchange="updateBoxStat('totalDraws', parseInt(this.value))"></label>
+                <label>红保底计数: <input type="number" id="set-red-pity" min="0" style="width:60px; background:#222; color:#fff; border:1px solid #b3863b; padding:4px; text-align:center; border-radius:4px;" onchange="updateBoxStat('redPityCounter', parseInt(this.value))"></label>
+                <label>紫保底计数: <input type="number" id="set-purple-pity" min="0" style="width:60px; background:#222; color:#fff; border:1px solid #b3863b; padding:4px; text-align:center; border-radius:4px;" onchange="updateBoxStat('purplePityCounter', parseInt(this.value))"></label>
+                <label>心愿次数: <input type="number" id="set-wish-count" min="0" style="width:60px; background:#222; color:#fff; border:1px solid #b3863b; padding:4px; text-align:center; border-radius:4px;" onchange="updateBoxStat('wishCount', parseInt(this.value))"></label>
+            </div>
+            <!-- 高级设置行 — 保底状态字段（按宝箱类型动态显示） -->
+            <div class="setting-toggle-group" style="flex-wrap:wrap; gap:10px; margin-bottom:15px;">
+                <label id="set-special-label" style="display:none;">🎯 特殊保底:
+                    <select id="set-special-status" onchange="updateBoxStat('specialStatus', this.value)" style="background:#222; color:#ffcc00; border:1px solid #b3863b; padding:4px; border-radius:4px;">
+                        <option value="active">未触发</option>
+                        <option value="used">已触发</option>
+                    </select>
+                </label>
+                <label id="set-gold-pity-label" style="display:none;">💛 极品保底计数:
+                    <input type="number" id="set-gold-pity" min="0" style="width:50px; background:#222; color:#ffcc00; border:1px solid #ffcc00; padding:4px; text-align:center; border-radius:4px;" onchange="updateBoxStat('goldPityCounter', parseInt(this.value))">
+                    已触发:<input type="number" id="set-gold-triggers" min="0" max="14" style="width:40px; background:#222; color:#fff; border:1px solid #b3863b; padding:4px; text-align:center; border-radius:4px;" onchange="updateBoxStat('goldPityTriggers', parseInt(this.value))">/14
+                </label>
+                <label id="set-perm-red-label" style="display:none;">🔴 常驻红保底计数:
+                    <input type="number" id="set-perm-red-pity" min="0" style="width:55px; background:#222; color:#ff4444; border:1px solid #ff4444; padding:4px; text-align:center; border-radius:4px;" onchange="updateBoxStat('permRedPityCounter', parseInt(this.value))">
+                    已触发:<input type="number" id="set-perm-red-triggers" min="0" max="3" style="width:35px; background:#222; color:#fff; border:1px solid #b3863b; padding:4px; text-align:center; border-radius:4px;" onchange="updateBoxStat('permRedPityTriggers', parseInt(this.value))">/3
+                </label>
+            </div>
+            <hr class="modal-hr">
+            <!-- 心愿选择区 -->
+            <div id="settings-wish-section" class="hidden" style="margin-bottom:15px;">
+                <h4 style="color:#ffcc00; margin:0 0 8px 0;">❤️ 心愿极品外观设置</h4>
+                <div id="settings-wish-grid" class="wish-items-grid" style="grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); max-height:240px;">
+                </div>
+                <span style="color:#aaa; font-size:12px; margin-top:4px; display:block;">抽中红色品质后获得心愿次数，下次抽中金色时将获得心愿物品</span>
+            </div>
+            <hr class="modal-hr" id="settings-wish-hr" style="display:none;">
+            <!-- 概率微调区 -->
+            <h4 style="margin:0 0 10px 0;">🎯 概率设置 (百分比，总和应为100%)</h4>
+            <div class="setting-toggle-group" style="flex-wrap:wrap; gap:12px; margin-bottom:15px;" id="settings-prob-sliders">
+            </div>
+            <!-- 物品网格 -->
+            <h4 style="margin:0 0 10px 0;">📋 物品列表 (点击切换已拥有/未拥有状态)</h4>
+            <div class="options-table-header" style="grid-template-columns: 1fr 0.6fr 3fr 0.5fr; gap:8px; margin-bottom:8px;">
+                <span>品质</span>
+                <span>图片</span>
+                <span>物品名称</span>
+                <span>状态</span>
+            </div>
+            <div id="settings-items-grid" class="lootbox-items-grid" style="max-height: 350px; overflow-y: auto;">
+                <!-- JS 动态渲染 -->
+            </div>
+            <div class="modal-footer">
+                <button class="modal-close-btn" onclick="closeBoxSettings()">保存并关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 流光逐影弹窗 -->
+    <div id="lootbox-liuguang-modal" class="modal-overlay" style="z-index:1001;" onclick="closeLiuguangModal(event)">
+        <div class="modal-content" style="max-width:900px;">
+            <div class="modal-header-row">
+                <h3>✨ 流光逐影</h3>
+                <button class="modal-close-btn" onclick="closeLiuguangModal()">✕</button>
+            </div>
+            <div id="lootbox-liuguang-canvas-wrap" class="lootbox-liuguang-canvas-wrap">
+                <canvas id="lootbox-liuguang-canvas"></canvas>
+                <div class="lootbox-liuguang-pointer"></div>
+            </div>
+            <div class="lootbox-liuguang-controls">
+                <button id="lootbox-liuguang-draw-btn" class="draw-btn" onclick="performLiuguangDraw()" style="font-size:18px; padding:10px 30px;">✨ 开始抽取</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/boxdata.js"></script>
     <script src="js/config.js"></script>
     <script type="module" src="js/app.js"></script>
 </body>

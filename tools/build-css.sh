@@ -18,6 +18,7 @@ cat \
     css/tips.css \
     css/wheel.css \
     css/scoreboard.css \
+    css/lootbox.css \
     css/overlay.css \
     css/responsive.css \
     > css/main.css

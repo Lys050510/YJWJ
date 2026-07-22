@@ -8,7 +8,7 @@ const STORAGE_KEY = (function() {
 // 默认初始数据
 const DEFAULT_CONFIG = {
     // 【核心】智能同步版本号。手动在电脑上修改此文件后，只需将此数字 +1，网页刷新时即可自动载入最新修改！
-    configVersion: 19, // 升级为版本 19：Pigg→崔狱、夜雨声烦→校裙
+    configVersion: 20, // 升级为版本 20：新增模块八开箱模拟器（26个宝箱数据）
 
     // 1. 27个英雄基础数据
     heroes: [
@@ -263,12 +263,14 @@ if (DEFAULT_CONFIG.configVersion > (localCache.configVersion || 0)) {
     let cachedPrizeLogs = localCache ? (localCache.prizeLogs || []) : [];
     let cachedWheels = DEFAULT_CONFIG.wheelsList;
     let cachedScoreboard = localCache ? (localCache.scoreboard || DEFAULT_CONFIG.scoreboard) : DEFAULT_CONFIG.scoreboard;
+    let cachedBoxStates = localCache ? (localCache.boxStates || {}) : {};
+    let cachedBoxOrder = localCache ? (localCache.boxOrder || []) : [];
 
     CURRENT_CONFIG = {
         configVersion: DEFAULT_CONFIG.configVersion,
         heroes: DEFAULT_CONFIG.heroes,
         weapons: DEFAULT_CONFIG.weapons,
-        players: DEFAULT_CONFIG.players, 
+        players: DEFAULT_CONFIG.players,
         tips: cachedTips,                  // 🛠️ 修复：正式灌入内存中
         tipDrawSettings: cachedTipSettings,// 🛠️ 修复：正式灌入内存中
         tipSession: cachedTipSession,      // 🛠️ 修复：正式灌入内存中
@@ -281,7 +283,9 @@ if (DEFAULT_CONFIG.configVersion > (localCache.configVersion || 0)) {
         heroDrawSettings: heroSettings,
         weaponDrawSettings: weaponSettings,
         wheelsList: cachedWheels,
-        scoreboard: cachedScoreboard
+        scoreboard: cachedScoreboard,
+        boxStates: cachedBoxStates,
+        boxOrder: cachedBoxOrder
     };
     
     // 保存至浏览器本地存储
@@ -346,6 +350,12 @@ if (DEFAULT_CONFIG.configVersion > (localCache.configVersion || 0)) {
             });
         });
     });
+    if (!CURRENT_CONFIG.boxStates) {
+        CURRENT_CONFIG.boxStates = {};
+    }
+    if (!CURRENT_CONFIG.boxOrder) {
+        CURRENT_CONFIG.boxOrder = [];
+    }
 }
 
 // 将 CURRENT_CONFIG 暴露到 window 对象（ES Module 通过 window.CURRENT_CONFIG 访问）

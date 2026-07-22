@@ -33,6 +33,10 @@ export const state = {
     ctx: undefined,
     currentRotation: 0,
 
+    // Lootbox
+    isLootboxDrawing: false,
+    currentBoxId: null,
+
     // Scoreboard
     currentScoreboardRoundIndex: 0,
     overlaySyncLock: false,
