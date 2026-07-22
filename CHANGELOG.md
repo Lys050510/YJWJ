@@ -2,6 +2,23 @@
 
 本文档记录用户可感知的变化。技术细节见 git log。
 
+## [2026-07-22] — 模块八代码安全审查与质量修复
+
+### 安全修复
+- **修复 onclick 中 escapeHTML 误用于 JS 字符串上下文**：3 处（心愿弹窗选择、设置心愿网格、设置物品网格）的 `onclick` 属性使用 `escapeHTML()` 未转义单引号，若物品名含 `'` 可导致 XSS 注入。改为 `escapeJS()`，HTML 属性上下文（`title`/`alt`）仍保持 `escapeHTML()`
+
+### Bug 修复
+- **修复 forEach + splice 导致粒子跳过**：常规动画 (`runRegularAnimation`) 的拖尾粒子/火花粒子循环、新春动画 (`runXinchunAnimation`) 的粒子循环共 3 处，在 `forEach` 内 `splice(i,1)` 删除元素后下一个元素被跳过，改为反向 `for` 循环
+- **修复空物品池边缘情况**：`performDrawLogic` 中当红色防重复过滤后池为空且二次过滤仍为空时，添加最终兜底回退到所有物品，防止 `pool[NaN]` 返回 `undefined` 导致崩溃
+- **修复 renderStatsPanel 缺少空值检查**：`stat-total-draws` 元素增加空值保护
+
+### 代码质量
+- **消除死代码**：`autoOwnItem()` 定义后从未调用，4 个抽取入口（单抽/十连/新春/流光逐影）各自内联重复的"标记已拥有"逻辑。统一改为调用 `autoOwnItem(st, name)`，消除 4 处重复
+- **AudioContext 页面卸载时自动释放**：`lootbox-sound.js` 添加 `window.addEventListener('beforeunload', dispose)`，防止页面关闭后 AudioContext 泄漏
+
+### 视觉调整
+- **移除新春系列抽奖动画球上的品质文字**：球上不再显示"神品""极品""珍品""优品""良品"标签，保持视觉简洁
+
 ## [2026-07-22] — 模块八保底修复与体验优化
 
 ### 修复 — 总设置保底状态与统计面板（第二次更新）

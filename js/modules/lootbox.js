@@ -1,7 +1,7 @@
 // ==================== 模块八：开箱模拟器 ====================
 import { state } from '../core/state.js';
 import { saveConfig, saveConfigDebounced } from '../core/storage.js';
-import { escapeHTML, getFormattedTime, shuffleArray } from '../core/utils.js';
+import { escapeHTML, escapeJS, getFormattedTime, shuffleArray } from '../core/utils.js';
 import { showToast } from '../ui/toast.js';
 
 // ── Canvas roundRect polyfill ──
@@ -242,7 +242,8 @@ function renderStatsPanel() {
     const st = getBoxState(_currentBoxId);
     const pity = box.pity || {};
 
-    document.getElementById('stat-total-draws').textContent = st.totalDraws;
+    const totalDrawsEl = document.getElementById('stat-total-draws');
+    if (totalDrawsEl) totalDrawsEl.textContent = st.totalDraws;
 
     // ── 红色保底 ──
     // 优先级：常驻红保底（特殊保底已用后） > 循环红保底 > 特殊红保底（未触发时）
@@ -374,7 +375,7 @@ function openWishModal() {
         goldItems.map(i => {
             const active = st.wishItem === i.name ? ' active' : '';
             const owned = st.ownedItems.includes(i.name) ? ' owned' : '';
-            return `<div class="wish-item-opt${active}${owned}" onclick="setWishItem('${escapeHTML(i.name)}');closeWishModal();" title="${escapeHTML(i.name)}" style="aspect-ratio:1;">
+            return `<div class="wish-item-opt${active}${owned}" onclick="setWishItem('${escapeJS(i.name)}');closeWishModal();" title="${escapeHTML(i.name)}" style="aspect-ratio:1;">
                 <img src="${i.image}" alt="${escapeHTML(i.name)}" class="wish-item-opt-img"
                      onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
                 <span style="display:none;width:100%;height:100%;background:#222;align-items:center;justify-content:center;font-size:24px;">🎁</span>
@@ -494,6 +495,8 @@ function performDrawLogic(box, st) {
         if (unowned.length > 0) pool = unowned;
     }
     if (pool.length === 0) pool = (box.items || []).filter(i => i.quality === quality);
+    // 最终兜底：如果仍然为空，回退到所有物品
+    if (pool.length === 0) pool = (box.items || []);
 
     // 心愿系统
     if (quality === 'gold' && st.wishCount > 0 && st.wishItem && pity.wishEnabled) {
@@ -515,9 +518,9 @@ function performDrawLogic(box, st) {
     return { item, quality, isPity, isWish, pityLabel };
 }
 
-function autoOwnItem(st, item) {
-    if (!st.ownedItems.includes(item.name)) {
-        st.ownedItems.push(item.name);
+function autoOwnItem(st, name) {
+    if (!st.ownedItems.includes(name)) {
+        st.ownedItems.push(name);
     }
 }
 
@@ -585,7 +588,7 @@ function performSingleDraw() {
         }
         showResults(box, [result], () => {
             // Own items after results dismiss
-            newItems.forEach(name => { if (!st.ownedItems.includes(name)) st.ownedItems.push(name); });
+            newItems.forEach(name => autoOwnItem(st, name));
             saveConfigDebounced(300);
             renderStatsPanel(); renderBoxList(); setButtonsEnabled(true); _isDrawing = false;
         });
@@ -620,7 +623,7 @@ function performMultiDraw(count) {
             window.LootboxSoundModule.playReveal(highestQuality);
         }
         showResults(box, results, () => {
-            newItems.forEach(name => { if (!st.ownedItems.includes(name)) st.ownedItems.push(name); });
+            newItems.forEach(name => autoOwnItem(st, name));
             saveConfigDebounced(300);
             renderStatsPanel(); renderBoxList(); setButtonsEnabled(true); _isDrawing = false;
         });
@@ -875,31 +878,33 @@ function runRegularAnimation(box, results, callback) {
             }
         });
 
-        // ── Draw trail particles ──
-        trailParticles.forEach((p, i) => {
+        // ── Draw trail particles (reverse iterate to safely splice) ──
+        for (let i = trailParticles.length - 1; i >= 0; i--) {
+            const p = trailParticles[i];
             p.life -= p.decay;
-            if (p.life <= 0) { trailParticles.splice(i, 1); return; }
+            if (p.life <= 0) { trailParticles.splice(i, 1); continue; }
             ctx.save();
             ctx.globalAlpha = p.alpha * (p.life / 0.3);
             ctx.fillStyle = p.color;
             ctx.beginPath(); ctx.arc(p.x, p.y, 2, 0, Math.PI * 2); ctx.fill();
             ctx.restore();
-        });
+        }
         // Limit trails
         if (trailParticles.length > 80) trailParticles.splice(0, trailParticles.length - 80);
 
-        // ── Draw spark particles ──
-        particles.forEach((p, i) => {
+        // ── Draw spark particles (reverse iterate to safely splice) ──
+        for (let i = particles.length - 1; i >= 0; i--) {
+            const p = particles[i];
             p.x += p.vx; p.y += p.vy;
             p.vy += 0.05; // slight gravity
             p.life -= p.decay;
-            if (p.life <= 0) { particles.splice(i, 1); return; }
+            if (p.life <= 0) { particles.splice(i, 1); continue; }
             ctx.save();
             ctx.globalAlpha = p.life;
             ctx.fillStyle = p.color;
             ctx.beginPath(); ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2); ctx.fill();
             ctx.restore();
-        });
+        }
         if (particles.length > 200) particles.splice(0, particles.length - 200);
 
         // ── Draw red shockwave expanding ──
@@ -1017,7 +1022,7 @@ function startXinchunDraw(btnIndex) {
             window.LootboxSoundModule.playReveal(highestQuality);
         }
         showResults(box, results, () => {
-            newItems.forEach(name => { if (!st.ownedItems.includes(name)) st.ownedItems.push(name); });
+            newItems.forEach(name => autoOwnItem(st, name));
             saveConfigDebounced(300);
             renderStatsPanel(); renderBoxList(); setButtonsEnabled(true); _isDrawing = false;
         });
@@ -1288,11 +1293,6 @@ function runXinchunAnimation(box, results, btnIndex, callback) {
 
                 ctx.shadowColor = 'transparent';
                 ctx.shadowBlur = 0;
-                ctx.fillStyle = isWinner ? '#000' : 'rgba(0,0,0,0.8)';
-                ctx.font = (isWinner ? 'bold ' : '') + ((isAll ? 10 : 12) * scale) + 'px sans-serif';
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                ctx.fillText(cfg.label, cs.x + colW/2, cy);
                 ctx.restore();
             }
             ctx.restore();
@@ -1340,17 +1340,18 @@ function runXinchunAnimation(box, results, btnIndex, callback) {
             ctx.restore();
         });
 
-        // Draw particles
-        particles.forEach((p, i) => {
+        // Draw particles (reverse iterate to safely splice)
+        for (let i = particles.length - 1; i >= 0; i--) {
+            const p = particles[i];
             p.x += p.vx; p.y += p.vy;
             p.life -= p.decay;
-            if (p.life <= 0) { particles.splice(i, 1); return; }
+            if (p.life <= 0) { particles.splice(i, 1); continue; }
             ctx.save();
             ctx.globalAlpha = p.life;
             ctx.fillStyle = p.color;
             ctx.beginPath(); ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2); ctx.fill();
             ctx.restore();
-        });
+        }
         if (particles.length > 150) particles.splice(0, particles.length - 150);
 
         // Check completion
@@ -1444,7 +1445,7 @@ function openBoxSettings() {
                 goldItems.map(i => {
                     const active = st.wishItem === i.name ? ' active' : '';
                     const owned = st.ownedItems.includes(i.name) ? ' owned' : '';
-                    return `<div class="wish-item-opt${active}${owned}" onclick="setWishItem('${escapeHTML(i.name)}')" title="${escapeHTML(i.name)}" style="aspect-ratio:1;">
+                    return `<div class="wish-item-opt${active}${owned}" onclick="setWishItem('${escapeJS(i.name)}')" title="${escapeHTML(i.name)}" style="aspect-ratio:1;">
                         <img src="${i.image}" alt="${escapeHTML(i.name)}" class="wish-item-opt-img"
                              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
                         <span style="display:none;width:100%;height:100%;background:#222;align-items:center;justify-content:center;font-size:24px;">🎁</span>
@@ -1480,7 +1481,7 @@ function renderSettingsItemsGrid(box, st) {
     grid.innerHTML = (box.items || []).map(item => {
         const cfg = qCfg(item.quality);
         const owned = st.ownedItems.includes(item.name);
-        return `<div class="lootbox-item-card" onclick="toggleItemOwned('${escapeHTML(item.name)}')" title="${escapeHTML(item.name)}">
+        return `<div class="lootbox-item-card" onclick="toggleItemOwned('${escapeJS(item.name)}')" title="${escapeHTML(item.name)}">
             <img src="${item.image}" alt="${escapeHTML(item.name)}"
                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
             <span style="display:none;width:100%;height:100%;background:#222;align-items:center;justify-content:center;font-size:28px;">🎁</span>
@@ -1590,7 +1591,7 @@ function resetBoxState() {
 
 // ==================== 流光逐影功能 ====================
 
-/** 预加载 god.webp */
+/** 预加载 god.webp（失败时 naturalWidth 为 0，调用方已有判断） */
 function _ensureGodImage() {
     if (!_godImage) {
         _godImage = new Image();
@@ -1794,9 +1795,7 @@ function performLiuguangDraw() {
         if (modal) modal.classList.remove('active');
         requestAnimationFrame(() => {
             showResults(box, [result], () => {
-                newItems.forEach(name => {
-                    if (!st.ownedItems.includes(name)) st.ownedItems.push(name);
-                });
+                newItems.forEach(name => autoOwnItem(st, name));
                 saveConfigDebounced(300);
                 renderStatsPanel();
                 renderBoxList();

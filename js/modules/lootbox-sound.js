@@ -337,6 +337,9 @@ function dispose() {
     _noiseBufClick = null;
 }
 
+// 页面卸载时自动释放 AudioContext
+window.addEventListener('beforeunload', dispose);
+
 // ==================== 挂载 ====================
 window.LootboxSoundModule = {
     toggleSound, isSoundEnabled,
